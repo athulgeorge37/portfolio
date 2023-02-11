@@ -1,5 +1,13 @@
 {
     "tailwindCSS.experimental.classRegex": [
         ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+    ],
+    "tailwindCSS.classAttributes": [
+        "class",
+        "className",
+        ".*variants",
+        ".*Styles",
+        "additionalClassNames",
+        "overrideAllClassNames"
     ]
 }
