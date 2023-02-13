@@ -16,6 +16,7 @@ import { Bars3Icon } from "@heroicons/react/24/solid";
 // animations
 import { Transition } from "@headlessui/react";
 import Button from "~/components/Button";
+import useTheme from "~/hooks/useTheme";
 
 // helper
 
@@ -23,18 +24,28 @@ interface NavBarProps {}
 
 const NavBar = ({}: NavBarProps) => {
     const [navbarIsOpen, setNavbarIsOpen] = useState(false);
+    const { theme, toggleTheme } = useTheme();
 
     return (
         <nav id="NavBar" className="mx-auto w-full max-w-5xl">
             <div className="flex items-center justify-between p-4">
                 <div>Logo</div>
-                <ul className="hidden gap-5 font-semibold sm:flex">
+                <ul className="hidden gap-5 font-semibold sm:flex sm:items-center">
                     <li>Resume</li>
                     <li>Projects</li>
                     <li>Work</li>
                     <li>Contact</li>
                     <li>Linked In</li>
                     <li>GitHub</li>
+                    <li>
+                        <Button
+                            ariaLabel="toggle dark mode"
+                            id="darkModeToggle"
+                            onClick={() => toggleTheme()}
+                            text="Toggle dark mode"
+                            variant="blueOutline"
+                        />
+                    </li>
                 </ul>
 
                 <Button

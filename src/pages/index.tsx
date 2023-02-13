@@ -18,7 +18,10 @@ const Home: NextPage = () => {
                 <meta name="description" content="Athul George's Portfolio" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className="flex h-full min-h-screen flex-col overflow-hidden bg-slate-100 font-sans text-slate-900 antialiased">
+            <main
+                className="flex h-full min-h-screen flex-col overflow-hidden bg-gradient-to-tl from-slate-300 to-slate-500 
+            font-sans text-slate-800 antialiased dark:from-slate-700 dark:to-slate-800 dark:text-slate-300"
+            >
                 <ResponsiveHelper />
                 <NavBar />
 

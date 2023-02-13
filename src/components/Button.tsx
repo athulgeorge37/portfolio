@@ -80,7 +80,8 @@ const variants = {
     },
     blankOutline: (isPressed: boolean) => {
         return {
-            ringClassNames: "ring-slate-900 ring-offset-slate-100",
+            ringClassNames:
+                "ring-slate-900 ring-offset-slate-100 dark:ring-slate-100 dark:ring-offset-slate-900",
             classNames: `text-slate-900 hover:bg-slate-200 border-2 border-slate-900
             ${isPressed ? "bg-slate-300 hover:bg-slate-300" : "bg-slate-100"}`,
         };
@@ -105,9 +106,14 @@ const variants = {
 
     blueOutline: (isPressed: boolean) => {
         return {
-            ringClassNames: "ring-blue-500 ring-offset-slate-100",
-            classNames: `text-blue-500 hover:bg-blue-200 border-2 border-blue-500 
-            ${isPressed ? "bg-blue-300 hover:bg-blue-300" : "bg-slate-100"}`,
+            ringClassNames:
+                "ring-blue-500 ring-offset-slate-100 dark:ring-offset-slate-900",
+            classNames: `text-blue-500 hover:bg-blue-200 dark:hover:bg-slate-800 border-2 border-blue-500 
+            ${
+                isPressed
+                    ? "bg-blue-300 hover:bg-blue-300 dark:bg-slate-600 dark:hover:bg-slate-600"
+                    : "bg-slate-100 dark:bg-slate-900"
+            }`,
         };
     },
 
