@@ -15,6 +15,7 @@ import { Bars3Icon } from "@heroicons/react/24/solid";
 
 // animations
 import { Transition } from "@headlessui/react";
+import Button from "~/components/Button";
 
 // helper
 
@@ -27,7 +28,7 @@ const NavBar = ({}: NavBarProps) => {
         <nav id="NavBar" className="mx-auto w-full max-w-5xl">
             <div className="flex items-center justify-between p-4">
                 <div>Logo</div>
-                <ul className="hidden gap-5 sm:flex">
+                <ul className="hidden gap-5 font-semibold sm:flex">
                     <li>Resume</li>
                     <li>Projects</li>
                     <li>Work</li>
@@ -36,12 +37,15 @@ const NavBar = ({}: NavBarProps) => {
                     <li>GitHub</li>
                 </ul>
 
-                <button
-                    className="p-2 sm:hidden"
+                <Button
+                    ariaLabel="navbar menu"
+                    id="navbar"
+                    IconLeft={Bars3Icon}
                     onClick={() => setNavbarIsOpen(!navbarIsOpen)}
-                >
-                    <Bars3Icon className="h-5 w-5" />
-                </button>
+                    variant="blank"
+                    additionalClassNames="sm:hidden"
+                    size="mdSquare"
+                />
             </div>
 
             <Transition
