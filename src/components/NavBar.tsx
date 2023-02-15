@@ -17,6 +17,8 @@ import { Bars3Icon } from "@heroicons/react/24/solid";
 import { Transition } from "@headlessui/react";
 import Button from "~/components/Button";
 import useTheme from "~/hooks/useTheme";
+import GitHubIcon from "~/assets/Icons/GitHubIcon";
+import LinkedInIcon from "~/assets/Icons/LinkedInIcon";
 
 // helper
 
@@ -24,7 +26,7 @@ interface NavBarProps {}
 
 const NavBar = ({}: NavBarProps) => {
     const [navbarIsOpen, setNavbarIsOpen] = useState(false);
-    const { theme, toggleTheme } = useTheme();
+    const { toggleTheme } = useTheme();
 
     return (
         <nav id="NavBar" className="mx-auto w-full max-w-5xl">
@@ -35,8 +37,24 @@ const NavBar = ({}: NavBarProps) => {
                     <li>Projects</li>
                     <li>Work</li>
                     <li>Contact</li>
-                    <li>Linked In</li>
-                    <li>GitHub</li>
+                    <li className="hover:text-blue-600 dark:hover:text-blue-500">
+                        <a
+                            href="https://www.linkedin.com/in/athul-george/"
+                            target="_blank"
+                            className="flex items-center gap-2"
+                        >
+                            <LinkedInIcon className="h-5 w-5" /> Linked In
+                        </a>
+                    </li>
+                    <li className="hover:text-blue-600 dark:hover:text-blue-500">
+                        <a
+                            href="https://github.com/athulgeorge37"
+                            target="_blank"
+                            className="flex items-center gap-2"
+                        >
+                            <GitHubIcon className="h-5 w-5" /> GitHub
+                        </a>
+                    </li>
                     <li>
                         <Button
                             ariaLabel="toggle dark mode"

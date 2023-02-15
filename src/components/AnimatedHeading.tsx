@@ -5,6 +5,12 @@
 // animations
 import { motion } from "framer-motion";
 
+// components
+import Button from "./Button";
+
+// ui
+import { ArrowDownIcon } from "@heroicons/react/24/solid";
+
 interface AnimatedHeadingProps {}
 
 const AnimatedHeading = ({}: AnimatedHeadingProps) => {
@@ -97,7 +103,18 @@ const AnimatedHeading = ({}: AnimatedHeadingProps) => {
                     e
                 </motion.span>
             </span>
-            <p className="mt-3 text-xl sm:m-5">a, Web Developer</p>
+            <div className="mt-4 flex items-center justify-between">
+                <p className=" text-xl sm:m-5">Web Developer</p>
+                <Button
+                    ariaLabel="scroll to projects"
+                    id="scroll-to-projects"
+                    text="Projects"
+                    IconRight={ArrowDownIcon}
+                    variant="green"
+                    additionalClassNames="w-fit h-fit"
+                    onClick={() => {}}
+                />
+            </div>
         </h1>
     );
 };
