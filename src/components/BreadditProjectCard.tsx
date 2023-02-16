@@ -1,6 +1,4 @@
 "use client";
-// components
-import Image from "next/image";
 
 // hooks
 import React, { useEffect, useState } from "react";
@@ -85,11 +83,10 @@ const BreadditProjectCard = ({}: BreadditProjectCardProps) => {
 
             <div
                 className="relative mx-auto flex w-full flex-col justify-between overflow-hidden 
-                    rounded-lg bg-slate-300 shadow-xl dark:bg-slate-600 lg:w-full lg:max-w-5xl lg:flex-row"
+                    rounded-lg bg-slate-300 shadow-xl dark:bg-slate-600 lg:max-w-5xl lg:flex-row"
             >
                 <div className="h-[250px] overflow-hidden lg:h-[400px] lg:w-[550px]">
                     <div
-                        // className="flex w-fit"
                         className=" flex h-full w-full transition-transform duration-1000 ease-out "
                         style={{
                             transform: `translateX(-${currentSlide * 100}%)`,

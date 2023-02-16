@@ -13,40 +13,40 @@ import {
     CodeBracketIcon,
 } from "@heroicons/react/24/solid";
 
-interface PathFindingVisualizerProjectCardProps {}
+interface MinecraftVillageGeneratorProjectCardProps {}
 
 const data = [
     {
-        image: "bg-path-finding-visualizer-1",
+        image: "bg-minecraft-village-generator-1",
         data: [
-            "Animate Algorithms",
-            "Draw Walls + Weights",
-            "Clear Grid Cells",
-            "Update Grid Size",
+            "Object oriented python",
+            "Utilises mcpi api for minecraft commands",
+            "Works on any minecraft terrain",
+            "Group project",
         ],
     },
     {
-        image: "bg-path-finding-visualizer-3",
+        image: "bg-minecraft-village-generator-2",
         data: [
-            "A* Algorithm",
-            "Dijkstra's Algorithm",
-            "Breadth First Search",
-            "Greedy Best First Search",
+            "Randomly generates buildings & gardens",
+            "Utilises wave function collapse algorithm",
+            "Ensures terrain is smoothed around buildings",
+            "Ensures buildings dont overlap",
         ],
     },
     {
-        image: "bg-path-finding-visualizer-2",
+        image: "bg-minecraft-village-generator-3",
         data: [
-            "Recursive Division",
-            "Horizontal Skewed Recursive Division",
-            "Vertical Skewed Recursive Division",
-            "Scattered Walls + Weights",
+            "Generates paths with A* algorithm",
+            "Paths avoid water & lava",
+            "Generates lamps along path",
+            "A* works in 3 dimensions",
         ],
     },
 ];
 
-const PathFindingVisualizerProjectCard =
-    ({}: PathFindingVisualizerProjectCardProps) => {
+const MinecraftVillageGeneratorProjectCard =
+    ({}: MinecraftVillageGeneratorProjectCardProps) => {
         const [currentSlide, setCurrentSlide] = useState(0);
 
         const updateSlideNumber = (newSlideNumber: number) => {
@@ -76,14 +76,14 @@ const PathFindingVisualizerProjectCard =
         }, []);
 
         return (
-            <div className="relative mx-auto w-fit">
+            <div className="relative mx-auto w-full">
                 <span className="absolute -top-24 -right-4 text-9xl font-extrabold text-slate-400 dark:text-slate-500 md:-top-20 md:-right-24">
-                    02
+                    03
                 </span>
 
                 <div
-                    className="relative mx-auto flex w-fit flex-col justify-between overflow-hidden 
-                    rounded-lg bg-slate-300 shadow-xl dark:bg-slate-600 lg:w-full lg:max-w-5xl lg:flex-row"
+                    className="relative mx-auto flex w-full flex-col justify-between overflow-hidden 
+                    rounded-lg bg-slate-300 shadow-xl dark:bg-slate-600 lg:max-w-5xl lg:flex-row"
                 >
                     <div className="h-[250px] overflow-hidden lg:h-[400px] lg:w-[550px]">
                         <div
@@ -105,26 +105,23 @@ const PathFindingVisualizerProjectCard =
                     </div>
 
                     <div className="flex flex-col justify-center gap-5 px-5 py-5 sm:px-10">
-                        <div className="flex flex-col  gap-2">
-                            <h3 className="text-4xl font-semibold">
-                                Path Finding Visualizer
+                        <div className="flex flex-col gap-3">
+                            <h3 className="text-4xl font-semibold lg:whitespace-nowrap">
+                                Minecraft Village Generator
                             </h3>
 
                             <span className="text-slate-600 dark:text-slate-400">
-                                Interactive tool for graph traversal & maze
-                                generation algorithms
+                                Procedurally Generates a Random Minecraft
+                                Villiage
                             </span>
                         </div>
 
                         <ul className="flex gap-3">
                             <li className="rounded-md border border-slate-600 px-1.5 py-1 text-sm shadow-sm dark:border-slate-500">
-                                React
+                                Python
                             </li>
                             <li className="rounded-md border border-slate-600 px-1.5 py-1 text-sm shadow-sm dark:border-slate-500">
-                                Javascript
-                            </li>
-                            <li className="rounded-md border border-slate-600 px-1.5 py-1 text-sm shadow-sm dark:border-slate-500">
-                                CSS
+                                mcpi
                             </li>
                         </ul>
 
@@ -136,25 +133,16 @@ const PathFindingVisualizerProjectCard =
                             )}
                         </ul>
 
-                        <div className="flex  justify-between gap-3  sm:items-center">
+                        <div className="flex justify-between gap-3 sm:items-center">
                             <div className="flex gap-3">
                                 <a
-                                    href="https://github.com/athulgeorge37/Path_Finding_Visualizer"
+                                    href="https://www.youtube.com/watch?v=Eu465Jue3ns"
                                     target="_blank"
-                                    aria-label="pathfinding visualizer repository"
-                                    className="flex cursor-pointer items-center justify-between gap-2 rounded-md bg-blue-600 px-2 py-1 font-semibold text-slate-300 dark:bg-blue-500"
-                                >
-                                    <CodeBracketIcon className="h-5 w-5" />
-                                    Code
-                                </a>
-                                <a
-                                    href="https://athulgeorge37.github.io/Path_Finding_Visualizer/"
-                                    target="_blank"
-                                    aria-label="path finding vizualizer demo"
+                                    aria-label="Minecraft video demo"
                                     className="flex cursor-pointer items-center justify-between gap-2 rounded-md bg-blue-600 px-2 py-1 font-semibold text-slate-300 dark:bg-blue-500"
                                 >
                                     <ComputerDesktopIcon className="h-5 w-5" />
-                                    Demo
+                                    Video Demo
                                 </a>
                             </div>
 
@@ -207,4 +195,4 @@ const PathFindingVisualizerProjectCard =
         );
     };
 
-export default PathFindingVisualizerProjectCard;
+export default MinecraftVillageGeneratorProjectCard;

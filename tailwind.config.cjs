@@ -17,6 +17,12 @@ module.exports = {
                     "url('../../src/assets/images/PathFindingVisualizer-Image-2.png')",
                 "path-finding-visualizer-3":
                     "url('../../src/assets/images/PathFindingVisualizer-Image-3.png')",
+                "minecraft-village-generator-1":
+                    "url('../../src/assets/images/Minecraft-Villiage-Generator-Image-1.png')",
+                "minecraft-village-generator-2":
+                    "url('../../src/assets/images/Minecraft-Villiage-Generator-Image-2.png')",
+                "minecraft-village-generator-3":
+                    "url('../../src/assets/images/Minecraft-Villiage-Generator-Image-3.png')",
             },
         },
     },

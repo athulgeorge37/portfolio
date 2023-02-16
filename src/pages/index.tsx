@@ -8,6 +8,7 @@ import ResponsiveHelper from "~/helper/ResponsiveHelper";
 import AnimatedHeading from "~/components/AnimatedHeading";
 import BreadditProjectCard from "~/components/BreadditProjectCard";
 import PathFindingVisualizerProjectCard from "~/components/PathFindingVisualizerProjectCard";
+import MinecraftVillageGeneratorProjectCard from "~/components/MinecraftVillageGeneratorProjectCard";
 
 // assets
 import StudyRoomImg from "~/assets/images/studyRoom.png";
@@ -49,6 +50,7 @@ const Home: NextPage = () => {
                     <div className="mx-auto flex w-fit flex-col gap-32">
                         <BreadditProjectCard />
                         <PathFindingVisualizerProjectCard />
+                        <MinecraftVillageGeneratorProjectCard />
                     </div>
                 </div>
             </main>
