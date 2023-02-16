@@ -19,31 +19,30 @@ interface BreadditProjectCardProps {}
 
 const data = [
     {
-        // image: "bg-path-finding-visualizer-1",
-        image: "bg-breaddit-1",
+        image: "bg-path-finding-visualizer-1",
         data: [
-            "MFA, JWT, Protected Routes, Encryption",
-            "Rest API, Protected Endpoints",
-            "CRUD Functionality, Filtering",
-            "Image & Email handling",
+            "Animate Algorithms",
+            "Draw Walls + Weights",
+            "Clear Grid Cells",
+            "Update Grid Size",
         ],
     },
     {
-        image: "bg-breaddit-2",
+        image: "bg-path-finding-visualizer-3",
         data: [
-            "Create Threads",
-            "Create, Edit, Delete Posts & Comments",
-            "Up/Down Vote Posts & Comments",
-            "Filter & Search Posts",
+            "A* Algorithm",
+            "Dijkstra's Algorithm",
+            "Breadth First Search",
+            "Greedy Best First Search",
         ],
     },
     {
-        image: "bg-breaddit-3",
+        image: "bg-path-finding-visualizer-2",
         data: [
-            "Edit Profile Picture & Details",
-            "Follow Users",
-            "See User's Posts, Comments & Replies",
-            "Admin Dashboard (Moderate Content)",
+            "Recursive Division",
+            "Horizontal Skewed Recursive Division",
+            "Vertical Skewed Recursive Division",
+            "Scattered Walls + Weights",
         ],
     },
 ];
@@ -78,18 +77,17 @@ const BreadditProjectCard = ({}: BreadditProjectCardProps) => {
     }, []);
 
     return (
-        <div className="relative mx-auto w-full">
+        <div className="relative mx-auto w-fit">
             <span className="absolute -top-24 -right-4 text-9xl font-extrabold text-slate-400 dark:text-slate-500 md:-top-20 md:-right-24">
-                01
+                02
             </span>
 
             <div
-                className="relative mx-auto flex w-full flex-col justify-between overflow-hidden 
+                className="relative mx-auto flex w-fit flex-col justify-between overflow-hidden 
                     rounded-lg bg-slate-300 shadow-xl dark:bg-slate-600 lg:w-full lg:max-w-5xl lg:flex-row"
             >
                 <div className="h-[250px] overflow-hidden lg:h-[400px] lg:w-[550px]">
                     <div
-                        // className="flex w-fit"
                         className=" flex h-full w-full transition-transform duration-1000 ease-out "
                         style={{
                             transform: `translateX(-${currentSlide * 100}%)`,
@@ -106,37 +104,27 @@ const BreadditProjectCard = ({}: BreadditProjectCardProps) => {
                 </div>
 
                 <div className="flex flex-col justify-center gap-5 px-5 py-5 sm:px-10">
-                    <div className="flex items-end gap-3">
-                        <h3 className="text-4xl font-semibold">Breaddit</h3>
+                    <div className="flex flex-col  gap-2">
+                        <h3 className="text-4xl font-semibold">
+                            Path Finding Visualizer
+                        </h3>
 
-                        <span className="whitespace-nowrap text-slate-600 dark:text-slate-400">
-                            Full Stack Reddit Clone
+                        <span className="text-slate-600 dark:text-slate-400">
+                            Interactive tool for graph traversal & maze
+                            generation algorithms
                         </span>
                     </div>
 
-                    <ul className="flex flex-col gap-3 sm:flex-row">
-                        <div className="flex gap-3">
-                            <li className="rounded-md border border-slate-600 px-1.5 py-1 text-sm shadow-sm dark:border-slate-500">
-                                React
-                            </li>
-                            <li className="rounded-md border border-slate-600 px-1.5 py-1 text-sm shadow-sm dark:border-slate-500">
-                                Node
-                            </li>
-                            <li className="rounded-md border border-slate-600 px-1.5 py-1 text-sm shadow-sm dark:border-slate-500">
-                                MySQL
-                            </li>
-                        </div>
-                        <div className="flex gap-3">
-                            <li className="rounded-md border border-slate-600 px-1.5 py-1 text-sm shadow-sm dark:border-slate-500">
-                                Sequelize
-                            </li>
-                            <li className="rounded-md border border-slate-600 px-1.5 py-1 text-sm shadow-sm dark:border-slate-500">
-                                GraphQL
-                            </li>
-                            <li className="rounded-md border border-slate-600 px-1.5 py-1 text-sm shadow-sm dark:border-slate-500">
-                                SASS
-                            </li>
-                        </div>
+                    <ul className="flex gap-3">
+                        <li className="rounded-md border border-slate-600 px-1.5 py-1 text-sm shadow-sm dark:border-slate-500">
+                            React
+                        </li>
+                        <li className="rounded-md border border-slate-600 px-1.5 py-1 text-sm shadow-sm dark:border-slate-500">
+                            Javascript
+                        </li>
+                        <li className="rounded-md border border-slate-600 px-1.5 py-1 text-sm shadow-sm dark:border-slate-500">
+                            CSS
+                        </li>
                     </ul>
 
                     <ul className="ml-5 list-disc text-slate-700 dark:text-slate-300">
@@ -145,21 +133,21 @@ const BreadditProjectCard = ({}: BreadditProjectCardProps) => {
                         })}
                     </ul>
 
-                    <div className="flex justify-between gap-3 sm:items-center">
+                    <div className="flex  justify-between gap-3  sm:items-center">
                         <div className="flex gap-3">
                             <a
-                                href="https://github.com/athulgeorge37/Breaddit"
+                                href="https://github.com/athulgeorge37/Path_Finding_Visualizer"
                                 target="_blank"
-                                aria-label="breaddit repository"
+                                aria-label="pathfinding visualizer repository"
                                 className="flex cursor-pointer items-center justify-between gap-2 rounded-md bg-blue-600 px-2 py-1 font-semibold text-slate-300 dark:bg-blue-500"
                             >
                                 <CodeBracketIcon className="h-5 w-5" />
                                 Code
                             </a>
                             <a
-                                href="https://breaddit-theta.vercel.app/"
+                                href="https://athulgeorge37.github.io/Path_Finding_Visualizer/"
                                 target="_blank"
-                                aria-label="breaddit demo"
+                                aria-label="path finding vizualizer demo"
                                 className="flex cursor-pointer items-center justify-between gap-2 rounded-md bg-blue-600 px-2 py-1 font-semibold text-slate-300 dark:bg-blue-500"
                             >
                                 <ComputerDesktopIcon className="h-5 w-5" />
@@ -207,20 +195,6 @@ const BreadditProjectCard = ({}: BreadditProjectCardProps) => {
                                 additionalClassNames="text-slate-100 hover:bg-slate-500 dark:hover:bg-slate-400 rounded-full"
                             />
                         </div>
-                    </div>
-
-                    <div className="flex flex-col justify-between gap-2 sm:flex-row">
-                        <span className="text-slate-600 dark:text-slate-400">
-                            Don't want to create an account?
-                        </span>
-                        <a
-                            href="https://breaddit-theta.vercel.app/signin"
-                            target="_blank"
-                            aria-label="breaddit guest sign in"
-                            className="font-semibold text-slate-600 underline-offset-4 hover:text-blue-600 hover:underline dark:text-slate-400 dark:hover:text-blue-500"
-                        >
-                            Sign In As Guest
-                        </a>
                     </div>
                 </div>
             </div>

@@ -11,6 +11,12 @@ module.exports = {
                     "url('../../src/assets/images/Breaddit-Image-2.png')",
                 "breaddit-3":
                     "url('../../src/assets/images/Breaddit-Image-3.png')",
+                "path-finding-visualizer-1":
+                    "url('../../src/assets/images/PathFindingVisualizer-Image-1.png')",
+                "path-finding-visualizer-2":
+                    "url('../../src/assets/images/PathFindingVisualizer-Image-2.png')",
+                "path-finding-visualizer-3":
+                    "url('../../src/assets/images/PathFindingVisualizer-Image-3.png')",
             },
         },
     },
