@@ -17,10 +17,10 @@ const AnimatedHeading = ({}: AnimatedHeadingProps) => {
     return (
         <h1
             id="AnimatedHeading"
-            className="m-5 mb-0 flex w-fit flex-col text-7xl font-bold sm:text-8xl lg:m-10"
+            className="m-5 mb-0 flex w-fit flex-col text-7xl font-bold tracking-wide sm:text-8xl lg:m-10"
         >
             <span className="flex flex-col justify-between sm:flex-row sm:items-end">
-                <p className="mb-2 text-xl sm:m-5">Hi, I'm</p>
+                <p className="mb-2 text-xl -tracking-normal sm:m-5">Hi, I'm</p>
                 <span className="flex">
                     <motion.span
                         initial={{ x: -500, rotate: 90 }}
@@ -103,8 +103,8 @@ const AnimatedHeading = ({}: AnimatedHeadingProps) => {
                     e
                 </motion.span>
             </span>
-            <div className="mt-4 flex items-center justify-between">
-                <p className=" text-xl sm:m-5">Web Developer</p>
+            <div className="mt-10 flex items-center justify-between">
+                <p className=" sm:m- text-xl -tracking-normal">Web Developer</p>
                 <Button
                     ariaLabel="scroll to projects"
                     id="scroll-to-projects"

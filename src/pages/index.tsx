@@ -9,6 +9,7 @@ import AnimatedHeading from "~/components/AnimatedHeading";
 import BreadditProjectCard from "~/components/BreadditProjectCard";
 import PathFindingVisualizerProjectCard from "~/components/PathFindingVisualizerProjectCard";
 import MinecraftVillageGeneratorProjectCard from "~/components/MinecraftVillageGeneratorProjectCard";
+import Contact from "~/components/Contact";
 
 // assets
 import StudyRoomImg from "~/assets/images/studyRoom.png";
@@ -28,11 +29,6 @@ const Home: NextPage = () => {
                 <ResponsiveHelper />
                 <NavBar />
 
-                {/* <div
-                    className="absolute inset-0 bg-[url(https://play.tailwindcss.com/img/grid.svg)] 
-                    bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"
-                /> */}
-
                 <div className="mx-auto flex w-full max-w-5xl flex-col items-center sm:items-center lg:mt-16 lg:flex-row lg:justify-between">
                     <AnimatedHeading />
                     <Image
@@ -44,14 +40,23 @@ const Home: NextPage = () => {
                     />
                 </div>
 
-                <div className="mx-auto mt-40 mb-32 flex w-full max-w-5xl flex-col gap-10 px-2">
-                    <h2 className="w-fit text-6xl font-bold">Projects</h2>
+                <div className="mx-auto my-40 flex w-full max-w-5xl flex-col gap-10 px-2">
+                    <h2 className="w-fit text-6xl font-bold tracking-wide">
+                        Projects
+                    </h2>
 
                     <div className="mx-auto flex w-fit flex-col gap-32">
                         <BreadditProjectCard />
                         <PathFindingVisualizerProjectCard />
                         <MinecraftVillageGeneratorProjectCard />
                     </div>
+                </div>
+
+                <div className="mx-auto mb-32 flex w-full max-w-5xl flex-col gap-10 px-2">
+                    <h2 className="w-fit text-6xl font-bold tracking-wide">
+                        Contact
+                    </h2>
+                    <Contact />
                 </div>
             </main>
         </>

@@ -97,6 +97,7 @@ const MinecraftVillageGeneratorProjectCard =
                             {data.map((slide) => {
                                 return (
                                     <div
+                                        key={slide.image}
                                         className={`${slide.image} h-full w-full flex-shrink-0 bg-cover bg-center`}
                                     />
                                 );
@@ -162,6 +163,7 @@ const MinecraftVillageGeneratorProjectCard =
                                 {data.map((_, index) => {
                                     return (
                                         <button
+                                            key={`${index}-slide-bullet-minecraft`}
                                             aria-label={`go to slide ${index}`}
                                             id="skip-to-slide"
                                             onClick={() =>

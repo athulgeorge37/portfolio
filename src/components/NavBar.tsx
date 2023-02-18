@@ -33,7 +33,14 @@ const NavBar = ({}: NavBarProps) => {
             <div className="flex items-center justify-between p-4">
                 <div>Logo</div>
                 <ul className="hidden gap-5 font-semibold sm:flex sm:items-center">
-                    <li>Resume</li>
+                    <li className="hover:text-blue-600 dark:hover:text-blue-500">
+                        <a
+                            target="_blank"
+                            href="https://drive.google.com/file/d/1PYFjf4laUxbGcbQV27XUwT6Rqoizl2Pw/view?usp=sharing"
+                        >
+                            Resume
+                        </a>
+                    </li>
                     <li>Projects</li>
                     <li>Work</li>
                     <li>Contact</li>

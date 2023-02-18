@@ -95,6 +95,7 @@ const BreadditProjectCard = ({}: BreadditProjectCardProps) => {
                         {data.map((slide) => {
                             return (
                                 <div
+                                    key={slide.image}
                                     className={`${slide.image} h-full w-full flex-shrink-0 bg-cover bg-center`}
                                 />
                             );
@@ -180,6 +181,7 @@ const BreadditProjectCard = ({}: BreadditProjectCardProps) => {
                             {data.map((_, index) => {
                                 return (
                                     <button
+                                        key={`${index}-slide-bullet-breaddit`}
                                         aria-label={`go to slide ${index}`}
                                         id="skip-to-slide"
                                         onClick={() => updateSlideNumber(index)}
