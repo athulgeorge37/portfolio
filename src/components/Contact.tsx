@@ -3,6 +3,9 @@
 // hooks
 import { useState, useEffect } from "react";
 
+// components
+import Image from "next/image";
+
 // assets
 import {
     EnvelopeIcon,
@@ -11,6 +14,7 @@ import {
     CheckCircleIcon,
     UserIcon,
 } from "@heroicons/react/24/solid";
+import GuySkiing from "~/assets/images/guySkiing.png";
 
 // ui
 import LoadingSpinner from "~/components/LoadingSpinner";
@@ -137,55 +141,67 @@ const Contact = ({}: ContactProps) => {
     return (
         <div
             id="Contact"
-            className="mx-auto flex w-full max-w-lg flex-col justify-between"
+            className="flex w-full max-w-lg flex-col justify-between gap-10 lg:max-w-5xl lg:flex-row lg:gap-20"
         >
-            <div className="flex flex-col gap-3">
-                <span className="text-lg font-bold">
-                    Got a problem that needs solving?
-                </span>
-                <p className="text-slate-600 dark:text-slate-400">
-                    Shoot me an email & lets talk
-                </p>
+            <div className="lg flex flex-col justify-between gap-10">
+                <div className="flex flex-col gap-3">
+                    <span className="text-lg font-bold">
+                        Got a problem that needs solving?
+                    </span>
+                    <p className="text-slate-600 dark:text-slate-400">
+                        Shoot me an email & lets talk
+                    </p>
 
-                <div className="flex w-fit items-center gap-3">
-                    <div className="flex items-center rounded-md bg-slate-300 px-3 dark:bg-slate-500">
-                        <div className="mr-3 border-r border-slate-400 py-1.5 pr-2">
-                            <EnvelopeIcon className="h-5 w-5" />
+                    <div className="flex w-fit items-center gap-3">
+                        <div className="flex items-center rounded-md bg-slate-300 px-3 dark:bg-slate-500">
+                            <div className="mr-3 border-r border-slate-400 py-1.5 pr-2">
+                                <EnvelopeIcon className="h-5 w-5" />
+                            </div>
+
+                            <span className="py-1.5">
+                                athulgeorge37@gmail.com
+                            </span>
                         </div>
+                        <button
+                            className="rounded-md bg-slate-300 p-2 dark:bg-slate-500"
+                            aria-label="copy email"
+                            id="copy-email"
+                            onClick={() => {
+                                navigator.clipboard.writeText(
+                                    "athulgeorge37@gmail.com"
+                                );
+                                setLoadingState("loading");
+                                setTimeout(() => {
+                                    setLoadingState("complete");
+                                }, 600);
 
-                        <span className="py-1.5">athulgeorge37@gmail.com</span>
+                                setTimeout(() => {
+                                    setLoadingState("idle");
+                                }, 1500);
+                            }}
+                        >
+                            {loadingState === "loading" ? (
+                                <LoadingSpinner />
+                            ) : loadingState === "complete" ? (
+                                <CheckCircleIcon className="h-5 w-5" />
+                            ) : (
+                                <DocumentDuplicateIcon className="h-5 w-5" />
+                            )}
+                        </button>
                     </div>
-                    <button
-                        className="rounded-md bg-slate-300 p-2 dark:bg-slate-500"
-                        aria-label="copy email"
-                        id="copy-email"
-                        onClick={() => {
-                            navigator.clipboard.writeText(
-                                "athulgeorge37@gmail.com"
-                            );
-                            setLoadingState("loading");
-                            setTimeout(() => {
-                                setLoadingState("complete");
-                            }, 600);
-
-                            setTimeout(() => {
-                                setLoadingState("idle");
-                            }, 1500);
-                        }}
-                    >
-                        {loadingState === "loading" ? (
-                            <LoadingSpinner />
-                        ) : loadingState === "complete" ? (
-                            <CheckCircleIcon className="h-5 w-5" />
-                        ) : (
-                            <DocumentDuplicateIcon className="h-5 w-5" />
-                        )}
-                    </button>
                 </div>
+
+                <Image
+                    src={GuySkiing}
+                    alt="guy skiing"
+                    width={500}
+                    height={500}
+                    className="rounded-md"
+                />
             </div>
 
             <form
-                className="flex w-full max-w-md flex-col gap-5"
+                className="flex w-full flex-col gap-5 lg:max-w-lg"
                 onSubmit={handleSubmit(submitContactForm)}
             >
                 <Input
@@ -244,8 +260,11 @@ const Contact = ({}: ContactProps) => {
                     label="message"
                     maxHeight={200}
                     minHeight={200}
+                    IconRight={IconRightToUse("message")}
+                    IconRightClassNames={`mr-3 mt-3 h-5 w-5 
+                    ${IconRightClassNamesToUse("message")}`}
                     placeholder="I want to hire you"
-                    className={`w-full rounded-md bg-slate-200 px-3 pt-2 font-semibold shadow-sm ring-2 
+                    className={`w-full rounded-md bg-slate-200 pl-3 pr-11 pt-2 font-semibold shadow-sm ring-2 
                     ring-slate-200 placeholder:text-slate-400
                     disabled:bg-slate-300 disabled:text-slate-500 
                     disabled:ring-slate-300 dark:bg-slate-500 dark:ring-slate-500

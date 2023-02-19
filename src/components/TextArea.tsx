@@ -1,16 +1,13 @@
-"use client";
-import React, { useRef, useEffect } from "react";
+// "use client";
+import React from "react";
 import { UseFormRegister } from "react-hook-form";
-// article from:
+// article for expandanle input from:
 // https://medium.com/@oherterich/creating-a-textarea-with-dynamic-height-using-react-and-typescript-5ed2d78d9848
 
-// code from:
+// code for expandable input from:
 // https://codesandbox.io/s/autosize-textarea-forked-044vh2?file=/src/useAutosizeTextArea.ts:196-668
 
 interface TextAreaProps {
-    // onChange(event: React.ChangeEvent<HTMLTextAreaElement>): void;
-    // onChange(stringValue: string): void;
-    // value: string;
     register: UseFormRegister<any>;
     id: string;
     name: string;
@@ -23,11 +20,11 @@ interface TextAreaProps {
     autoFocus?: boolean;
     maxHeight: number;
     minHeight?: number;
+    IconRight?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+    IconRightClassNames?: string;
 }
 
 const TextArea = ({
-    // onChange,
-    // value,
     register,
     id,
     name,
@@ -40,6 +37,8 @@ const TextArea = ({
     minHeight,
     maxHeight,
     className,
+    IconRight,
+    IconRightClassNames,
 }: TextAreaProps) => {
     // const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -66,29 +65,40 @@ const TextArea = ({
                 </label>
             )}
 
-            <textarea
-                // ref={textAreaRef}
-                id={`${id}-textarea`}
-                aria-label={ariaLabel}
-                aria-invalid={error === undefined ? false : true}
-                disabled={disabled}
-                placeholder={placeholder}
-                autoFocus={autoFocus}
-                rows={1}
-                style={{
-                    // make maxHeight and minHeight the same for scrollable textarea
-                    // without it resizing on new line
-                    maxHeight: maxHeight,
-                    minHeight: minHeight ?? "none",
-                }}
-                className={
-                    // ensure padding bottom is 0, for best scrolling exeperience
-                    className
-                        ? `resize-none border-none focus:outline-none ${className}`
-                        : ""
-                }
-                {...register(name)}
-            />
+            <div className="relative flex">
+                <textarea
+                    // ref={textAreaRef}
+                    id={`${id}-textarea`}
+                    aria-label={ariaLabel}
+                    aria-invalid={error === undefined ? false : true}
+                    disabled={disabled}
+                    placeholder={placeholder}
+                    autoFocus={autoFocus}
+                    rows={1}
+                    style={{
+                        // make maxHeight and minHeight the same for scrollable textarea
+                        // without it resizing on new line
+                        maxHeight: maxHeight,
+                        minHeight: minHeight ?? "none",
+                    }}
+                    className={
+                        // ensure padding bottom is 0, for best scrolling exeperience
+                        className
+                            ? `resize-none border-none focus:outline-none ${className}`
+                            : ""
+                    }
+                    {...register(name)}
+                />
+                {IconRight && (
+                    <IconRight
+                        className={`pointer-events-none absolute right-0 ${
+                            IconRightClassNames
+                                ? IconRightClassNames
+                                : "mr-3 h-5 w-5"
+                        }`}
+                    />
+                )}
+            </div>
             <p
                 className={`mt-2 text-red-600 dark:text-red-500 ${
                     error === undefined ? "invisible" : ""

@@ -10,7 +10,6 @@ interface InputProps {
     label?: string;
     type?: "text" | "email" | "password";
     placeholder?: string;
-    // required?: boolean;
     disabled?: boolean;
     autoComplete?: string;
     IconLeft?: React.ComponentType<React.SVGProps<SVGSVGElement>>;

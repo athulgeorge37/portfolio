@@ -40,23 +40,26 @@ const Home: NextPage = () => {
                     />
                 </div>
 
-                <div className="mx-auto my-40 flex w-full max-w-5xl flex-col gap-10 px-2">
-                    <h2 className="w-fit text-6xl font-bold tracking-wide">
-                        Projects
-                    </h2>
-
-                    <div className="mx-auto flex w-fit flex-col gap-32">
-                        <BreadditProjectCard />
-                        <PathFindingVisualizerProjectCard />
-                        <MinecraftVillageGeneratorProjectCard />
+                <div className="mx-auto my-40 flex w-full max-w-5xl flex-col gap-20 px-2">
+                    <div className="mx-auto flex w-fit flex-col gap-20">
+                        <h2 className="text-6xl font-bold tracking-wide">
+                            Projects
+                        </h2>
+                        <div className="flex flex-col gap-32">
+                            <BreadditProjectCard />
+                            <PathFindingVisualizerProjectCard />
+                            <MinecraftVillageGeneratorProjectCard />
+                        </div>
                     </div>
                 </div>
 
                 <div className="mx-auto mb-32 flex w-full max-w-5xl flex-col gap-10 px-2">
-                    <h2 className="w-fit text-6xl font-bold tracking-wide">
-                        Contact
-                    </h2>
-                    <Contact />
+                    <div className="flex flex-col items-center gap-10">
+                        <h2 className="w-full max-w-lg text-6xl font-bold tracking-wide lg:max-w-none">
+                            Contact Me
+                        </h2>
+                        <Contact />
+                    </div>
                 </div>
             </main>
         </>
