@@ -57,7 +57,6 @@ const Contact = ({}: ContactProps) => {
         handleSubmit,
         formState: { errors, isSubmitting },
         reset,
-        setFocus,
     } = useForm<ContactFormSchemaType>({
         resolver: zodResolver(ContactFormSchema),
         defaultValues: {
@@ -134,10 +133,6 @@ const Contact = ({}: ContactProps) => {
         }
     };
 
-    useEffect(() => {
-        setFocus("name");
-    }, [setFocus]);
-
     return (
         <div
             id="Contact"
@@ -163,7 +158,9 @@ const Contact = ({}: ContactProps) => {
                             </span>
                         </div>
                         <button
-                            className="rounded-md bg-slate-300 p-2 dark:bg-slate-500"
+                            className="rounded-md bg-slate-300 p-2 outline-none 
+                            focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
+                             focus-visible:ring-offset-slate-600 dark:bg-slate-500"
                             aria-label="copy email"
                             id="copy-email"
                             onClick={() => {

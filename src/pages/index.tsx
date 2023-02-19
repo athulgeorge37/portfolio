@@ -13,6 +13,7 @@ import Contact from "~/components/Contact";
 
 // assets
 import StudyRoomImg from "~/assets/images/studyRoom.png";
+import WorkExperience from "~/components/WorkExperience";
 
 const Home: NextPage = () => {
     return (
@@ -50,6 +51,15 @@ const Home: NextPage = () => {
                             <PathFindingVisualizerProjectCard />
                             <MinecraftVillageGeneratorProjectCard />
                         </div>
+                    </div>
+                </div>
+
+                <div className="mx-auto mb-32 flex w-full max-w-5xl flex-col gap-10 px-2">
+                    <div className="flex flex-col gap-10">
+                        <h2 className="w-full max-w-lg text-6xl font-bold tracking-wide lg:max-w-none">
+                            Work Experience
+                        </h2>
+                        <WorkExperience />
                     </div>
                 </div>
 
