@@ -1,14 +1,16 @@
 import React from "react";
+import { UseFormRegister } from "react-hook-form";
 
 interface InputProps {
-    onChange(event: React.ChangeEvent<HTMLInputElement>): void;
+    register: UseFormRegister<any>;
+    error: string | undefined;
     id: string;
     name: string;
     ariaLabel: string;
     label?: string;
     type?: "text" | "email" | "password";
     placeholder?: string;
-    required?: boolean;
+    // required?: boolean;
     disabled?: boolean;
     autoComplete?: string;
     IconLeft?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -25,25 +27,25 @@ const Input = ({
     name,
     ariaLabel,
     placeholder,
-    required = true,
+    // required = true,
     disabled = false,
     autoComplete = "off",
     IconLeft,
     IconRight,
     IconLeftClassNames,
     IconRightClassNames,
-
+    register,
+    error,
     className,
     label,
     autoFocus = false,
-    onChange,
 }: InputProps) => {
     return (
-        <div id="Input" className="flex flex-col gap-2">
+        <div id="Input" className="flex flex-col">
             {label && (
                 <label
                     htmlFor={`${id}-input`}
-                    className="font-semibold uppercase"
+                    className="mb-2 font-semibold uppercase"
                 >
                     {label}
                 </label>
@@ -62,20 +64,19 @@ const Input = ({
                 <input
                     id={`${id}-input`}
                     type={type}
-                    name={name}
                     aria-label={ariaLabel}
+                    aria-invalid={error === undefined ? false : true}
                     placeholder={placeholder}
-                    required={required}
+                    // required={required}
                     disabled={disabled}
                     autoComplete={autoComplete}
-                    // onChange={(e) => onChange(e)}
-                    onChange={onChange}
+                    autoFocus={autoFocus}
                     className={
                         className
                             ? `border-none focus:outline-none ${className}`
                             : ""
                     }
-                    autoFocus={autoFocus}
+                    {...register(name)}
                 />
                 {IconRight && (
                     <IconRight
@@ -87,6 +88,13 @@ const Input = ({
                     />
                 )}
             </div>
+            <p
+                className={`mt-2 text-red-600 dark:text-red-500 ${
+                    error === undefined ? "invisible" : ""
+                }`}
+            >
+                {error ?? "no errors"}
+            </p>
         </div>
     );
 };
