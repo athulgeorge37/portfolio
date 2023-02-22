@@ -160,7 +160,7 @@ const Contact = ({}: ContactProps) => {
                         <button
                             className="rounded-md bg-slate-300 p-2 outline-none 
                             focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
-                             focus-visible:ring-offset-slate-600 dark:bg-slate-500"
+                             focus-visible:ring-offset-slate-700 dark:bg-slate-500 "
                             aria-label="copy email"
                             id="copy-email"
                             onClick={() => {
@@ -261,12 +261,14 @@ const Contact = ({}: ContactProps) => {
                     IconRightClassNames={`mr-3 mt-3 h-5 w-5 
                     ${IconRightClassNamesToUse("message")}`}
                     placeholder="I want to hire you"
-                    className={`w-full rounded-md bg-slate-200 pl-3 pr-11 pt-2 font-semibold shadow-sm ring-2 
+                    className={`w-full rounded-md bg-slate-200 pl-3 
+                    pr-11 pt-2 font-semibold shadow-sm ring-2 
                     ring-slate-200 placeholder:text-slate-400
                     disabled:bg-slate-300 disabled:text-slate-500 
                     disabled:ring-slate-300 dark:bg-slate-500 dark:ring-slate-500
                     ${FocusRingClassNamesToUse("message")}
-                    dark:placeholder:text-slate-400 dark:disabled:bg-slate-400 dark:disabled:text-slate-300 
+                    dark:placeholder:text-slate-400 dark:disabled:bg-slate-400 
+                    dark:disabled:text-slate-300 
                     dark:disabled:ring-slate-400`}
                 />
 
@@ -277,21 +279,22 @@ const Contact = ({}: ContactProps) => {
                         onClick={() => {
                             reset();
                         }}
-                        variant="null"
                         text="Clear"
                         disabled={isSubmitting}
-                        additionalClassNames="w-fit dark:bg-slate-500 bg-slate-300"
+                        className="w-fit bg-slate-200 dark:bg-slate-500"
+                        ringClassNames="ring-blue-500 ring-offset-slate-400 dark:ring-offset-slate-700"
                     />
 
                     <Button
                         id="submit-contact"
                         ariaLabel="submit contact form"
                         onClick={() => {}}
-                        variant="green"
                         text="Submit"
                         type="submit"
                         disabled={isSubmitting}
-                        additionalClassNames="w-fit"
+                        className="w-fit bg-green-600 text-slate-200 dark:bg-emerald-500"
+                        ringClassNames="ring-green-600 dark:ring-emerald-500 
+                        ring-offset-slate-400 dark:ring-offset-slate-700"
                     />
                 </div>
                 {/* <pre

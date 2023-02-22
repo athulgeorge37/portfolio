@@ -165,7 +165,7 @@ const BreadditProjectCard = ({}: BreadditProjectCardProps) => {
                             </a>
                         </div>
 
-                        <div className="flex w-fit items-center justify-center gap-3 rounded-full bg-slate-400 px-1.5 py-1 dark:bg-slate-500">
+                        <div className="flex w-fit items-center justify-center gap-3 rounded-full  px-1.5 py-1 ">
                             <Button
                                 ariaLabel="go back one image"
                                 id="left-arrow"
@@ -174,8 +174,8 @@ const BreadditProjectCard = ({}: BreadditProjectCardProps) => {
                                 onClick={() =>
                                     updateSlideNumber(currentSlide - 1)
                                 }
-                                variant="null"
-                                additionalClassNames="text-slate-100 hover:bg-slate-500 dark:hover:bg-slate-400 rounded-full"
+                                className="rounded-full text-slate-100 hover:bg-slate-500 dark:hover:bg-slate-400"
+                                ringClassNames=""
                             />
 
                             {data.map((_, index) => {
@@ -187,7 +187,7 @@ const BreadditProjectCard = ({}: BreadditProjectCardProps) => {
                                         onClick={() => updateSlideNumber(index)}
                                         className={`h-2.5 w-2.5 rounded-full ${
                                             index === currentSlide
-                                                ? "bg-blue-600 dark:bg-blue-600"
+                                                ? "bg-blue-600 dark:bg-blue-500"
                                                 : "bg-slate-100 dark:bg-slate-300"
                                         }`}
                                     />
@@ -202,8 +202,9 @@ const BreadditProjectCard = ({}: BreadditProjectCardProps) => {
                                 onClick={() =>
                                     updateSlideNumber(currentSlide + 1)
                                 }
-                                variant="null"
-                                additionalClassNames="text-slate-100 hover:bg-slate-500 dark:hover:bg-slate-400 rounded-full"
+                                // variant="null"
+                                className="rounded-full text-slate-100 hover:bg-slate-500 dark:hover:bg-slate-400"
+                                ringClassNames=""
                             />
                         </div>
                     </div>

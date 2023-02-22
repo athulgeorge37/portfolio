@@ -19,7 +19,7 @@ const AnimatedHeading = ({}: AnimatedHeadingProps) => {
             id="AnimatedHeading"
             className="m-5 mb-0 flex w-fit flex-col text-7xl font-bold tracking-wide sm:text-8xl lg:m-10"
         >
-            <span className="flex flex-col justify-between sm:flex-row sm:items-end">
+            <span className="mt-20 flex flex-col justify-between sm:flex-row sm:items-end lg:mt-0">
                 <p className="mb-2 text-xl -tracking-normal sm:m-5">Hi, I'm</p>
                 <span className="flex">
                     <motion.span
@@ -110,9 +110,14 @@ const AnimatedHeading = ({}: AnimatedHeadingProps) => {
                     id="scroll-to-projects"
                     text="Projects"
                     IconRight={ArrowDownIcon}
-                    variant="green"
-                    additionalClassNames="w-fit h-fit"
-                    onClick={() => {}}
+                    size="lg"
+                    className="h-fit w-fit bg-emerald-500 "
+                    ringClassNames="ring-emerald-500 ring-offset-slate-400 dark:ring-offset-slate-700"
+                    onClick={() => {
+                        document
+                            .getElementById("projects")
+                            ?.scrollIntoView({ behavior: "smooth" });
+                    }}
                 />
             </div>
         </h1>
