@@ -202,8 +202,7 @@ const Contact = ({}: ContactProps) => {
                 onSubmit={handleSubmit(submitContactForm)}
             >
                 <Input
-                    name="name"
-                    register={register}
+                    register={register("name")}
                     id="name"
                     ariaLabel="name input"
                     placeholder="Master Chief"
@@ -223,8 +222,7 @@ const Contact = ({}: ContactProps) => {
                 />
 
                 <Input
-                    name="email"
-                    register={register}
+                    register={register("email")}
                     error={errors.email?.message}
                     disabled={isSubmitting}
                     id="email"
@@ -248,8 +246,7 @@ const Contact = ({}: ContactProps) => {
                 />
 
                 <TextArea
-                    register={register}
-                    name="message"
+                    register={register("message")}
                     error={errors.message?.message}
                     disabled={isSubmitting}
                     ariaLabel="message text area"

@@ -1,16 +1,16 @@
 // "use client";
 import React from "react";
-import { UseFormRegister } from "react-hook-form";
+import { UseFormRegisterReturn } from "react-hook-form";
 // article for expandanle input from:
 // https://medium.com/@oherterich/creating-a-textarea-with-dynamic-height-using-react-and-typescript-5ed2d78d9848
 
 // code for expandable input from:
 // https://codesandbox.io/s/autosize-textarea-forked-044vh2?file=/src/useAutosizeTextArea.ts:196-668
 
-interface TextAreaProps {
-    register: UseFormRegister<any>;
+interface TextAreaProps<TRegister extends string> {
+    register: UseFormRegisterReturn<TRegister>;
     id: string;
-    name: string;
+    // name: string;
     ariaLabel: string;
     label?: string;
     placeholder?: string;
@@ -24,10 +24,10 @@ interface TextAreaProps {
     IconRightClassNames?: string;
 }
 
-const TextArea = ({
+function TextArea<TRegister extends string>({
     register,
     id,
-    name,
+    // name,
     ariaLabel,
     placeholder,
     label,
@@ -39,7 +39,7 @@ const TextArea = ({
     className,
     IconRight,
     IconRightClassNames,
-}: TextAreaProps) => {
+}: TextAreaProps<TRegister>) {
     // const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
     // useEffect(() => {
@@ -55,7 +55,10 @@ const TextArea = ({
     // }, [textAreaRef.current]);
 
     return (
-        <div id="TextArea" className="flex flex-col">
+        <div
+            id="TextArea"
+            className="flex flex-col"
+        >
             {label && (
                 <label
                     htmlFor={`${id}-textarea`}
@@ -87,7 +90,7 @@ const TextArea = ({
                             ? `resize-none border-none focus:outline-none ${className}`
                             : ""
                     }
-                    {...register(name)}
+                    {...register}
                 />
                 {IconRight && (
                     <IconRight
@@ -108,6 +111,6 @@ const TextArea = ({
             </p>
         </div>
     );
-};
+}
 
 export default TextArea;

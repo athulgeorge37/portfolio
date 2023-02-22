@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import useLocalStorage from "./useLocalStorage";
 
-type THEMES = "light" | "dark";
+export type THEMES = "light" | "dark";
 
 const useTheme = () => {
     // useLocalStorage is instantiaing the inital theme, if there is none in localstorage

@@ -1,11 +1,11 @@
 import React from "react";
-import { UseFormRegister } from "react-hook-form";
+import { UseFormRegisterReturn } from "react-hook-form";
 
-interface InputProps {
-    register: UseFormRegister<any>;
+interface InputProps<TRegister extends string> {
+    register: UseFormRegisterReturn<TRegister>;
     error: string | undefined;
     id: string;
-    name: string;
+    // name: string;
     ariaLabel: string;
     label?: string;
     type?: "text" | "email" | "password";
@@ -20,10 +20,10 @@ interface InputProps {
     autoFocus?: boolean;
 }
 
-const Input = ({
+function Input<TRegister extends string>({
     id,
     type = "text",
-    name,
+    // name,
     ariaLabel,
     placeholder,
     // required = true,
@@ -38,9 +38,12 @@ const Input = ({
     className,
     label,
     autoFocus = false,
-}: InputProps) => {
+}: InputProps<TRegister>) {
     return (
-        <div id="Input" className="flex flex-col">
+        <div
+            id="Input"
+            className="flex flex-col"
+        >
             {label && (
                 <label
                     htmlFor={`${id}-input`}
@@ -75,7 +78,7 @@ const Input = ({
                             ? `border-none focus:outline-none ${className}`
                             : ""
                     }
-                    {...register(name)}
+                    {...register}
                 />
                 {IconRight && (
                     <IconRight
@@ -96,7 +99,7 @@ const Input = ({
             </p>
         </div>
     );
-};
+}
 
 // // same class name for an input
 // className={`w-full rounded-md bg-slate-300 py-2 px-11 font-semibold shadow-sm ring-2
