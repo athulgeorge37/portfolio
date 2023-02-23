@@ -140,7 +140,11 @@ const MinecraftVillageGeneratorProjectCard =
                                     href="https://www.youtube.com/watch?v=Eu465Jue3ns"
                                     target="_blank"
                                     aria-label="Minecraft video demo"
-                                    className="flex cursor-pointer items-center justify-between gap-2 rounded-md bg-blue-600 px-2 py-1 font-semibold text-slate-300 dark:bg-blue-500"
+                                    className="flex cursor-pointer items-center justify-between gap-2 
+                                rounded-md bg-blue-600 px-2 py-1 font-semibold text-slate-300 outline-none focus-visible:ring-2 
+                                focus-visible:ring-blue-600 focus-visible:ring-offset-2 
+                                focus-visible:ring-offset-slate-300 dark:bg-blue-500 
+                                dark:focus-visible:ring-blue-500 dark:focus-visible:ring-offset-slate-600"
                                 >
                                     <ComputerDesktopIcon className="h-5 w-5" />
                                     Video Demo
@@ -156,15 +160,17 @@ const MinecraftVillageGeneratorProjectCard =
                                     onClick={() =>
                                         updateSlideNumber(currentSlide - 1)
                                     }
-                                    className="rounded-full text-slate-100 hover:bg-slate-500 dark:hover:bg-slate-400"
-                                    ringClassNames=""
+                                    className="rounded-full text-slate-800 dark:text-slate-100"
+                                    ringClassNames="ring-offset-slate-300 dark:ring-offset-slate-600 
+                                ring-blue-600 dark:ring-blue-500"
                                 />
 
                                 {data.map((_, index) => {
                                     return (
-                                        <button
-                                            key={`${index}-slide-bullet-minecraft`}
-                                            aria-label={`go to slide ${index}`}
+                                        <Button
+                                            key={`${index}-slide-bullet-breaddit`}
+                                            size="none"
+                                            ariaLabel={`go to slide ${index}`}
                                             id="skip-to-slide"
                                             onClick={() =>
                                                 updateSlideNumber(index)
@@ -172,8 +178,10 @@ const MinecraftVillageGeneratorProjectCard =
                                             className={`h-2.5 w-2.5 rounded-full ${
                                                 index === currentSlide
                                                     ? "bg-blue-600 dark:bg-blue-500"
-                                                    : "bg-slate-100 dark:bg-slate-300"
+                                                    : "bg-slate-700 dark:bg-slate-300"
                                             }`}
+                                            ringClassNames="ring-offset-slate-300 dark:ring-offset-slate-600 
+                                        ring-blue-600 dark:ring-blue-500"
                                         />
                                     );
                                 })}
@@ -186,8 +194,9 @@ const MinecraftVillageGeneratorProjectCard =
                                     onClick={() =>
                                         updateSlideNumber(currentSlide + 1)
                                     }
-                                    className="rounded-full text-slate-100 hover:bg-slate-500 dark:hover:bg-slate-400"
-                                    ringClassNames=""
+                                    className="rounded-full text-slate-800  dark:text-slate-100 "
+                                    ringClassNames="ring-offset-slate-300 dark:ring-offset-slate-600 
+                                ring-blue-600 dark:ring-blue-500"
                                 />
                             </div>
                         </div>

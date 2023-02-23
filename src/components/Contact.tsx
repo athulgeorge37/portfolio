@@ -161,7 +161,8 @@ const Contact = ({}: ContactProps) => {
                         <button
                             className="rounded-md bg-slate-300 p-2 outline-none 
                             focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
-                             focus-visible:ring-offset-slate-700 dark:bg-slate-500 "
+                            focus-visible:ring-offset-slate-400 dark:bg-slate-500 
+                            dark:focus-visible:ring-offset-slate-700 "
                             aria-label="copy email"
                             id="copy-email"
                             onClick={() => {
@@ -219,7 +220,7 @@ const Contact = ({}: ContactProps) => {
                     disabled:bg-slate-300 disabled:text-slate-500 disabled:ring-slate-300 dark:bg-slate-500 
                     ${FocusRingClassNamesToUse("name")}  
                     dark:ring-slate-500 dark:placeholder:text-slate-400 dark:focus:ring-blue-500 
-                    dark:disabled:bg-slate-400 dark:disabled:text-slate-300 dark:disabled:ring-slate-400`}
+                    dark:disabled:bg-slate-600 dark:disabled:text-slate-300 dark:disabled:ring-slate-600`}
                 />
 
                 <Input
@@ -227,23 +228,21 @@ const Contact = ({}: ContactProps) => {
                     error={errors.email?.message}
                     disabled={isSubmitting}
                     id="email"
+                    label="email"
                     ariaLabel="email input"
                     placeholder="your email"
-                    type="text"
-                    autoComplete="off"
                     IconLeft={EnvelopeIcon}
                     IconRight={IconRightToUse("email")}
                     IconRightClassNames={`mr-3 h-5 w-5 
                     ${IconRightClassNamesToUse("email")}`}
-                    label="email"
                     className={`w-full rounded-md 
                     bg-slate-200 py-2 px-11 font-semibold shadow-sm ring-2 
                     ring-slate-200 placeholder:text-slate-400 
                     disabled:bg-slate-300 disabled:text-slate-500 disabled:ring-slate-300
                     dark:bg-slate-500 dark:ring-slate-500 dark:placeholder:text-slate-400 
                     ${FocusRingClassNamesToUse("email")}
-                    dark:disabled:bg-slate-400 dark:disabled:text-slate-300 
-                    dark:disabled:ring-slate-400`}
+                    dark:disabled:bg-slate-600 dark:disabled:text-slate-300 
+                    dark:disabled:ring-slate-600`}
                 />
 
                 <TextArea
@@ -265,9 +264,9 @@ const Contact = ({}: ContactProps) => {
                     disabled:bg-slate-300 disabled:text-slate-500 
                     disabled:ring-slate-300 dark:bg-slate-500 dark:ring-slate-500
                     ${FocusRingClassNamesToUse("message")}
-                    dark:placeholder:text-slate-400 dark:disabled:bg-slate-400 
+                    dark:placeholder:text-slate-400 dark:disabled:bg-slate-600 
                     dark:disabled:text-slate-300 
-                    dark:disabled:ring-slate-400`}
+                    dark:disabled:ring-slate-600`}
                 />
 
                 <div className="flex justify-end gap-2">

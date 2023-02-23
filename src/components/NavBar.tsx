@@ -149,11 +149,13 @@ const NavBar = ({}: NavBarProps) => {
                     IconLeft={Bars3Icon}
                     onClick={() => setNavbarIsOpen(true)}
                     className={(isPressed) =>
-                        `bg-slate-400 hover:bg-slate-300 lg:hidden ${
-                            navbarIsOpen ? "invisible" : ""
-                        }`
+                        `bg-slate-400 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 lg:hidden ${
+                            isPressed
+                                ? "bg-slate-500 hover:bg-slate-500 dark:bg-slate-800 dark:hover:bg-slate-800"
+                                : "bg-slate-400 dark:bg-slate-700"
+                        } ${navbarIsOpen ? "invisible" : ""}`
                     }
-                    ringClassNames="ring-blue-500 ring-offset-slate-400"
+                    ringClassNames="ring-blue-500 ring-offset-slate-400 dark:ring-offset-slate-700"
                     size="mdSquare"
                 />
 
@@ -161,150 +163,7 @@ const NavBar = ({}: NavBarProps) => {
                     <DarkModeToggle DarkModeController={DarkModeController} />
                 </div>
             </div>
-            {/* 
-            <Transition
-                className="z-100 fixed top-0 left-0 flex h-screen w-full max-w-xs 
-                flex-col gap-10 border-r-2 border-slate-200/80 bg-slate-300 p-5 
-                shadow-2xl dark:border-slate-800/80  dark:bg-slate-600 lg:hidden"
-                show={navbarIsOpen}
-                enter="transform transition ease-in-out duration-500 "
-                enterFrom="-translate-x-full"
-                enterTo="translate-x-0"
-                leave="transform transition ease-in-out duration-500 "
-                leaveFrom="translate-x-0"
-                leaveTo="-translate-x-full"
-            >
-                <div className="flex justify-between">
-                    <Button
-                        ariaLabel="logo"
-                        id="logo"
-                        onClick={() => {
-                            setNavbarIsOpen(false);
-                            setTimeout(() => {
-                                window.scrollTo({
-                                    top: 0,
-                                    behavior: "smooth",
-                                });
-                            }, 500);
-                        }}
-                        text="Logo"
-                        size="none"
-                        className="rounded-md py-0.5 px-1"
-                        ringClassNames="focus-visible:ring-blue-600 ring-offset-0 dark:focus-visible:ring-blue-500 outline-none"
-                    />
 
-                    <Button
-                        ariaLabel="navbar menu"
-                        id="navbar"
-                        IconLeft={XMarkIcon}
-                        onClick={() => setNavbarIsOpen(false)}
-                        className={(isPressed) =>
-                            `bg-slate-400 hover:bg-slate-300 lg:hidden ${
-                                isPressed
-                                    ? "bg-slate-500 hover:bg-slate-500"
-                                    : "bg-slate-400"
-                            }`
-                        }
-                        ringClassNames="ring-blue-500 ring-offset-slate-400"
-                        size="mdSquare"
-                    />
-                </div>
-                <ul className="flex flex-col gap-5 font-semibold">
-                    <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
-                        <Button
-                            ariaLabel="projects"
-                            className="gap-2 rounded-md py-0.5 px-1 focus-visible:ring-2 focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500 "
-                            id="projects"
-                            onClick={() => {
-                                setNavbarIsOpen(false);
-                                setTimeout(() => {
-                                    navigateToId("projects");
-                                }, 500);
-                            }}
-                            ringClassNames="ring-offset-0"
-                            text="Projects"
-                            size="none"
-                            IconLeft={PresentationChartLineIcon}
-                            IconLeftClassName="h-5 w-5"
-                        />
-                    </li>
-                    <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
-                        <Button
-                            ariaLabel="projects"
-                            className="gap-2 rounded-md py-0.5 px-1 focus-visible:ring-2
-                                 focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
-                            id="projects"
-                            onClick={() => {
-                                setNavbarIsOpen(false);
-                                setTimeout(() => {
-                                    navigateToId("work-experience");
-                                }, 500);
-                            }}
-                            ringClassNames="ring-offset-0"
-                            text="Work"
-                            size="none"
-                            IconLeft={BriefcaseIcon}
-                            IconLeftClassName="h-5 w-5"
-                        />
-                    </li>
-                    <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
-                        <Button
-                            ariaLabel="projects"
-                            className="gap-2 rounded-md py-0.5 px-1 focus-visible:ring-2
-                                 focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
-                            id="projects"
-                            onClick={() => {
-                                setNavbarIsOpen(false);
-                                setTimeout(() => {
-                                    navigateToId("contact");
-                                }, 500);
-                            }}
-                            ringClassNames="ring-offset-0"
-                            text="Contact"
-                            size="none"
-                            IconLeft={PaperAirplaneIcon}
-                            IconLeftClassName="h-5 w-5"
-                        />
-                    </li>
-                    <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
-                        <a
-                            href="https://www.linkedin.com/in/athul-george/"
-                            target="_blank"
-                            className="flex items-center gap-2 rounded-md py-0.5 px-1 
-                                outline-none focus-visible:ring-2 focus-visible:ring-blue-600
-                                 dark:focus-visible:ring-blue-500"
-                        >
-                            <LinkedInIcon className="h-5 w-5" /> Linked In
-                        </a>
-                    </li>
-                    <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
-                        <a
-                            href="https://github.com/athulgeorge37"
-                            target="_blank"
-                            className="flex items-center gap-2 rounded-md 
-                                py-0.5 px-1 outline-none focus-visible:ring-2
-                                 focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
-                        >
-                            <GitHubIcon className="h-5 w-5" /> GitHub
-                        </a>
-                    </li>
-                    <li className="w-fit outline-none hover:text-blue-600 dark:hover:text-blue-500">
-                        <a
-                            className="flex items-center gap-2 rounded-md py-0.5 px-1 
-                                outline-none focus-visible:ring-2 focus-visible:ring-blue-600
-                                 dark:focus-visible:ring-blue-500"
-                            target="_blank"
-                            href="https://drive.google.com/file/d/1PYFjf4laUxbGcbQV27XUwT6Rqoizl2Pw/view?usp=sharing"
-                        >
-                            <DocumentTextIcon className="h-5 w-5" />
-                            Resume
-                        </a>
-                    </li>
-                </ul>
-                <div className="mt-auto">
-                    <DarkModeToggle DarkModeController={DarkModeController} />
-                </div>
-            </Transition> */}
             <Transition
                 appear
                 show={navbarIsOpen}
@@ -361,8 +220,9 @@ const NavBar = ({}: NavBarProps) => {
                                         }}
                                         text="Logo"
                                         size="none"
-                                        className="rounded-md py-0.5 px-1"
-                                        ringClassNames="focus-visible:ring-blue-600 ring-offset-0 dark:focus-visible:ring-blue-500 outline-none"
+                                        className="rounded-md py-0.5 px-1 outline-none"
+                                        ringClassNames="ring-blue-600 ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 
+                                        dark:ring-blue-500"
                                     />
 
                                     <Button
@@ -371,21 +231,22 @@ const NavBar = ({}: NavBarProps) => {
                                         IconLeft={XMarkIcon}
                                         onClick={() => setNavbarIsOpen(false)}
                                         className={(isPressed) =>
-                                            `bg-slate-400 hover:bg-slate-300 lg:hidden ${
+                                            `bg-slate-400 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 lg:hidden ${
                                                 isPressed
-                                                    ? "bg-slate-500 hover:bg-slate-500"
-                                                    : "bg-slate-400"
+                                                    ? "bg-slate-500 hover:bg-slate-500 dark:bg-slate-800 dark:hover:bg-slate-800"
+                                                    : "bg-slate-400 dark:bg-slate-700"
                                             }`
                                         }
-                                        ringClassNames="ring-blue-500 ring-offset-slate-400"
+                                        ringClassNames="ring-blue-500 ring-offset-slate-400 dark:ring-offset-slate-700"
                                         size="mdSquare"
                                     />
                                 </div>
+
                                 <ul className="flex flex-col gap-5 font-semibold">
                                     <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                                         <Button
                                             ariaLabel="projects"
-                                            className="gap-2 rounded-md py-0.5 px-1 focus-visible:ring-2 focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500 "
+                                            className="gap-2 rounded-md py-0.5 px-1"
                                             id="projects"
                                             onClick={() => {
                                                 setNavbarIsOpen(false);
@@ -393,7 +254,8 @@ const NavBar = ({}: NavBarProps) => {
                                                     navigateToId("projects");
                                                 }, 500);
                                             }}
-                                            ringClassNames="ring-offset-0"
+                                            ringClassNames="ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 ring-blue-600 ring-2
+                                             dark:ring-blue-500"
                                             text="Projects"
                                             size="none"
                                             IconLeft={PresentationChartLineIcon}
@@ -403,8 +265,6 @@ const NavBar = ({}: NavBarProps) => {
                                     <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                                         <Button
                                             ariaLabel="projects"
-                                            className="gap-2 rounded-md py-0.5 px-1 focus-visible:ring-2
-                                 focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
                                             id="projects"
                                             onClick={() => {
                                                 setNavbarIsOpen(false);
@@ -414,7 +274,9 @@ const NavBar = ({}: NavBarProps) => {
                                                     );
                                                 }, 500);
                                             }}
-                                            ringClassNames="ring-offset-0"
+                                            className="gap-2 rounded-md py-0.5 px-1"
+                                            ringClassNames="ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 ring-blue-600 ring-2
+                                            dark:ring-blue-500"
                                             text="Work"
                                             size="none"
                                             IconLeft={BriefcaseIcon}
@@ -424,8 +286,6 @@ const NavBar = ({}: NavBarProps) => {
                                     <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                                         <Button
                                             ariaLabel="projects"
-                                            className="gap-2 rounded-md py-0.5 px-1 focus-visible:ring-2
-                                 focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
                                             id="projects"
                                             onClick={() => {
                                                 setNavbarIsOpen(false);
@@ -433,7 +293,9 @@ const NavBar = ({}: NavBarProps) => {
                                                     navigateToId("contact");
                                                 }, 500);
                                             }}
-                                            ringClassNames="ring-offset-0"
+                                            className="gap-2 rounded-md py-0.5 px-1"
+                                            ringClassNames="ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 ring-blue-600 ring-2
+                                             dark:ring-blue-500"
                                             text="Contact"
                                             size="none"
                                             IconLeft={PaperAirplaneIcon}
@@ -445,10 +307,10 @@ const NavBar = ({}: NavBarProps) => {
                                             href="https://www.linkedin.com/in/athul-george/"
                                             target="_blank"
                                             className="flex items-center gap-2 rounded-md py-0.5 px-1 
-                                outline-none focus-visible:ring-2 focus-visible:ring-blue-600
-                                 dark:focus-visible:ring-blue-500"
+                                            outline-none focus-visible:ring-2 focus-visible:ring-blue-600
+                                            dark:focus-visible:ring-blue-500"
                                         >
-                                            <LinkedInIcon className="h-5 w-5" />{" "}
+                                            <LinkedInIcon className="h-5 w-5" />
                                             Linked In
                                         </a>
                                     </li>
@@ -457,10 +319,10 @@ const NavBar = ({}: NavBarProps) => {
                                             href="https://github.com/athulgeorge37"
                                             target="_blank"
                                             className="flex items-center gap-2 rounded-md 
-                                py-0.5 px-1 outline-none focus-visible:ring-2
-                                 focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
+                                            py-0.5 px-1 outline-none focus-visible:ring-2
+                                            focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
                                         >
-                                            <GitHubIcon className="h-5 w-5" />{" "}
+                                            <GitHubIcon className="h-5 w-5" />
                                             GitHub
                                         </a>
                                     </li>

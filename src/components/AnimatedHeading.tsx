@@ -110,9 +110,14 @@ const AnimatedHeading = ({}: AnimatedHeadingProps) => {
                     id="scroll-to-projects"
                     text="Projects"
                     IconRight={ArrowDownIcon}
-                    size="lg"
-                    className="h-fit w-fit bg-emerald-500 "
-                    ringClassNames="ring-emerald-500 ring-offset-slate-400 dark:ring-offset-slate-700"
+                    size="md"
+                    className={(isPressed) =>
+                        `h-fit w-fit bg-emerald-500 hover:brightness-110 ${
+                            isPressed ? "bg-emerald-600" : "bg-emerald-500"
+                        }`
+                    }
+                    ringClassNames="ring-emerald-500
+                    ring-offset-slate-400 dark:ring-offset-slate-700"
                     onClick={() => {
                         document
                             .getElementById("projects")
