@@ -3,17 +3,19 @@ import Head from "next/head";
 import Image from "next/image";
 
 // components
-import NavBar from "~/components/NavBar";
+import NavBar from "~/features/NavBar";
+import AnimatedHeading from "~/features/AnimatedHeading";
+import BreadditProjectCard from "~/features/ProjectCards/BreadditProjectCard";
+import PathFindingVisualizerProjectCard from "~/features/ProjectCards/PathFindingVisualizerProjectCard";
+import MinecraftVillageGeneratorProjectCard from "~/features/ProjectCards/MinecraftVillageGeneratorProjectCard";
+import Contact from "~/features/Contact";
+
+// helper
 import ResponsiveHelper from "~/helper/ResponsiveHelper";
-import AnimatedHeading from "~/components/AnimatedHeading";
-import BreadditProjectCard from "~/components/BreadditProjectCard";
-import PathFindingVisualizerProjectCard from "~/components/PathFindingVisualizerProjectCard";
-import MinecraftVillageGeneratorProjectCard from "~/components/MinecraftVillageGeneratorProjectCard";
-import Contact from "~/components/Contact";
 
 // assets
 import StudyRoomImg from "~/assets/images/studyRoom.png";
-import WorkExperience from "~/components/WorkExperience";
+import WorkExperience from "~/features/WorkExperience";
 
 const Home: NextPage = () => {
     return (

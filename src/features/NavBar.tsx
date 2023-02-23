@@ -17,7 +17,7 @@ import {
 } from "@heroicons/react/24/solid";
 
 // componets
-import DarkModeToggle from "./DarkModeToggle";
+import DarkModeToggle from "~/features/DarkModeToggle";
 import { Dialog } from "@headlessui/react";
 
 // animations

@@ -79,4 +79,5 @@ if (!!process.env.SKIP_ENV_VALIDATION == false) {
     });
 }
 
+// import this from this file to use your env variables
 export { env };

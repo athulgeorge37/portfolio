@@ -8,10 +8,7 @@ import Button from "~/components/Button";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 
 // assets
-import {
-    ComputerDesktopIcon,
-    CodeBracketIcon,
-} from "@heroicons/react/24/solid";
+import { ComputerDesktopIcon } from "@heroicons/react/24/solid";
 
 interface MinecraftVillageGeneratorProjectCardProps {}
 

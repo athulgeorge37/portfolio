@@ -6,7 +6,7 @@
 import { motion } from "framer-motion";
 
 // components
-import Button from "./Button";
+import Button from "~/components/Button";
 
 // ui
 import { ArrowDownIcon } from "@heroicons/react/24/solid";
