@@ -18,6 +18,12 @@ interface DarkModeToggleProps {
     };
 }
 
+// normalling we would animate the toggle with these classes
+// ui-checked:translate-x-6 ui-not-checked:translate-x-1
+
+// however when using it in the modal, it did not work
+// so we are toggling it with the the current theme
+
 const DarkModeToggle = ({
     DarkModeController: { theme, setTheme, toggleTheme },
 }: DarkModeToggleProps) => {
@@ -42,9 +48,10 @@ const DarkModeToggle = ({
             >
                 <span className="sr-only">Toggle Dark Mode</span>
                 <span
-                    className="inline-block h-4 w-4 transform rounded-full
-                    bg-white transition ui-checked:translate-x-6 
-                    ui-not-checked:translate-x-1"
+                    className={`inline-block h-4 w-4 transform rounded-full
+                    bg-white transition ${
+                        theme === "dark" ? "translate-x-6" : "translate-x-1"
+                    }`}
                 />
             </Switch>
 

@@ -10,7 +10,6 @@ import { UseFormRegisterReturn } from "react-hook-form";
 interface TextAreaProps<TRegister extends string> {
     register: UseFormRegisterReturn<TRegister>;
     id: string;
-    // name: string;
     ariaLabel: string;
     label?: string;
     placeholder?: string;
@@ -24,10 +23,9 @@ interface TextAreaProps<TRegister extends string> {
     IconRightClassNames?: string;
 }
 
-function TextArea<TRegister extends string>({
+const TextArea = <TRegister extends string>({
     register,
     id,
-    // name,
     ariaLabel,
     placeholder,
     label,
@@ -39,7 +37,7 @@ function TextArea<TRegister extends string>({
     className,
     IconRight,
     IconRightClassNames,
-}: TextAreaProps<TRegister>) {
+}: TextAreaProps<TRegister>) => {
     // const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
     // useEffect(() => {
@@ -111,6 +109,6 @@ function TextArea<TRegister extends string>({
             </p>
         </div>
     );
-}
+};
 
 export default TextArea;

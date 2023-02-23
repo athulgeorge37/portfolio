@@ -136,7 +136,8 @@ const Contact = ({}: ContactProps) => {
     return (
         <div
             id="Contact"
-            className="flex w-full max-w-lg flex-col justify-between gap-10 lg:max-w-5xl lg:flex-row lg:gap-20"
+            className="flex w-full max-w-lg flex-col justify-between gap-10 
+            lg:max-w-5xl lg:flex-row lg:gap-20"
         >
             <div className="lg flex flex-col justify-between gap-10">
                 <div className="flex flex-col gap-3">

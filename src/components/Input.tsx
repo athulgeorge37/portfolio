@@ -5,7 +5,6 @@ interface InputProps<TRegister extends string> {
     register: UseFormRegisterReturn<TRegister>;
     error: string | undefined;
     id: string;
-    // name: string;
     ariaLabel: string;
     label?: string;
     type?: "text" | "email" | "password";
@@ -20,13 +19,11 @@ interface InputProps<TRegister extends string> {
     autoFocus?: boolean;
 }
 
-function Input<TRegister extends string>({
+const Input = <TRegister extends string>({
     id,
     type = "text",
-    // name,
     ariaLabel,
     placeholder,
-    // required = true,
     disabled = false,
     autoComplete = "off",
     IconLeft,
@@ -38,7 +35,7 @@ function Input<TRegister extends string>({
     className,
     label,
     autoFocus = false,
-}: InputProps<TRegister>) {
+}: InputProps<TRegister>) => {
     return (
         <div
             id="Input"
@@ -99,7 +96,7 @@ function Input<TRegister extends string>({
             </p>
         </div>
     );
-}
+};
 
 // // same class name for an input
 // className={`w-full rounded-md bg-slate-300 py-2 px-11 font-semibold shadow-sm ring-2

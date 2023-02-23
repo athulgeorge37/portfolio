@@ -5,7 +5,7 @@ import {
     setItemLocalStorage,
 } from "~/helper/localStorage";
 
-function useLocalStorage<T>(key: string, initialValue: T) {
+const useLocalStorage = <T,>(key: string, initialValue: T) => {
     const [storedValue, setStoredValue] = useState<T | undefined>();
 
     useEffect(() => {
@@ -21,6 +21,6 @@ function useLocalStorage<T>(key: string, initialValue: T) {
     }, [storedValue]);
 
     return [storedValue as T, setStoredValue] as const;
-}
+};
 
 export default useLocalStorage;
