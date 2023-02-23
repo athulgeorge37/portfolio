@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.10.0",
     "@headlessui/react": "^1.7.10",
     "@headlessui/tailwindcss": "^0.1.2",
     "@heroicons/react": "^2.0.15",

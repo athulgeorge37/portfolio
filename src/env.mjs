@@ -6,7 +6,7 @@ import { z } from "zod";
  * This way you can ensure the app isn't built with invalid env vars.
  */
 const server = z.object({
-  NODE_ENV: z.enum(["development", "test", "production"]),
+    NODE_ENV: z.enum(["development", "test", "production"]),
 });
 
 /**
@@ -15,7 +15,10 @@ const server = z.object({
  * To expose them to the client, prefix them with `NEXT_PUBLIC_`.
  */
 const client = z.object({
-  // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
+    // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
+    NEXT_PUBLIC_EMAIL_JS_SERVICE_ID: z.string().min(1),
+    NEXT_PUBLIC_EMAIL_JS_TEMPLATE_ID: z.string().min(1),
+    NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY: z.string().min(1),
 });
 
 /**
@@ -24,8 +27,14 @@ const client = z.object({
  * @type {Record<keyof z.infer<typeof server> | keyof z.infer<typeof client>, string | undefined>}
  */
 const processEnv = {
-  NODE_ENV: process.env.NODE_ENV,
-  // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+    NODE_ENV: process.env.NODE_ENV,
+    // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+    NEXT_PUBLIC_EMAIL_JS_SERVICE_ID:
+        process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID,
+    NEXT_PUBLIC_EMAIL_JS_TEMPLATE_ID:
+        process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE_ID,
+    NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY:
+        process.env.NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY,
 };
 
 // Don't touch the part below
@@ -37,37 +46,37 @@ const merged = server.merge(client);
 let env = process.env;
 
 if (!!process.env.SKIP_ENV_VALIDATION == false) {
-  const isServer = typeof window === "undefined";
+    const isServer = typeof window === "undefined";
 
-  const parsed = isServer
-    ? merged.safeParse(processEnv) // on server we can validate all env vars
-    : client.safeParse(processEnv); // on client we can only validate the ones that are exposed
+    const parsed = isServer
+        ? merged.safeParse(processEnv) // on server we can validate all env vars
+        : client.safeParse(processEnv); // on client we can only validate the ones that are exposed
 
-  if (parsed.success === false) {
-    console.error(
-      "❌ Invalid environment variables:",
-      parsed.error.flatten().fieldErrors,
-    );
-    throw new Error("Invalid environment variables");
-  }
-
-  /** @type z.infer<merged>
-   *  @ts-ignore - can't type this properly in jsdoc */
-  env = new Proxy(parsed.data, {
-    get(target, prop) {
-      if (typeof prop !== "string") return undefined;
-      // Throw a descriptive error if a server-side env var is accessed on the client
-      // Otherwise it would just be returning `undefined` and be annoying to debug
-      if (!isServer && !prop.startsWith("NEXT_PUBLIC_"))
-        throw new Error(
-          process.env.NODE_ENV === "production"
-            ? "❌ Attempted to access a server-side environment variable on the client"
-            : `❌ Attempted to access server-side environment variable '${prop}' on the client`,
+    if (parsed.success === false) {
+        console.error(
+            "❌ Invalid environment variables:",
+            parsed.error.flatten().fieldErrors
         );
-      /*  @ts-ignore - can't type this properly in jsdoc */
-      return target[prop];
-    },
-  });
+        throw new Error("Invalid environment variables");
+    }
+
+    /** @type z.infer<merged>
+     *  @ts-ignore - can't type this properly in jsdoc */
+    env = new Proxy(parsed.data, {
+        get(target, prop) {
+            if (typeof prop !== "string") return undefined;
+            // Throw a descriptive error if a server-side env var is accessed on the client
+            // Otherwise it would just be returning `undefined` and be annoying to debug
+            if (!isServer && !prop.startsWith("NEXT_PUBLIC_"))
+                throw new Error(
+                    process.env.NODE_ENV === "production"
+                        ? "❌ Attempted to access a server-side environment variable on the client"
+                        : `❌ Attempted to access server-side environment variable '${prop}' on the client`
+                );
+            /*  @ts-ignore - can't type this properly in jsdoc */
+            return target[prop];
+        },
+    });
 }
 
 export { env };

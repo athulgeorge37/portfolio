@@ -20,8 +20,14 @@ const Home: NextPage = () => {
         <>
             <Head>
                 <title>Portfolio</title>
-                <meta name="description" content="Athul George's Portfolio" />
-                <link rel="icon" href="/favicon.ico" />
+                <meta
+                    name="description"
+                    content="Athul George's Portfolio"
+                />
+                <link
+                    rel="icon"
+                    href="/favicon.ico"
+                />
             </Head>
             <main
                 className="flex h-full min-h-screen flex-col overflow-hidden bg-slate-400
@@ -32,7 +38,8 @@ const Home: NextPage = () => {
 
                 <div
                     id="title"
-                    className="mx-auto flex w-full max-w-5xl flex-col items-center sm:items-center lg:mt-40 lg:mb-16 lg:flex-row lg:justify-between"
+                    className="mx-auto flex w-full max-w-5xl flex-col items-center 
+                    sm:items-center lg:mt-40 lg:mb-16 lg:flex-row lg:justify-between"
                 >
                     <AnimatedHeading />
                     <Image

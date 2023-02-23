@@ -1,7 +1,13 @@
 // "use client"
 
 // hooks
-import { useState, useEffect } from "react";
+import { useState } from "react";
+
+// email sending
+import emailjs from "@emailjs/browser";
+
+// env
+import { env } from "~/env.mjs";
 
 // components
 import Image from "next/image";
@@ -13,6 +19,7 @@ import {
     ExclamationTriangleIcon,
     CheckCircleIcon,
     UserIcon,
+    PaperAirplaneIcon,
 } from "@heroicons/react/24/solid";
 import GuySkiing from "~/assets/images/guySkiing.png";
 
@@ -32,17 +39,19 @@ import { zodResolver } from "@hookform/resolvers/zod";
 // how to create form with react hook form and zod
 // https://www.youtube.com/watch?v=4zt1eadehKQ
 
-const ContactFormSchema = z.object({
+const ContactFormSchema = {
     name: z.string().min(1, { message: "Name is required" }),
     email: z
         .string()
         .min(1, { message: "Email is required" })
         .email({ message: "Email is invalid" }),
     message: z.string().min(1, { message: "Message is required" }),
-});
+};
+
+const ZodContactFormSchema = z.object(ContactFormSchema);
 
 // allows us to use zod with typescript
-type ContactFormSchemaType = z.infer<typeof ContactFormSchema>;
+type ContactFormSchemaType = z.infer<typeof ZodContactFormSchema>;
 
 interface ContactProps {}
 
@@ -58,7 +67,7 @@ const Contact = ({}: ContactProps) => {
         formState: { errors, isSubmitting },
         reset,
     } = useForm<ContactFormSchemaType>({
-        resolver: zodResolver(ContactFormSchema),
+        resolver: zodResolver(ZodContactFormSchema),
         defaultValues: {
             name: "",
             email: "",
@@ -69,31 +78,47 @@ const Contact = ({}: ContactProps) => {
     const submitContactForm: SubmitHandler<ContactFormSchemaType> = async (
         data
     ) => {
+        // preventing multiple submissions, when a submission is in progress
         if (isSubmitting) {
             return;
         }
-        // console.log(data);
-        await new Promise(async (resolve) => {
-            setTimeout(() => {
-                console.log(data);
-                reset();
-                resolve(undefined);
-            }, 3000);
-        });
+
+        // ensuring data to send matches the the names using in the emailJS template
+        const DATA_TO_SEND = {
+            contact_name: data.name,
+            contact_email: data.email,
+            contact_message: data.message,
+        };
+
+        // sending email using the environment variables
+        const response = await emailjs.send(
+            env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID,
+            env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE_ID,
+            DATA_TO_SEND,
+            env.NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY
+        );
+
+        // ensuring message is sent
+        if (response.text === "OK") {
+            console.log("message has been sent");
+            reset();
+            // add notification when email is sent
+        } else {
+            console.log("An Error occured", response);
+            // add notication when email cannot be send
+        }
     };
 
     const inputErrorState = (name: keyof ContactFormSchemaType) => {
+        // finds the current error state of an input while user is typing
+        // we use these error states to influence the ui
+
         if (errors[name]?.message) {
             return "error";
         }
 
-        const Schemas = {
-            email: z.string().min(1).email(),
-            name: z.string().min(1),
-            message: z.string().min(1),
-        };
-
-        if (Schemas[name].safeParse(watch(name)).success) {
+        // parsing the input against the schema
+        if (ContactFormSchema[name].safeParse(watch(name)).success) {
             return "valid";
         }
 
@@ -286,9 +311,10 @@ const Contact = ({}: ContactProps) => {
                         id="submit-contact"
                         ariaLabel="submit contact form"
                         onClick={() => {}}
-                        text="Submit"
+                        text="Send"
                         type="submit"
                         disabled={isSubmitting}
+                        IconRight={PaperAirplaneIcon}
                         className="w-fit bg-green-600 text-slate-200 dark:bg-emerald-500"
                         ringClassNames="ring-green-600 dark:ring-emerald-500 
                         ring-offset-slate-400 dark:ring-offset-slate-700"
