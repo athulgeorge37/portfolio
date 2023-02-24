@@ -205,7 +205,7 @@ const NavBar = () => {
                             leaveTo="-translate-x-full"
                         >
                             <Dialog.Panel
-                                className="flex h-full w-full max-w-xs transform 
+                                className="flex h-full w-full max-w-[225px] transform 
                                     flex-col gap-5 bg-slate-400 p-4 text-slate-800 shadow-xl transition-all dark:bg-slate-700 dark:text-slate-300"
                             >
                                 <div className="flex justify-between">
