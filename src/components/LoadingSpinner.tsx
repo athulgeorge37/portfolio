@@ -1,6 +1,6 @@
-interface LoadingSpinnerProps {}
+// interface LoadingSpinnerProps {}
 
-const LoadingSpinner = ({}: LoadingSpinnerProps) => {
+const LoadingSpinner = () => {
     return (
         <div
             id="LoadingSpinner"

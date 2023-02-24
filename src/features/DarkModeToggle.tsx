@@ -8,7 +8,7 @@ import { Switch } from "@headlessui/react";
 import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 
 // types
-import { THEMES } from "~/hooks/useTheme";
+import type { THEMES } from "~/hooks/useTheme";
 
 interface DarkModeToggleProps {
     DarkModeController: {

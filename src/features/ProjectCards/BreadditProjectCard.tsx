@@ -17,7 +17,7 @@ import {
 import { useInView } from "react-intersection-observer";
 import { motion, useAnimation } from "framer-motion";
 
-interface BreadditProjectCardProps {}
+// interface BreadditProjectCardProps {}
 
 const data = [
     {
@@ -50,7 +50,7 @@ const data = [
     },
 ];
 
-const BreadditProjectCard = ({}: BreadditProjectCardProps) => {
+const BreadditProjectCard = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const { ref, inView } = useInView({
@@ -86,40 +86,43 @@ const BreadditProjectCard = ({}: BreadditProjectCardProps) => {
     }, []);
 
     useEffect(() => {
-        if (inView) {
-            cardAnimation.start({
-                x: 0,
-                opacity: 1,
-                transition: {
-                    duration: 1.5,
-                    type: "spring",
-                    bounce: 0.2,
-                },
-            });
+        const executeAnimations = async () => {
+            if (inView) {
+                await cardAnimation.start({
+                    x: 0,
+                    opacity: 1,
+                    transition: {
+                        duration: 1.5,
+                        type: "spring",
+                        bounce: 0.2,
+                    },
+                });
 
-            numberAnimation.start({
-                opacity: 1,
-                transition: {
-                    duration: 1,
-                },
-            });
-        } else {
-            cardAnimation.start({
-                opacity: 0,
-                x: "-100%",
-                transition: {
-                    duration: 2,
-                },
-            });
+                await numberAnimation.start({
+                    opacity: 1,
+                    transition: {
+                        duration: 1,
+                    },
+                });
+            } else {
+                await cardAnimation.start({
+                    opacity: 0,
+                    x: "-100%",
+                    transition: {
+                        duration: 2,
+                    },
+                });
 
-            numberAnimation.start({
-                opacity: 0,
-                transition: {
-                    duration: 1,
-                },
-            });
-        }
-    }, [inView]);
+                await numberAnimation.start({
+                    opacity: 0,
+                    transition: {
+                        duration: 1,
+                    },
+                });
+            }
+        };
+        void executeAnimations();
+    }, [cardAnimation, inView, numberAnimation]);
 
     return (
         <div
@@ -207,6 +210,7 @@ const BreadditProjectCard = ({}: BreadditProjectCardProps) => {
                                 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 
                                 focus-visible:ring-offset-slate-300 dark:bg-blue-500 
                                 dark:focus-visible:ring-blue-500 dark:focus-visible:ring-offset-slate-600"
+                                rel="noreferrer"
                             >
                                 <CodeBracketIcon className="h-5 w-5" />
                                 Code
@@ -220,6 +224,7 @@ const BreadditProjectCard = ({}: BreadditProjectCardProps) => {
                                 focus-visible:ring-blue-600 focus-visible:ring-offset-2 
                                 focus-visible:ring-offset-slate-300 dark:bg-blue-500 
                                 dark:focus-visible:ring-blue-500 dark:focus-visible:ring-offset-slate-600"
+                                rel="noreferrer"
                             >
                                 <ComputerDesktopIcon className="h-5 w-5" />
                                 Demo
@@ -276,7 +281,7 @@ const BreadditProjectCard = ({}: BreadditProjectCardProps) => {
 
                     <div className="flex flex-col justify-between gap-2 sm:flex-row">
                         <span className="text-slate-600 dark:text-slate-400">
-                            Don't want to create an account?
+                            {"Don't want to create an account?"}
                         </span>
                         <a
                             href="https://breaddit-theta.vercel.app/signin"
@@ -287,6 +292,7 @@ const BreadditProjectCard = ({}: BreadditProjectCardProps) => {
                             hover:underline focus-visible:text-blue-600 focus-visible:ring-2 
                             focus-visible:ring-blue-600 dark:text-slate-400 dark:hover:text-blue-500 
                             dark:focus-visible:text-blue-500 dark:focus-visible:ring-blue-500"
+                            rel="noreferrer"
                         >
                             Sign In As Guest
                         </a>

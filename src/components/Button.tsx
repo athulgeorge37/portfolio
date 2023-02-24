@@ -9,7 +9,7 @@ import { useButton } from "@react-aria/button";
 import { FocusRing } from "@react-aria/focus";
 
 // helper
-import { MakeAtLeastOneTypeRequired } from "~/helper/types";
+import type { MakeAtLeastOneTypeRequired } from "~/helper/types";
 import { cva, type VariantProps } from "class-variance-authority";
 
 // infers all the types from cva, all optional
@@ -105,7 +105,9 @@ const Button = ({
             id: `${id}-button`,
             elementType: "button",
 
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             onPress: (e: any) => {
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                 onClick(e);
             },
         },

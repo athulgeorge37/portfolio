@@ -33,7 +33,8 @@ import Button from "~/components/Button";
 
 // validation
 import { z } from "zod";
-import { SubmitHandler, useForm } from "react-hook-form";
+import type { SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 // how to create form with react hook form and zod
@@ -53,9 +54,9 @@ const ZodContactFormSchema = z.object(ContactFormSchema);
 // allows us to use zod with typescript
 type ContactFormSchemaType = z.infer<typeof ZodContactFormSchema>;
 
-interface ContactProps {}
+// interface ContactProps {}
 
-const Contact = ({}: ContactProps) => {
+const Contact = () => {
     const [loadingState, setLoadingState] = useState<
         "idle" | "loading" | "complete"
     >("idle");
@@ -191,7 +192,7 @@ const Contact = ({}: ContactProps) => {
                             aria-label="copy email"
                             id="copy-email"
                             onClick={() => {
-                                navigator.clipboard.writeText(
+                                void navigator.clipboard.writeText(
                                     "athulgeorge37@gmail.com"
                                 );
                                 setLoadingState("loading");
@@ -226,6 +227,7 @@ const Contact = ({}: ContactProps) => {
 
             <form
                 className="flex w-full flex-col gap-5 lg:max-w-lg"
+                // eslint-disable-next-line @typescript-eslint/no-misused-promises
                 onSubmit={handleSubmit(submitContactForm)}
             >
                 <Input
@@ -310,7 +312,7 @@ const Contact = ({}: ContactProps) => {
                     <Button
                         id="submit-contact"
                         ariaLabel="submit contact form"
-                        onClick={() => {}}
+                        onClick={() => null}
                         text="Send"
                         type="submit"
                         disabled={isSubmitting}

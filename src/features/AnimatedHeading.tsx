@@ -12,9 +12,7 @@ import Button from "~/components/Button";
 // ui
 import { ArrowDownIcon } from "@heroicons/react/24/solid";
 
-interface AnimatedHeadingProps {}
-
-const AnimatedHeading = ({}: AnimatedHeadingProps) => {
+const AnimatedHeading = () => {
     return (
         <h1
             id="AnimatedHeading"
@@ -27,7 +25,7 @@ const AnimatedHeading = ({}: AnimatedHeadingProps) => {
                     transition={{ duration: 1.5 }}
                     className="mb-2 text-xl -tracking-normal sm:m-5"
                 >
-                    Hi, I'm
+                    {"Hi, I'm"}
                 </motion.p>
                 <span className="flex">
                     <motion.span

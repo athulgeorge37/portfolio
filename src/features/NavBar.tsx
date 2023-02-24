@@ -26,9 +26,9 @@ import Button from "~/components/Button";
 import GitHubIcon from "~/assets/Icons/GitHubIcon";
 import LinkedInIcon from "~/assets/Icons/LinkedInIcon";
 
-interface NavBarProps {}
+// interface NavBarProps {}
 
-const NavBar = ({}: NavBarProps) => {
+const NavBar = () => {
     const [navbarIsOpen, setNavbarIsOpen] = useState(false);
     const DarkModeController = useTheme();
 
@@ -111,6 +111,7 @@ const NavBar = ({}: NavBarProps) => {
                                 className="flex items-center gap-2 rounded-md py-0.5 px-1 
                                 outline-none focus-visible:ring-2 focus-visible:ring-blue-600
                                  dark:focus-visible:ring-blue-500"
+                                rel="noreferrer"
                             >
                                 <LinkedInIcon className="h-5 w-5" /> Linked In
                             </a>
@@ -122,6 +123,7 @@ const NavBar = ({}: NavBarProps) => {
                                 className="flex items-center gap-2 rounded-md 
                                 py-0.5 px-1 outline-none focus-visible:ring-2
                                  focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
+                                rel="noreferrer"
                             >
                                 <GitHubIcon className="h-5 w-5" /> GitHub
                             </a>
@@ -133,6 +135,7 @@ const NavBar = ({}: NavBarProps) => {
                                  dark:focus-visible:ring-blue-500"
                                 target="_blank"
                                 href="https://drive.google.com/file/d/1PYFjf4laUxbGcbQV27XUwT6Rqoizl2Pw/view?usp=sharing"
+                                rel="noreferrer"
                             >
                                 <DocumentTextIcon className="h-5 w-5" />
                                 Resume
@@ -309,6 +312,7 @@ const NavBar = ({}: NavBarProps) => {
                                             className="flex items-center gap-2 rounded-md py-0.5 px-1 
                                             outline-none focus-visible:ring-2 focus-visible:ring-blue-600
                                             dark:focus-visible:ring-blue-500"
+                                            rel="noreferrer"
                                         >
                                             <LinkedInIcon className="h-5 w-5" />
                                             Linked In
@@ -321,6 +325,7 @@ const NavBar = ({}: NavBarProps) => {
                                             className="flex items-center gap-2 rounded-md 
                                             py-0.5 px-1 outline-none focus-visible:ring-2
                                             focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
+                                            rel="noreferrer"
                                         >
                                             <GitHubIcon className="h-5 w-5" />
                                             GitHub
@@ -333,6 +338,7 @@ const NavBar = ({}: NavBarProps) => {
                                  dark:focus-visible:ring-blue-500"
                                             target="_blank"
                                             href="https://drive.google.com/file/d/1PYFjf4laUxbGcbQV27XUwT6Rqoizl2Pw/view?usp=sharing"
+                                            rel="noreferrer"
                                         >
                                             <DocumentTextIcon className="h-5 w-5" />
                                             Resume

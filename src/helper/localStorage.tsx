@@ -6,6 +6,7 @@ const setItemLocalStorage = (key: string, value: any) => {
 
 const getItemLocalStorage = (key: string) => {
     const item = localStorage.getItem(key);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return item === null ? undefined : JSON.parse(item);
 };
 

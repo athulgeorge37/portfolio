@@ -11,7 +11,7 @@ import MinecraftVillageGeneratorProjectCard from "~/features/ProjectCards/Minecr
 import Contact from "~/features/Contact";
 
 // helper
-import ResponsiveHelper from "~/helper/ResponsiveHelper";
+// import ResponsiveHelper from "~/helper/ResponsiveHelper";
 
 // assets
 import StudyRoomImg from "~/assets/images/studyRoom.png";
@@ -29,24 +29,27 @@ const Home: NextPage = () => {
     const animation = useAnimation();
 
     useEffect(() => {
-        if (inView) {
-            animation.start({
-                x: 0,
-                transition: {
-                    duration: 1,
-                    type: "spring",
-                    bounce: 0.2,
-                },
-            });
-        } else {
-            animation.start({
-                x: "-100%",
-                transition: {
-                    duration: 1,
-                },
-            });
-        }
-    }, [inView]);
+        const animateImage = async () => {
+            if (inView) {
+                await animation.start({
+                    x: 0,
+                    transition: {
+                        duration: 1,
+                        type: "spring",
+                        bounce: 0.2,
+                    },
+                });
+            } else {
+                await animation.start({
+                    x: "-100%",
+                    transition: {
+                        duration: 1,
+                    },
+                });
+            }
+        };
+        void animateImage();
+    }, [animation, inView]);
 
     return (
         <>
@@ -65,7 +68,7 @@ const Home: NextPage = () => {
                 className="flex h-full min-h-screen flex-col overflow-hidden bg-slate-400
             font-sans text-slate-800 antialiased dark:bg-slate-700 dark:text-slate-300"
             >
-                <ResponsiveHelper />
+                {/* <ResponsiveHelper /> */}
                 <NavBar />
 
                 <div

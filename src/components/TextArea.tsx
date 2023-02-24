@@ -1,6 +1,6 @@
 // "use client";
 import React from "react";
-import { UseFormRegisterReturn } from "react-hook-form";
+import type { UseFormRegisterReturn } from "react-hook-form";
 // article for expandanle input from:
 // https://medium.com/@oherterich/creating-a-textarea-with-dynamic-height-using-react-and-typescript-5ed2d78d9848
 
