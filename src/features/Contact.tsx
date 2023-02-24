@@ -164,7 +164,7 @@ const Contact = ({}: ContactProps) => {
             className="flex w-full max-w-lg flex-col justify-between gap-10 
             lg:max-w-5xl lg:flex-row lg:gap-20"
         >
-            <div className="lg flex flex-col justify-between gap-10">
+            <div className="lg flex flex-col  gap-10">
                 <div className="flex flex-col gap-3">
                     <span className="text-lg font-bold">
                         Got a problem that needs solving?
@@ -277,8 +277,8 @@ const Contact = ({}: ContactProps) => {
                     ariaLabel="message text area"
                     id="message"
                     label="message"
-                    maxHeight={200}
-                    minHeight={200}
+                    maxHeight={285}
+                    minHeight={285}
                     IconRight={IconRightToUse("message")}
                     IconRightClassNames={`mr-3 mt-3 h-5 w-5 
                     ${IconRightClassNamesToUse("message")}`}

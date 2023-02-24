@@ -20,90 +20,70 @@ const AnimatedHeading = ({}: AnimatedHeadingProps) => {
             className="m-5 mb-0 flex w-fit flex-col text-7xl font-bold tracking-wide sm:text-8xl lg:m-10"
         >
             <span className="mt-20 flex flex-col justify-between sm:flex-row sm:items-end lg:mt-0">
-                <p className="mb-2 text-xl -tracking-normal sm:m-5">Hi, I'm</p>
+                <motion.p
+                    initial={{ x: "-100vw" }}
+                    animate={{ x: 0 }}
+                    transition={{ duration: 1.5 }}
+                    className="mb-2 text-xl -tracking-normal sm:m-5"
+                >
+                    Hi, I'm
+                </motion.p>
                 <span className="flex">
                     <motion.span
-                        initial={{ x: -500, rotate: 90 }}
-                        animate={{ x: 0, rotate: 0 }}
+                        initial={{ y: "-100vh" }}
+                        animate={{ y: 0 }}
                         transition={{ duration: 1.5 }}
                     >
                         A
                     </motion.span>
                     <motion.span
-                        initial={{ y: -300, rotate: 90 }}
-                        animate={{ y: 0, rotate: 0 }}
+                        initial={{ y: "-100vh" }}
+                        animate={{ y: 0 }}
                         transition={{ duration: 1.5 }}
                     >
                         t
                     </motion.span>
                     <motion.span
-                        initial={{ x: 1300, rotate: 90 }}
-                        animate={{ x: 0, rotate: 0 }}
+                        initial={{ y: "-100vh" }}
+                        animate={{ y: 0 }}
                         transition={{ duration: 1.5 }}
                     >
                         h
                     </motion.span>
                     <motion.span
-                        initial={{ x: 1300, rotate: 90 }}
-                        animate={{ x: 0, rotate: 0 }}
+                        initial={{ x: "100vw" }}
+                        animate={{ x: 0 }}
                         transition={{ duration: 1.5 }}
                     >
                         u
                     </motion.span>
                     <motion.span
-                        initial={{ x: 1300, rotate: 90 }}
-                        animate={{ x: 0, rotate: 0 }}
+                        initial={{ x: "100vw" }}
+                        animate={{ x: 0 }}
                         transition={{ duration: 1.5 }}
                     >
                         l
                     </motion.span>
                 </span>
-            </span>{" "}
-            <span className="flex">
+            </span>
+
+            <span className="flex h-fit overflow-hidden">
                 <motion.span
-                    initial={{ x: -100, y: 0 }}
-                    animate={{ x: 0, y: 0 }}
-                    transition={{ duration: 1.75 }}
+                    initial={{ y: 100 }}
+                    animate={{ y: 0 }}
+                    transition={{
+                        delay: 1,
+                        duration: 1,
+                        type: "spring",
+                        bounce: 0.2,
+                    }}
+                    className="pb-4"
                 >
-                    G
-                </motion.span>
-                <motion.span
-                    initial={{ x: 50, y: 300 }}
-                    animate={{ x: 0, y: 0 }}
-                    transition={{ duration: 1.75 }}
-                >
-                    e
-                </motion.span>
-                <motion.span
-                    initial={{ x: 0, y: -90 }}
-                    animate={{ x: 0, y: 0 }}
-                    transition={{ duration: 1.75 }}
-                >
-                    o
-                </motion.span>
-                <motion.span
-                    initial={{ x: 0, y: 70 }}
-                    animate={{ x: 0, y: 0 }}
-                    transition={{ duration: 1.75 }}
-                >
-                    r
-                </motion.span>
-                <motion.span
-                    initial={{ x: 400, y: -200 }}
-                    animate={{ x: 0, y: 0 }}
-                    transition={{ duration: 1.75 }}
-                >
-                    g
-                </motion.span>
-                <motion.span
-                    initial={{ x: -200, y: 0 }}
-                    animate={{ x: 0, y: 0 }}
-                    transition={{ duration: 1.75 }}
-                >
-                    e
+                    George
                 </motion.span>
             </span>
-            <div className="mt-10 flex items-center justify-between">
+
+            <div className="mt-5 flex items-center justify-between">
                 <p className=" sm:m- text-xl -tracking-normal">Web Developer</p>
                 <Button
                     ariaLabel="scroll to projects"

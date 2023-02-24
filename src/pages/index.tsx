@@ -17,7 +17,37 @@ import ResponsiveHelper from "~/helper/ResponsiveHelper";
 import StudyRoomImg from "~/assets/images/studyRoom.png";
 import WorkExperience from "~/features/WorkExperience";
 
+// animations
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
+// hooks
+import { useEffect } from "react";
+
 const Home: NextPage = () => {
+    const { ref, inView } = useInView();
+    const animation = useAnimation();
+
+    useEffect(() => {
+        if (inView) {
+            animation.start({
+                x: 0,
+                transition: {
+                    duration: 1,
+                    type: "spring",
+                    bounce: 0.2,
+                },
+            });
+        } else {
+            animation.start({
+                x: "-100%",
+                transition: {
+                    duration: 1,
+                },
+            });
+        }
+    }, [inView]);
+
     return (
         <>
             <Head>
@@ -44,23 +74,36 @@ const Home: NextPage = () => {
                     sm:items-center lg:mt-40 lg:mb-16 lg:flex-row lg:justify-between"
                 >
                     <AnimatedHeading />
-                    <Image
-                        src={StudyRoomImg}
-                        alt="study room"
-                        width={500}
-                        height={500}
-                        className="rounded-md"
-                    />
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 100 }}
+                        transition={{
+                            duration: 1,
+                            delay: 1,
+                        }}
+                    >
+                        <Image
+                            src={StudyRoomImg}
+                            alt="study room"
+                            width={500}
+                            height={500}
+                            className="rounded-md"
+                        />
+                    </motion.div>
                 </div>
 
                 <div
                     id="projects"
                     className="mx-auto my-20 flex w-full max-w-5xl flex-col gap-20 px-2 pt-20"
+                    ref={ref}
                 >
                     <div className="mx-auto flex w-fit flex-col gap-20">
-                        <h2 className="text-6xl font-bold tracking-wide">
+                        <motion.h2
+                            animate={animation}
+                            className="text-6xl font-bold tracking-wide"
+                        >
                             Projects
-                        </h2>
+                        </motion.h2>
                         <div className="flex flex-col gap-32">
                             <BreadditProjectCard />
                             <PathFindingVisualizerProjectCard />

@@ -13,6 +13,10 @@ import {
     CodeBracketIcon,
 } from "@heroicons/react/24/solid";
 
+// animations
+import { useInView } from "react-intersection-observer";
+import { motion, useAnimation } from "framer-motion";
+
 interface BreadditProjectCardProps {}
 
 const data = [
@@ -49,6 +53,12 @@ const data = [
 const BreadditProjectCard = ({}: BreadditProjectCardProps) => {
     const [currentSlide, setCurrentSlide] = useState(0);
 
+    const { ref, inView } = useInView({
+        threshold: 0.5,
+    });
+    const cardAnimation = useAnimation();
+    const numberAnimation = useAnimation();
+
     const updateSlideNumber = (newSlideNumber: number) => {
         if (newSlideNumber < 0) {
             setCurrentSlide(data.length - 1);
@@ -75,13 +85,56 @@ const BreadditProjectCard = ({}: BreadditProjectCardProps) => {
         return () => clearInterval(slideOverInterval);
     }, []);
 
-    return (
-        <div className="relative mx-auto w-full">
-            <span className="absolute -top-24 -right-4 text-9xl font-extrabold text-slate-400 dark:text-slate-500 md:-top-20 md:-right-24">
-                01
-            </span>
+    useEffect(() => {
+        if (inView) {
+            cardAnimation.start({
+                x: 0,
+                opacity: 1,
+                transition: {
+                    duration: 1.5,
+                    type: "spring",
+                    bounce: 0.2,
+                },
+            });
 
-            <div
+            numberAnimation.start({
+                opacity: 1,
+                transition: {
+                    duration: 1,
+                },
+            });
+        } else {
+            cardAnimation.start({
+                opacity: 0,
+                x: "-100%",
+                transition: {
+                    duration: 2,
+                },
+            });
+
+            numberAnimation.start({
+                opacity: 0,
+                transition: {
+                    duration: 1,
+                },
+            });
+        }
+    }, [inView]);
+
+    return (
+        <div
+            ref={ref}
+            className="relative mx-auto w-full "
+        >
+            <motion.span
+                animate={cardAnimation}
+                className="absolute -top-24 -right-4 text-9xl font-extrabold text-slate-400 dark:text-slate-500 md:-top-20 md:-right-24"
+            >
+                01
+            </motion.span>
+
+            <motion.div
+                animate={cardAnimation}
                 className="relative mx-auto flex w-full flex-col justify-between overflow-hidden 
                     rounded-lg bg-slate-300 shadow-xl dark:bg-slate-600 lg:max-w-5xl lg:flex-row"
             >
@@ -239,7 +292,7 @@ const BreadditProjectCard = ({}: BreadditProjectCardProps) => {
                         </a>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 };
