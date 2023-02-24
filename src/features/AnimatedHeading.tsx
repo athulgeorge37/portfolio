@@ -4,6 +4,7 @@
 
 // animations
 import { motion } from "framer-motion";
+import TypewriterComponent from "typewriter-effect";
 
 // components
 import Button from "~/components/Button";
@@ -84,7 +85,29 @@ const AnimatedHeading = ({}: AnimatedHeadingProps) => {
             </span>
 
             <div className="mt-5 flex items-center justify-between">
-                <p className=" sm:m- text-xl -tracking-normal">Web Developer</p>
+                {/* <p className=" sm:m- text-xl -tracking-normal">Web Developer</p> */}
+                <motion.span
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                        delay: 1.5,
+                        duration: 1,
+                    }}
+                    className=" text-xl -tracking-normal"
+                >
+                    <TypewriterComponent
+                        options={{
+                            autoStart: true,
+                            loop: true,
+                            delay: 100,
+                            strings: [
+                                "a Web Developer",
+                                "Front End",
+                                "Back End",
+                            ],
+                        }}
+                    />
+                </motion.span>
                 <Button
                     ariaLabel="scroll to projects"
                     id="scroll-to-projects"

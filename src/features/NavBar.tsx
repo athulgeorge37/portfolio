@@ -56,7 +56,7 @@ const NavBar = ({}: NavBarProps) => {
                                     behavior: "smooth",
                                 });
                             }}
-                            text="Logo"
+                            text="AG"
                             size="none"
                             className="hidden rounded-md py-0.5 px-1 lg:block"
                             ringClassNames="focus-visible:ring-blue-600 ring-offset-0 dark:focus-visible:ring-blue-500 outline-none"
@@ -218,7 +218,7 @@ const NavBar = ({}: NavBarProps) => {
                                                 });
                                             }, 500);
                                         }}
-                                        text="Logo"
+                                        text="AG"
                                         size="none"
                                         className="rounded-md py-0.5 px-1 outline-none"
                                         ringClassNames="ring-blue-600 ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 
