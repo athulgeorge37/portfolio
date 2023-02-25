@@ -7,8 +7,14 @@ import Button from "~/components/Button";
 // ui
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 
+// components
+import Image from "next/image";
+
 // assets
 import { ComputerDesktopIcon } from "@heroicons/react/24/solid";
+import MinecraftImg1 from "~/assets/images/Minecraft-Villiage-Generator-Image-1.png";
+import MinecraftImg2 from "~/assets/images/Minecraft-Villiage-Generator-Image-2.png";
+import MinecraftImg3 from "~/assets/images/Minecraft-Villiage-Generator-Image-3.png";
 
 // animations
 import { useInView } from "react-intersection-observer";
@@ -18,7 +24,8 @@ import { motion, useAnimation } from "framer-motion";
 
 const data = [
     {
-        image: "bg-minecraft-village-generator-1",
+        id: 1,
+        image: MinecraftImg1,
         data: [
             "Object oriented python",
             "Utilises mcpi api for minecraft commands",
@@ -27,7 +34,8 @@ const data = [
         ],
     },
     {
-        image: "bg-minecraft-village-generator-2",
+        id: 2,
+        image: MinecraftImg2,
         data: [
             "Randomly generates buildings & gardens",
             "Utilises wave function collapse algorithm",
@@ -36,7 +44,8 @@ const data = [
         ],
     },
     {
-        image: "bg-minecraft-village-generator-3",
+        id: 3,
+        image: MinecraftImg3,
         data: [
             "Generates paths with A* algorithm",
             "Paths avoid water & lava",
@@ -147,9 +156,13 @@ const MinecraftVillageGeneratorProjectCard = () => {
                     >
                         {data.map((slide) => {
                             return (
-                                <div
-                                    key={slide.image}
-                                    className={`${slide.image} h-full w-full flex-shrink-0 bg-cover bg-center`}
+                                <Image
+                                    key={slide.id}
+                                    alt={`minecraft image ${slide.id}`}
+                                    src={slide.image}
+                                    height={250}
+                                    width={550}
+                                    className="pointer-events-none flex-shrink-0 object-cover object-center"
                                 />
                             );
                         })}
@@ -203,7 +216,7 @@ const MinecraftVillageGeneratorProjectCard = () => {
                         <div className="flex w-fit items-center justify-center gap-3 rounded-full px-1.5 py-1">
                             <Button
                                 ariaLabel="go back one image"
-                                id="left-arrow"
+                                id="slideshow-left-arrow-minecraft"
                                 IconLeft={ChevronLeftIcon}
                                 size="smSquare"
                                 onClick={() =>
@@ -214,13 +227,13 @@ const MinecraftVillageGeneratorProjectCard = () => {
                                 ring-blue-600 dark:ring-blue-500"
                             />
 
-                            {data.map((_, index) => {
+                            {data.map((item, index) => {
                                 return (
                                     <Button
-                                        key={`${index}-slide-bullet-breaddit`}
+                                        key={`${item.id}-slide-bullet-minecraft`}
                                         size="none"
-                                        ariaLabel={`go to slide ${index}`}
-                                        id="skip-to-slide"
+                                        ariaLabel={`go to slide ${item.id}`}
+                                        id={`skip-to-slide-${item.id}-minecraft`}
                                         onClick={() => updateSlideNumber(index)}
                                         className={`h-2.5 w-2.5 rounded-full ${
                                             index === currentSlide
@@ -235,7 +248,7 @@ const MinecraftVillageGeneratorProjectCard = () => {
 
                             <Button
                                 ariaLabel="go back one image"
-                                id="left-arrow"
+                                id="slideshow-right-arrow-minecraft"
                                 IconLeft={ChevronRightIcon}
                                 size="smSquare"
                                 onClick={() =>

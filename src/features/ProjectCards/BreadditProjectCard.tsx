@@ -4,6 +4,9 @@
 import React, { useEffect, useState } from "react";
 import Button from "~/components/Button";
 
+// components
+import Image from "next/image";
+
 // ui
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 
@@ -12,6 +15,9 @@ import {
     ComputerDesktopIcon,
     CodeBracketIcon,
 } from "@heroicons/react/24/solid";
+import BreadditImg1 from "~/assets/images/Breaddit-Image-1.png";
+import BreadditImg2 from "~/assets/images/Breaddit-Image-2.png";
+import BreadditImg3 from "~/assets/images/Breaddit-Image-3.png";
 
 // animations
 import { useInView } from "react-intersection-observer";
@@ -22,7 +28,8 @@ import { motion, useAnimation } from "framer-motion";
 const data = [
     {
         // image: "bg-path-finding-visualizer-1",
-        image: "bg-breaddit-1",
+        id: 1,
+        image: BreadditImg1,
         data: [
             "MFA, JWT, Protected Routes, Encryption",
             "Rest API, Protected Endpoints",
@@ -31,7 +38,8 @@ const data = [
         ],
     },
     {
-        image: "bg-breaddit-2",
+        id: 2,
+        image: BreadditImg2,
         data: [
             "Create Threads",
             "Create, Edit, Delete Posts & Comments",
@@ -40,7 +48,8 @@ const data = [
         ],
     },
     {
-        image: "bg-breaddit-3",
+        id: 3,
+        image: BreadditImg3,
         data: [
             "Edit Profile Picture & Details",
             "Follow Users",
@@ -143,16 +152,28 @@ const BreadditProjectCard = () => {
             >
                 <div className="h-[250px] overflow-hidden lg:h-[400px] lg:w-[550px]">
                     <div
-                        className=" flex h-full w-full transition-transform duration-1000 ease-out "
+                        className="flex h-full w-full transition-transform duration-1000 ease-out"
                         style={{
                             transform: `translateX(-${currentSlide * 100}%)`,
                         }}
                     >
-                        {data.map((slide) => {
+                        {/* {data.map((slide) => {
                             return (
                                 <div
                                     key={slide.image}
                                     className={`${slide.image} h-full w-full flex-shrink-0 bg-cover bg-center`}
+                                />
+                            );
+                        })} */}
+                        {data.map((slide) => {
+                            return (
+                                <Image
+                                    key={slide.id}
+                                    src={slide.image}
+                                    alt={`breaddit image ${slide.id}`}
+                                    height={250}
+                                    width={550}
+                                    className="pointer-events-none flex-shrink-0 object-cover object-center"
                                 />
                             );
                         })}
@@ -168,8 +189,8 @@ const BreadditProjectCard = () => {
                         </span>
                     </div>
 
-                    <ul className="flex flex-col gap-3 sm:flex-row">
-                        <div className="flex gap-3">
+                    <div className="flex flex-col gap-3 sm:flex-row">
+                        <ul className="flex gap-3">
                             <li className="rounded-md border border-slate-600 px-1.5 py-1 text-sm shadow-sm dark:border-slate-500">
                                 React
                             </li>
@@ -179,8 +200,8 @@ const BreadditProjectCard = () => {
                             <li className="rounded-md border border-slate-600 px-1.5 py-1 text-sm shadow-sm dark:border-slate-500">
                                 MySQL
                             </li>
-                        </div>
-                        <div className="flex gap-3">
+                        </ul>
+                        <ul className="flex gap-3">
                             <li className="rounded-md border border-slate-600 px-1.5 py-1 text-sm shadow-sm dark:border-slate-500">
                                 Sequelize
                             </li>
@@ -190,8 +211,8 @@ const BreadditProjectCard = () => {
                             <li className="rounded-md border border-slate-600 px-1.5 py-1 text-sm shadow-sm dark:border-slate-500">
                                 SASS
                             </li>
-                        </div>
-                    </ul>
+                        </ul>
+                    </div>
 
                     <ul className="ml-5 list-disc text-slate-700 dark:text-slate-300">
                         {data[currentSlide]?.data.map((bulletPoint, index) => {
@@ -234,7 +255,7 @@ const BreadditProjectCard = () => {
                         <div className="flex w-fit items-center justify-center gap-3 rounded-full  px-1.5 py-1 ">
                             <Button
                                 ariaLabel="go back one image"
-                                id="left-arrow"
+                                id="slideshow-left-arrow-breaddit"
                                 IconLeft={ChevronLeftIcon}
                                 size="smSquare"
                                 onClick={() =>
@@ -245,13 +266,13 @@ const BreadditProjectCard = () => {
                                 ring-blue-600 dark:ring-blue-500"
                             />
 
-                            {data.map((_, index) => {
+                            {data.map((item, index) => {
                                 return (
                                     <Button
-                                        key={`${index}-slide-bullet-breaddit`}
+                                        key={`${item.id}-slide-bullet-breaddit`}
                                         size="none"
-                                        ariaLabel={`go to slide ${index}`}
-                                        id="skip-to-slide"
+                                        ariaLabel={`go to slide ${item.id}`}
+                                        id={`skip-to-slide-${item.id}-breaddit`}
                                         onClick={() => updateSlideNumber(index)}
                                         className={`h-2.5 w-2.5 rounded-full ${
                                             index === currentSlide
@@ -266,7 +287,7 @@ const BreadditProjectCard = () => {
 
                             <Button
                                 ariaLabel="go back one image"
-                                id="left-arrow"
+                                id="slideshow-right-arrow-breaddit"
                                 IconLeft={ChevronRightIcon}
                                 size="smSquare"
                                 onClick={() =>

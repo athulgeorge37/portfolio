@@ -78,10 +78,10 @@ const NavBar = () => {
                         </li>
                         <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                             <Button
-                                ariaLabel="projects"
+                                ariaLabel="work"
                                 className="gap-2 rounded-md py-0.5 px-1 focus-visible:ring-2
                                  focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
-                                id="projects"
+                                id="work"
                                 onClick={() => navigateToId("work-experience")}
                                 ringClassNames="ring-offset-0"
                                 text="Work"
@@ -92,10 +92,10 @@ const NavBar = () => {
                         </li>
                         <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                             <Button
-                                ariaLabel="projects"
+                                ariaLabel="contact"
                                 className="gap-2 rounded-md py-0.5 px-1 focus-visible:ring-2
                                  focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
-                                id="projects"
+                                id="contact"
                                 onClick={() => navigateToId("contact")}
                                 ringClassNames="ring-offset-0"
                                 text="Contact"
@@ -148,7 +148,7 @@ const NavBar = () => {
             <div className="flex justify-between p-4">
                 <Button
                     ariaLabel="navbar menu"
-                    id="navbar"
+                    id="navbar-menu"
                     IconLeft={Bars3Icon}
                     onClick={() => setNavbarIsOpen(true)}
                     className={(isPressed) =>
@@ -230,7 +230,7 @@ const NavBar = () => {
 
                                     <Button
                                         ariaLabel="navbar menu"
-                                        id="navbar"
+                                        id="navbar-menu"
                                         IconLeft={XMarkIcon}
                                         onClick={() => setNavbarIsOpen(false)}
                                         className={(isPressed) =>
@@ -267,8 +267,8 @@ const NavBar = () => {
                                     </li>
                                     <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                                         <Button
-                                            ariaLabel="projects"
-                                            id="projects"
+                                            ariaLabel="work"
+                                            id="work"
                                             onClick={() => {
                                                 setNavbarIsOpen(false);
                                                 setTimeout(() => {
@@ -288,8 +288,8 @@ const NavBar = () => {
                                     </li>
                                     <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                                         <Button
-                                            ariaLabel="projects"
-                                            id="projects"
+                                            ariaLabel="contact"
+                                            id="contact"
                                             onClick={() => {
                                                 setNavbarIsOpen(false);
                                                 setTimeout(() => {

@@ -7,11 +7,17 @@ import Button from "~/components/Button";
 // ui
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 
+// components
+import Image from "next/image";
+
 // assets
 import {
     ComputerDesktopIcon,
     CodeBracketIcon,
 } from "@heroicons/react/24/solid";
+import PathFindingVisualizerImg1 from "~/assets/images/PathFindingVisualizer-Image-1.png";
+import PathFindingVisualizerImg2 from "~/assets/images/PathFindingVisualizer-Image-2.png";
+import PathFindingVisualizerImg3 from "~/assets/images/PathFindingVisualizer-Image-3.png";
 
 // animations
 import { useInView } from "react-intersection-observer";
@@ -21,7 +27,8 @@ import { motion, useAnimation } from "framer-motion";
 
 const data = [
     {
-        image: "bg-path-finding-visualizer-1",
+        id: 1,
+        image: PathFindingVisualizerImg1,
         data: [
             "Animate Algorithms",
             "Draw Walls + Weights",
@@ -30,7 +37,8 @@ const data = [
         ],
     },
     {
-        image: "bg-path-finding-visualizer-3",
+        id: 2,
+        image: PathFindingVisualizerImg3,
         data: [
             "A* Algorithm",
             "Dijkstra's Algorithm",
@@ -39,7 +47,8 @@ const data = [
         ],
     },
     {
-        image: "bg-path-finding-visualizer-2",
+        id: 3,
+        image: PathFindingVisualizerImg2,
         data: [
             "Recursive Division",
             "Horizontal Skewed Recursive Division",
@@ -149,9 +158,13 @@ const PathFindingVisualizerProjectCard = () => {
                     >
                         {data.map((slide) => {
                             return (
-                                <div
-                                    key={slide.image}
-                                    className={`${slide.image} h-full w-full flex-shrink-0 bg-cover bg-center`}
+                                <Image
+                                    key={slide.id}
+                                    src={slide.image}
+                                    alt={`path finding visualizer image ${slide.id}`}
+                                    height={250}
+                                    width={550}
+                                    className="pointer-events-none flex-shrink-0 object-cover object-center"
                                 />
                             );
                         })}
@@ -223,7 +236,7 @@ const PathFindingVisualizerProjectCard = () => {
                         <div className="flex w-fit items-center justify-center gap-3 rounded-full px-1.5 py-1 ">
                             <Button
                                 ariaLabel="go back one image"
-                                id="left-arrow"
+                                id="slideshow-left-arrow-pathfindingvisualizer"
                                 IconLeft={ChevronLeftIcon}
                                 size="smSquare"
                                 onClick={() =>
@@ -234,13 +247,13 @@ const PathFindingVisualizerProjectCard = () => {
                                 ring-blue-600 dark:ring-blue-500"
                             />
 
-                            {data.map((_, index) => {
+                            {data.map((item, index) => {
                                 return (
                                     <Button
-                                        key={`${index}-slide-bullet-breaddit`}
+                                        key={`${item.id}-slide-bullet-pathfindingvisualizer`}
                                         size="none"
-                                        ariaLabel={`go to slide ${index}`}
-                                        id="skip-to-slide"
+                                        ariaLabel={`go to slide ${item.id}`}
+                                        id={`skip-to-slide-${item.id}-pathfindingvisualizer`}
                                         onClick={() => updateSlideNumber(index)}
                                         className={`h-2.5 w-2.5 rounded-full ${
                                             index === currentSlide
@@ -255,7 +268,7 @@ const PathFindingVisualizerProjectCard = () => {
 
                             <Button
                                 ariaLabel="go back one image"
-                                id="left-arrow"
+                                id="slideshow-right-arrow-pathfindingvisualizer"
                                 IconLeft={ChevronRightIcon}
                                 size="smSquare"
                                 onClick={() =>
