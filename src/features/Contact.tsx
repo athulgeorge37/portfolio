@@ -317,7 +317,7 @@ const Contact = () => {
                         type="submit"
                         disabled={isSubmitting}
                         IconRight={PaperAirplaneIcon}
-                        className="w-fit bg-green-600 text-slate-200 dark:bg-emerald-500"
+                        className="w-fit bg-green-600 text-white dark:bg-emerald-500"
                         ringClassNames="ring-green-600 dark:ring-emerald-500 
                         ring-offset-slate-400 dark:ring-offset-slate-700"
                     />

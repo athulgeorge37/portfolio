@@ -99,32 +99,46 @@ const AnimatedHeading = () => {
                             loop: true,
                             delay: 100,
                             strings: [
-                                "a Web Developer",
-                                "Front End",
-                                "Back End",
+                                "A Web Developer",
+                                "I do Front End",
+                                "And Back End",
+                                "Bringing your ideas",
+                                "to life.",
+                                "Shoot me an email",
+                                "and lets talk.",
+                                "😆",
                             ],
                         }}
                     />
                 </motion.span>
-                <Button
-                    ariaLabel="scroll to projects"
-                    id="scroll-to-projects"
-                    text="Projects"
-                    IconRight={ArrowDownIcon}
-                    size="md"
-                    className={(isPressed) =>
-                        `h-fit w-fit bg-emerald-500 hover:brightness-110 ${
-                            isPressed ? "bg-emerald-600" : "bg-emerald-500"
-                        }`
-                    }
-                    ringClassNames="ring-emerald-500
-                    ring-offset-slate-400 dark:ring-offset-slate-700"
-                    onClick={() => {
-                        document
-                            .getElementById("projects")
-                            ?.scrollIntoView({ behavior: "smooth" });
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                        delay: 1.5,
+                        duration: 1,
                     }}
-                />
+                >
+                    <Button
+                        ariaLabel="scroll to projects"
+                        id="scroll-to-projects"
+                        text="Projects"
+                        IconRight={ArrowDownIcon}
+                        size="md"
+                        className={(isPressed) =>
+                            `h-fit w-fit bg-emerald-500 text-slate-800 hover:brightness-110 dark:text-white ${
+                                isPressed ? "bg-emerald-600" : "bg-emerald-500"
+                            }`
+                        }
+                        ringClassNames="ring-emerald-500
+                    ring-offset-slate-400 dark:ring-offset-slate-700"
+                        onClick={() => {
+                            document
+                                .getElementById("projects")
+                                ?.scrollIntoView({ behavior: "smooth" });
+                        }}
+                    />
+                </motion.div>
             </div>
         </h1>
     );

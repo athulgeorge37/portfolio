@@ -19,9 +19,9 @@ import BreadditImg1 from "~/assets/images/Breaddit-Image-1.png";
 import BreadditImg2 from "~/assets/images/Breaddit-Image-2.png";
 import BreadditImg3 from "~/assets/images/Breaddit-Image-3.png";
 
-// animations
-import { useInView } from "react-intersection-observer";
-import { motion, useAnimation } from "framer-motion";
+// // animations
+// import { useInView } from "react-intersection-observer";
+// import { motion, useAnimation } from "framer-motion";
 
 // interface BreadditProjectCardProps {}
 
@@ -62,11 +62,11 @@ const data = [
 const BreadditProjectCard = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
 
-    const { ref, inView } = useInView({
-        threshold: 0.5,
-    });
-    const cardAnimation = useAnimation();
-    const numberAnimation = useAnimation();
+    // const { ref, inView } = useInView({
+    //     threshold: 0.5,
+    // });
+    // const cardAnimation = useAnimation();
+    // const numberAnimation = useAnimation();
 
     const updateSlideNumber = (newSlideNumber: number) => {
         if (newSlideNumber < 0) {
@@ -94,61 +94,62 @@ const BreadditProjectCard = () => {
         return () => clearInterval(slideOverInterval);
     }, []);
 
-    useEffect(() => {
-        const executeAnimations = async () => {
-            if (inView) {
-                await cardAnimation.start({
-                    x: 0,
-                    opacity: 1,
-                    transition: {
-                        duration: 1.5,
-                        type: "spring",
-                        bounce: 0.2,
-                    },
-                });
+    // useEffect(() => {
+    //     const executeAnimations = async () => {
+    //         if (inView) {
+    //             await cardAnimation.start({
+    //                 x: 0,
+    //                 // opacity: 1,
+    //                 transition: {
+    //                     duration: 1,
+    //                     type: "spring",
+    //                     bounce: 0.2,
+    //                 },
+    //             });
 
-                await numberAnimation.start({
-                    opacity: 1,
-                    transition: {
-                        duration: 1,
-                    },
-                });
-            } else {
-                await cardAnimation.start({
-                    opacity: 0,
-                    x: "-100%",
-                    transition: {
-                        duration: 2,
-                    },
-                });
+    //             // await numberAnimation.start({
+    //             //     // opacity: 1,
+    //             //     transition: {
+    //             //         duration: 0.5,
+    //             //     },
+    //             // });
+    //         } else {
+    //             await cardAnimation.start({
+    //                 // opacity: 0,
+    //                 x: "-100vw",
+    //                 transition: {
+    //                     duration: 2,
+    //                 },
+    //             });
 
-                await numberAnimation.start({
-                    opacity: 0,
-                    transition: {
-                        duration: 1,
-                    },
-                });
-            }
-        };
-        void executeAnimations();
-    }, [cardAnimation, inView, numberAnimation]);
+    //             // await numberAnimation.start({
+    //             //     // opacity: 0,
+    //             //     transition: {
+    //             //         duration: 0.5,
+    //             //     },
+    //             // });
+    //         }
+    //     };
+    //     void executeAnimations();
+    // }, [cardAnimation, inView, numberAnimation]);
 
     return (
         <div
-            ref={ref}
+            // ref={ref}
             className="relative mx-auto w-full "
         >
-            <motion.span
-                animate={cardAnimation}
-                className="absolute -top-24 -right-4 text-9xl font-extrabold text-slate-400 dark:text-slate-500 md:-top-20 md:-right-24"
+            <span
+                // animate={cardAnimation}
+                className="absolute -top-24 -right-4 text-9xl font-extrabold text-slate-400 
+                dark:text-slate-500 md:-top-20 md:-right-24"
             >
                 01
-            </motion.span>
+            </span>
 
-            <motion.div
-                animate={cardAnimation}
-                className="relative mx-auto flex w-full flex-col justify-between overflow-hidden 
-                    rounded-lg bg-slate-300 shadow-xl dark:bg-slate-600 lg:max-w-5xl lg:flex-row"
+            <div
+                // animate={cardAnimation}
+                className="relative mx-auto flex w-fit flex-col justify-between overflow-hidden 
+                rounded-lg bg-slate-300 shadow-xl dark:bg-slate-600 lg:w-full lg:max-w-5xl lg:flex-row"
             >
                 <div className="h-[250px] overflow-hidden lg:h-[400px] lg:w-[550px]">
                     <div
@@ -173,7 +174,7 @@ const BreadditProjectCard = () => {
                                     alt={`breaddit image ${slide.id}`}
                                     height={250}
                                     width={550}
-                                    className="pointer-events-none flex-shrink-0 object-cover object-center"
+                                    className="pointer-events-none w-full flex-shrink-0 object-cover object-center"
                                 />
                             );
                         })}
@@ -319,7 +320,7 @@ const BreadditProjectCard = () => {
                         </a>
                     </div>
                 </div>
-            </motion.div>
+            </div>
         </div>
     );
 };

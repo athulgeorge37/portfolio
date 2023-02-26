@@ -10,12 +10,15 @@ import PathFindingVisualizerProjectCard from "~/features/ProjectCards/PathFindin
 import MinecraftVillageGeneratorProjectCard from "~/features/ProjectCards/MinecraftVillageGeneratorProjectCard";
 import Contact from "~/features/Contact";
 
+import AllProjectCards from "~/features/ProjectCards/AllProjectCards";
+
+// import WorkExperience from "~/features/WorkExperience";
+
 // helper
 // import ResponsiveHelper from "~/helper/ResponsiveHelper";
 
 // assets
 import StudyRoomImg from "~/assets/images/studyRoom.png";
-import WorkExperience from "~/features/WorkExperience";
 
 // animations
 import { motion, useAnimation } from "framer-motion";
@@ -24,32 +27,63 @@ import { useInView } from "react-intersection-observer";
 // hooks
 import { useEffect } from "react";
 
+const animationInView = {
+    y: 0,
+    transition: {
+        duration: 1,
+        type: "spring",
+        bounce: 0.2,
+    },
+};
+
+const animationOutOfView = {
+    y: "-100%",
+    transition: {
+        duration: 1,
+    },
+};
+
 const Home: NextPage = () => {
-    const { ref, inView } = useInView();
-    const animation = useAnimation();
+    const { ref: projectRef, inView: projectInView } = useInView();
+    const { ref: contactRef, inView: contactInView } = useInView();
+    // const { ref: WorkExperienceRef, inView: WorkExperienceInView } =
+    //     useInView();
+    const projectAnimation = useAnimation();
+    const contactAnimation = useAnimation();
+    // const WorkExperienceAnimation = useAnimation();
 
     useEffect(() => {
-        const animateImage = async () => {
-            if (inView) {
-                await animation.start({
-                    x: 0,
-                    transition: {
-                        duration: 1,
-                        type: "spring",
-                        bounce: 0.2,
-                    },
-                });
+        const animateHeading = async () => {
+            if (projectInView) {
+                await projectAnimation.start(animationInView);
             } else {
-                await animation.start({
-                    x: "-100%",
-                    transition: {
-                        duration: 1,
-                    },
-                });
+                await projectAnimation.start(animationOutOfView);
             }
         };
-        void animateImage();
-    }, [animation, inView]);
+        void animateHeading();
+    }, [projectAnimation, projectInView]);
+
+    useEffect(() => {
+        const animateHeading = async () => {
+            if (contactInView) {
+                await contactAnimation.start(animationInView);
+            } else {
+                await contactAnimation.start(animationOutOfView);
+            }
+        };
+        void animateHeading();
+    }, [contactAnimation, contactInView]);
+
+    // useEffect(() => {
+    //     const animateHeading = async () => {
+    //         if (WorkExperienceInView) {
+    //             await WorkExperienceAnimation.start(animationInView);
+    //         } else {
+    //             await WorkExperienceAnimation.start(animationOutOfView);
+    //         }
+    //     };
+    //     void animateHeading();
+    // }, [WorkExperienceAnimation, WorkExperienceInView]);
 
     return (
         <>
@@ -97,32 +131,41 @@ const Home: NextPage = () => {
 
                 <div
                     id="projects"
-                    className="mx-auto my-20 flex w-full max-w-5xl flex-col gap-20 px-2 pt-20"
-                    ref={ref}
+                    className="mx-auto my-20 flex w-full max-w-5xl flex-col gap-20 pt-20 sm:px-2"
+                    ref={projectRef}
                 >
                     <div className="mx-auto flex w-fit flex-col gap-20">
-                        <motion.h2
-                            animate={animation}
-                            className="text-6xl font-bold tracking-wide"
-                        >
-                            Projects
-                        </motion.h2>
+                        <div className="overflow-hidden pb-4">
+                            <motion.h2
+                                animate={projectAnimation}
+                                className="text-6xl font-bold tracking-wide"
+                            >
+                                Projects
+                            </motion.h2>
+                        </div>
                         <div className="flex flex-col gap-32">
-                            <BreadditProjectCard />
-                            <PathFindingVisualizerProjectCard />
+                            <AllProjectCards />
+                            {/* <BreadditProjectCard />
+                            <PathFindingVisualizerProjectCard /> */}
                             <MinecraftVillageGeneratorProjectCard />
                         </div>
                     </div>
                 </div>
 
-                <div
+                {/* <div
                     id="work-experience"
                     className="mx-auto mb-16 flex w-full max-w-5xl flex-col gap-10 px-2 pt-20"
+                    ref={WorkExperienceRef}
                 >
                     <div className="flex flex-col gap-10">
-                        <h2 className="w-full max-w-lg text-6xl font-bold tracking-wide lg:max-w-none">
-                            Work Experience
-                        </h2>
+                        <div className="overflow-hidden pb-4">
+                            <motion.h2
+                                animate={WorkExperienceAnimation}
+                                className="w-full max-w-lg text-6xl font-bold tracking-wide lg:max-w-none"
+                            >
+                                Work Experience
+                            </motion.h2>
+                        </div>
                         <div className="flex flex-col gap-5">
                             <WorkExperience
                                 buttonText="Programming Teaching Assistant @ RMIT"
@@ -145,16 +188,21 @@ const Home: NextPage = () => {
                             />
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div
                     id="contact"
                     className="mx-auto mb-32 flex w-full max-w-5xl flex-col gap-10 px-2 pt-20"
+                    ref={contactRef}
                 >
                     <div className="flex flex-col items-center gap-10">
-                        <h2 className="w-full max-w-lg text-6xl font-bold tracking-wide lg:max-w-none">
+                        <motion.h2
+                            animate={contactAnimation}
+                            className="w-full max-w-lg text-6xl font-bold tracking-wide lg:max-w-none"
+                        >
                             Contact Me
-                        </h2>
+                        </motion.h2>
+
                         <Contact />
                     </div>
                 </div>

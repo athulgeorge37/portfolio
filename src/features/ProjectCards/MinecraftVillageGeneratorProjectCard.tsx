@@ -95,33 +95,33 @@ const MinecraftVillageGeneratorProjectCard = () => {
             if (inView) {
                 await cardAnimation.start({
                     x: 0,
-                    opacity: 1,
+                    // opacity: 1,
                     transition: {
-                        duration: 1.5,
+                        duration: 1,
                         type: "spring",
                         bounce: 0.2,
                     },
                 });
 
                 await numberAnimation.start({
-                    opacity: 1,
+                    // opacity: 1,
                     transition: {
-                        duration: 1,
+                        duration: 0.5,
                     },
                 });
             } else {
                 await cardAnimation.start({
-                    opacity: 0,
-                    x: "-100%",
+                    // opacity: 0,
+                    x: "-100vw",
                     transition: {
                         duration: 2,
                     },
                 });
 
                 await numberAnimation.start({
-                    opacity: 0,
+                    // opacity: 0,
                     transition: {
-                        duration: 1,
+                        duration: 0.5,
                     },
                 });
             }
@@ -162,7 +162,7 @@ const MinecraftVillageGeneratorProjectCard = () => {
                                     src={slide.image}
                                     height={250}
                                     width={550}
-                                    className="pointer-events-none flex-shrink-0 object-cover object-center"
+                                    className="pointer-events-none w-full flex-shrink-0 object-cover object-center"
                                 />
                             );
                         })}

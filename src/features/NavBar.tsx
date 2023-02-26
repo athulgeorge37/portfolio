@@ -11,7 +11,7 @@ import {
     Bars3Icon,
     DocumentTextIcon,
     PresentationChartLineIcon,
-    BriefcaseIcon,
+    //     BriefcaseIcon,
     PaperAirplaneIcon,
     XMarkIcon,
 } from "@heroicons/react/24/solid";
@@ -43,7 +43,22 @@ const NavBar = () => {
             id="NavBar"
             className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between border-b border-slate-600 bg-slate-400/50 backdrop-blur dark:bg-slate-700/40"
         >
-            <div className="w-40"></div>
+            <div className="w-40 p-4">
+                <Button
+                    ariaLabel="logo"
+                    id="logo"
+                    onClick={() => {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: "smooth",
+                        });
+                    }}
+                    text="AG"
+                    size="none"
+                    className="rounded-md py-0.5 px-1 lg:hidden"
+                    ringClassNames="focus-visible:ring-blue-600 ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 dark:focus-visible:ring-blue-500 outline-none"
+                />
+            </div>
             <div className="relative w-full max-w-5xl">
                 <div className="flex items-center justify-between p-4">
                     <div>
@@ -58,46 +73,44 @@ const NavBar = () => {
                             }}
                             text="AG"
                             size="none"
-                            className="hidden rounded-md py-0.5 px-1 lg:block"
-                            ringClassNames="focus-visible:ring-blue-600 ring-offset-0 dark:focus-visible:ring-blue-500 outline-none"
+                            className="hidden rounded-md px-1 lg:block"
+                            ringClassNames="focus-visible:ring-blue-600 ring-offset-0 dark:focus-visible:ring-blue-500 outline-none ring-offset-slate-400 dark:ring-offset-slate-700"
                         />
                     </div>
                     <ul className="hidden gap-5 font-semibold sm:items-center lg:flex">
                         <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                             <Button
                                 ariaLabel="projects"
-                                className="gap-2 rounded-md py-0.5 px-1 focus-visible:ring-2 focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500 "
+                                className="gap-2 rounded-md px-1"
                                 id="projects"
                                 onClick={() => navigateToId("projects")}
-                                ringClassNames="ring-offset-0"
+                                ringClassNames="ring-offset-0 ring-2 ring-blue-600 dark:ring-blue-500 ring-offset-slate-400 dark:ring-offset-slate-700"
                                 text="Projects"
                                 size="none"
                                 IconLeft={PresentationChartLineIcon}
                                 IconLeftClassName="h-5 w-5"
                             />
                         </li>
-                        <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
+                        {/* <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                             <Button
                                 ariaLabel="work"
-                                className="gap-2 rounded-md py-0.5 px-1 focus-visible:ring-2
-                                 focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
+                                className="gap-2 rounded-md px-1"
                                 id="work"
                                 onClick={() => navigateToId("work-experience")}
-                                ringClassNames="ring-offset-0"
+                                ringClassNames="ring-offset-0 ring-2 ring-blue-600 dark:ring-blue-500 ring-offset-slate-400 dark:ring-offset-slate-700"
                                 text="Work"
                                 size="none"
                                 IconLeft={BriefcaseIcon}
                                 IconLeftClassName="h-5 w-5"
                             />
-                        </li>
+                        </li> */}
                         <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                             <Button
                                 ariaLabel="contact"
-                                className="gap-2 rounded-md py-0.5 px-1 focus-visible:ring-2
-                                 focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
+                                className="gap-2 rounded-md px-1"
                                 id="contact"
                                 onClick={() => navigateToId("contact")}
-                                ringClassNames="ring-offset-0"
+                                ringClassNames="ring-offset-0 ring-2 ring-blue-600 dark:ring-blue-500 ring-offset-slate-400 dark:ring-offset-slate-700"
                                 text="Contact"
                                 size="none"
                                 IconLeft={PaperAirplaneIcon}
@@ -249,7 +262,7 @@ const NavBar = () => {
                                     <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                                         <Button
                                             ariaLabel="projects"
-                                            className="gap-2 rounded-md py-0.5 px-1"
+                                            className="gap-2 rounded-sm px-0.5"
                                             id="projects"
                                             onClick={() => {
                                                 setNavbarIsOpen(false);
@@ -265,7 +278,7 @@ const NavBar = () => {
                                             IconLeftClassName="h-5 w-5"
                                         />
                                     </li>
-                                    <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
+                                    {/* <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                                         <Button
                                             ariaLabel="work"
                                             id="work"
@@ -277,7 +290,7 @@ const NavBar = () => {
                                                     );
                                                 }, 500);
                                             }}
-                                            className="gap-2 rounded-md py-0.5 px-1"
+                                            className="gap-2 rounded-sm px-0.5"
                                             ringClassNames="ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 ring-blue-600 ring-2
                                             dark:ring-blue-500"
                                             text="Work"
@@ -285,7 +298,7 @@ const NavBar = () => {
                                             IconLeft={BriefcaseIcon}
                                             IconLeftClassName="h-5 w-5"
                                         />
-                                    </li>
+                                    </li> */}
                                     <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                                         <Button
                                             ariaLabel="contact"
@@ -296,7 +309,7 @@ const NavBar = () => {
                                                     navigateToId("contact");
                                                 }, 500);
                                             }}
-                                            className="gap-2 rounded-md py-0.5 px-1"
+                                            className="gap-2 rounded-sm px-0.5"
                                             ringClassNames="ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 ring-blue-600 ring-2
                                              dark:ring-blue-500"
                                             text="Contact"

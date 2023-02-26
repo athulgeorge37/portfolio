@@ -3,6 +3,7 @@
 // hooks
 import React, { useEffect, useState } from "react";
 import Button from "~/components/Button";
+import type { StaticImageData } from "next/image";
 
 // ui
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
@@ -15,56 +16,37 @@ import {
     ComputerDesktopIcon,
     CodeBracketIcon,
 } from "@heroicons/react/24/solid";
-import PathFindingVisualizerImg1 from "~/assets/images/PathFindingVisualizer-Image-1.png";
-import PathFindingVisualizerImg2 from "~/assets/images/PathFindingVisualizer-Image-2.png";
-import PathFindingVisualizerImg3 from "~/assets/images/PathFindingVisualizer-Image-3.png";
 
-// animations
-// import { useInView } from "react-intersection-observer";
-// import { motion, useAnimation } from "framer-motion";
+interface ProjectCardProps {
+    data: {
+        id: number;
+        image: StaticImageData;
+        bulletPoints: string[];
+    }[];
+    cardNumber: string;
+    title: string;
+    description: string;
+    technologies: string[];
+    codeLink?: string;
+    demoLink?: string;
+    videoDemoLink?: string;
+    id: string;
+    extraInformation?: React.ReactNode;
+}
 
-// interface PathFindingVisualizerProjectCardProps {}
-
-const data = [
-    {
-        id: 1,
-        image: PathFindingVisualizerImg1,
-        data: [
-            "Animate Algorithms",
-            "Draw Walls + Weights",
-            "Clear Grid Cells",
-            "Update Grid Size",
-        ],
-    },
-    {
-        id: 2,
-        image: PathFindingVisualizerImg3,
-        data: [
-            "A* Algorithm",
-            "Dijkstra's Algorithm",
-            "Breadth First Search",
-            "Greedy Best First Search",
-        ],
-    },
-    {
-        id: 3,
-        image: PathFindingVisualizerImg2,
-        data: [
-            "Recursive Division",
-            "Horizontal Skewed Recursive Division",
-            "Vertical Skewed Recursive Division",
-            "Scattered Walls + Weights",
-        ],
-    },
-];
-
-const PathFindingVisualizerProjectCard = () => {
+const ProjectCard = ({
+    id,
+    cardNumber,
+    title,
+    description,
+    technologies,
+    data,
+    codeLink,
+    demoLink,
+    videoDemoLink,
+    extraInformation,
+}: ProjectCardProps) => {
     const [currentSlide, setCurrentSlide] = useState(0);
-    // const { ref, inView } = useInView({
-    //     threshold: 0.5,
-    // });
-    // const cardAnimation = useAnimation();
-    // const numberAnimation = useAnimation();
 
     const updateSlideNumber = (newSlideNumber: number) => {
         if (newSlideNumber < 0) {
@@ -90,51 +72,12 @@ const PathFindingVisualizerProjectCard = () => {
 
         // removing interval on unmount
         return () => clearInterval(slideOverInterval);
-    }, []);
-
-    // useEffect(() => {
-    //     const executeAnimations = async () => {
-    //         if (inView) {
-    //             await cardAnimation.start({
-    //                 x: 0,
-    //                 // opacity: 1,
-    //                 transition: {
-    //                     duration: 1,
-    //                     type: "spring",
-    //                     bounce: 0.2,
-    //                 },
-    //             });
-
-    //             await numberAnimation.start({
-    //                 // opacity: 1,
-    //                 transition: {
-    //                     duration: 0.5,
-    //                 },
-    //             });
-    //         } else {
-    //             await cardAnimation.start({
-    //                 // opacity: 0,
-    //                 x: "-100vw",
-    //                 transition: {
-    //                     duration: 2,
-    //                 },
-    //             });
-
-    //             await numberAnimation.start({
-    //                 // opacity: 0,
-    //                 transition: {
-    //                     duration: 0.5,
-    //                 },
-    //             });
-    //         }
-    //     };
-
-    //     void executeAnimations();
-    // }, [cardAnimation, inView, numberAnimation]);
+    }, [data.length]);
 
     return (
         <div
             // ref={ref}
+            id={`${id}-project-card`}
             className="relative mx-auto w-fit"
         >
             <span
@@ -142,14 +85,16 @@ const PathFindingVisualizerProjectCard = () => {
                 className="absolute -top-24 -right-4 text-9xl font-extrabold text-slate-400 
                 dark:text-slate-500 md:-top-20 md:-right-24"
             >
-                02
+                {cardNumber}
             </span>
 
+            {/* left col */}
             <div
                 //     animate={cardAnimation}
                 className="relative mx-auto flex w-fit flex-col justify-between overflow-hidden 
                     rounded-lg bg-slate-300 shadow-xl dark:bg-slate-600 lg:w-full lg:max-w-5xl lg:flex-row"
             >
+                {/* image slideshow */}
                 <div className="h-[250px] overflow-hidden lg:h-[400px] lg:w-[550px]">
                     <div
                         className=" flex h-full w-full transition-transform duration-1000 ease-out "
@@ -172,68 +117,115 @@ const PathFindingVisualizerProjectCard = () => {
                     </div>
                 </div>
 
+                {/* right col */}
                 <div className="flex flex-col justify-center gap-5 px-5 py-5 sm:px-10">
+                    {/* title and description */}
                     <div className="flex flex-col  gap-2">
-                        <h3 className="text-4xl font-semibold">
-                            Path Finding Visualizer
-                        </h3>
+                        <h3 className="text-4xl font-semibold">{title}</h3>
 
                         <span className="text-slate-600 dark:text-slate-400">
-                            Interactive tool for graph traversal & maze
-                            generation algorithms
+                            {description}
                         </span>
                     </div>
 
+                    {/* technologies */}
                     <ul className="flex gap-3">
-                        <li className="rounded-md border border-slate-600 px-1.5 py-1 text-sm shadow-sm dark:border-slate-500">
-                            React
-                        </li>
-                        <li className="rounded-md border border-slate-600 px-1.5 py-1 text-sm shadow-sm dark:border-slate-500">
-                            Javascript
-                        </li>
-                        <li className="rounded-md border border-slate-600 px-1.5 py-1 text-sm shadow-sm dark:border-slate-500">
-                            CSS
-                        </li>
-                    </ul>
-
-                    <ul className="ml-5 list-disc text-slate-700 dark:text-slate-300">
-                        {data[currentSlide]?.data.map((bulletPoint, index) => {
-                            return <li key={index}>{bulletPoint}</li>;
+                        {technologies.map((item, index) => {
+                            return (
+                                <li
+                                    key={index}
+                                    className="rounded-md border border-slate-600 px-1.5 py-1 text-sm shadow-sm dark:border-slate-500"
+                                >
+                                    {item}
+                                </li>
+                            );
                         })}
                     </ul>
 
+                    {/* bullet points */}
+                    <div className="flex w-[420px] overflow-hidden">
+                        {data.map((item) => {
+                            return (
+                                <ul
+                                    key={item.id}
+                                    className="w-full flex-shrink-0 list-disc text-slate-700 
+                                    transition-transform duration-1000 ease-out dark:text-slate-300"
+                                    style={{
+                                        transform: `translateX(-${
+                                            currentSlide * 100
+                                        }%)`,
+                                    }}
+                                >
+                                    {item.bulletPoints.map((bullet, index) => {
+                                        return (
+                                            <li
+                                                key={index}
+                                                className="ml-5"
+                                            >
+                                                {bullet}
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            );
+                        })}
+                    </div>
+
                     <div className="flex  justify-between gap-3  sm:items-center">
+                        {/* links */}
                         <div className="flex gap-3">
-                            <a
-                                href="https://github.com/athulgeorge37/Path_Finding_Visualizer"
-                                target="_blank"
-                                aria-label="pathfinding visualizer repository"
-                                className="flex cursor-pointer items-center justify-between gap-2 
+                            {codeLink && (
+                                <a
+                                    href={codeLink}
+                                    target="_blank"
+                                    aria-label="pathfinding visualizer repository"
+                                    className="flex cursor-pointer items-center justify-between gap-2 
                                 rounded-md bg-blue-600 px-2 py-1 font-semibold text-slate-300 outline-none focus-visible:ring-2 
                                 focus-visible:ring-blue-600 focus-visible:ring-offset-2 
                                 focus-visible:ring-offset-slate-300 dark:bg-blue-500 
                                 dark:focus-visible:ring-blue-500 dark:focus-visible:ring-offset-slate-600"
-                                rel="noreferrer"
-                            >
-                                <CodeBracketIcon className="h-5 w-5" />
-                                Code
-                            </a>
-                            <a
-                                href="https://athulgeorge37.github.io/Path_Finding_Visualizer/"
-                                target="_blank"
-                                aria-label="path finding vizualizer demo"
-                                className="flex cursor-pointer items-center justify-between gap-2 
+                                    rel="noreferrer"
+                                >
+                                    <CodeBracketIcon className="h-5 w-5" />
+                                    Code
+                                </a>
+                            )}
+                            {demoLink && (
+                                <a
+                                    href={demoLink}
+                                    target="_blank"
+                                    aria-label="path finding vizualizer demo"
+                                    className="flex cursor-pointer items-center justify-between gap-2 
                                 rounded-md bg-blue-600 px-2 py-1 font-semibold text-slate-300 outline-none focus-visible:ring-2 
                                 focus-visible:ring-blue-600 focus-visible:ring-offset-2 
                                 focus-visible:ring-offset-slate-300 dark:bg-blue-500 
                                 dark:focus-visible:ring-blue-500 dark:focus-visible:ring-offset-slate-600"
-                                rel="noreferrer"
-                            >
-                                <ComputerDesktopIcon className="h-5 w-5" />
-                                Demo
-                            </a>
+                                    rel="noreferrer"
+                                >
+                                    <ComputerDesktopIcon className="h-5 w-5" />
+                                    Demo
+                                </a>
+                            )}
+
+                            {videoDemoLink && (
+                                <a
+                                    href={videoDemoLink}
+                                    target="_blank"
+                                    aria-label="path finding vizualizer demo"
+                                    className="flex cursor-pointer items-center justify-between gap-2 
+                            rounded-md bg-blue-600 px-2 py-1 font-semibold text-slate-300 outline-none focus-visible:ring-2 
+                            focus-visible:ring-blue-600 focus-visible:ring-offset-2 
+                            focus-visible:ring-offset-slate-300 dark:bg-blue-500 
+                            dark:focus-visible:ring-blue-500 dark:focus-visible:ring-offset-slate-600"
+                                    rel="noreferrer"
+                                >
+                                    <ComputerDesktopIcon className="h-5 w-5" />
+                                    Video Demo
+                                </a>
+                            )}
                         </div>
 
+                        {/* slide show buttons */}
                         <div className="flex w-fit items-center justify-center gap-3 rounded-full px-1.5 py-1 ">
                             <Button
                                 ariaLabel="go back one image"
@@ -281,10 +273,12 @@ const PathFindingVisualizerProjectCard = () => {
                             />
                         </div>
                     </div>
+
+                    {extraInformation}
                 </div>
             </div>
         </div>
     );
 };
 
-export default PathFindingVisualizerProjectCard;
+export default ProjectCard;
