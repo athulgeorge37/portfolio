@@ -5,17 +5,12 @@ import Image from "next/image";
 // components
 import NavBar from "~/features/NavBar";
 import AnimatedHeading from "~/features/AnimatedHeading";
-import BreadditProjectCard from "~/features/ProjectCards/BreadditProjectCard";
-import PathFindingVisualizerProjectCard from "~/features/ProjectCards/PathFindingVisualizerProjectCard";
-import MinecraftVillageGeneratorProjectCard from "~/features/ProjectCards/MinecraftVillageGeneratorProjectCard";
+import AllProjectCards from "~/features/AllProjectCards";
+// import WorkExperience from "~/features/WorkExperience";
 import Contact from "~/features/Contact";
 
-import AllProjectCards from "~/features/ProjectCards/AllProjectCards";
-
-// import WorkExperience from "~/features/WorkExperience";
-
 // helper
-// import ResponsiveHelper from "~/helper/ResponsiveHelper";
+import ResponsiveHelper from "~/helper/ResponsiveHelper";
 
 // assets
 import StudyRoomImg from "~/assets/images/studyRoom.png";
@@ -102,7 +97,7 @@ const Home: NextPage = () => {
                 className="flex h-full min-h-screen flex-col overflow-hidden bg-slate-400
             font-sans text-slate-800 antialiased dark:bg-slate-700 dark:text-slate-300"
             >
-                {/* <ResponsiveHelper /> */}
+                <ResponsiveHelper />
                 <NavBar />
 
                 <div
@@ -131,7 +126,7 @@ const Home: NextPage = () => {
 
                 <div
                     id="projects"
-                    className="mx-auto my-20 flex w-full max-w-5xl flex-col gap-20 pt-20 sm:px-2"
+                    className="mx-auto my-20 flex w-full max-w-5xl flex-col gap-20 pt-20 sm:px-4 md:px-8"
                     ref={projectRef}
                 >
                     <div className="mx-auto flex w-fit flex-col gap-20">
@@ -145,9 +140,6 @@ const Home: NextPage = () => {
                         </div>
                         <div className="flex flex-col gap-32">
                             <AllProjectCards />
-                            {/* <BreadditProjectCard />
-                            <PathFindingVisualizerProjectCard /> */}
-                            <MinecraftVillageGeneratorProjectCard />
                         </div>
                     </div>
                 </div>

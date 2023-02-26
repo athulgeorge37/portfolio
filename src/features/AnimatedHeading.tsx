@@ -126,7 +126,7 @@ const AnimatedHeading = () => {
                         IconRight={ArrowDownIcon}
                         size="md"
                         className={(isPressed) =>
-                            `h-fit w-fit bg-emerald-500 text-slate-800 hover:brightness-110 dark:text-white ${
+                            `hidden h-fit w-fit bg-emerald-500 text-slate-800 hover:brightness-110 dark:text-white sm:flex ${
                                 isPressed ? "bg-emerald-600" : "bg-emerald-500"
                             }`
                         }

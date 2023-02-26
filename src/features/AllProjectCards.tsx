@@ -1,10 +1,10 @@
 // "use client";
 
 // hooks
-import React, { useState } from "react";
+import React from "react";
 
 // components
-import ProjectCard from "~/features/ProjectCards/ProjectCard";
+import ProjectCard from "~/features/ProjectCard";
 
 // assets
 import BreadditImg1 from "~/assets/images/Breaddit-Image-1.png";
