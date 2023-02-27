@@ -10,7 +10,7 @@ import AllProjectCards from "~/features/AllProjectCards";
 import Contact from "~/features/Contact";
 
 // helper
-import ResponsiveHelper from "~/helper/ResponsiveHelper";
+// import ResponsiveHelper from "~/helper/ResponsiveHelper";
 
 // assets
 import StudyRoomImg from "~/assets/images/studyRoom.png";
@@ -97,7 +97,7 @@ const Home: NextPage = () => {
                 className="flex h-full min-h-screen flex-col overflow-hidden bg-slate-400
             font-sans text-slate-800 antialiased dark:bg-slate-700 dark:text-slate-300"
             >
-                <ResponsiveHelper />
+                {/* <ResponsiveHelper /> */}
                 <NavBar />
 
                 <div

@@ -82,7 +82,7 @@ const AnimatedHeading = () => {
                 </motion.span>
             </span>
 
-            <div className="mt-5 flex items-center justify-between">
+            <div className=" flex items-center justify-between sm:mt-5">
                 {/* <p className=" sm:m- text-xl -tracking-normal">Web Developer</p> */}
                 <motion.span
                     initial={{ opacity: 0 }}

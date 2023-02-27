@@ -25,6 +25,8 @@ import { Transition } from "@headlessui/react";
 import Button from "~/components/Button";
 import GitHubIcon from "~/assets/Icons/GitHubIcon";
 import LinkedInIcon from "~/assets/Icons/LinkedInIcon";
+// import Logo from "~/assets/images/logo.png";
+// import Image from "next/image";
 
 // interface NavBarProps {}
 
@@ -58,6 +60,12 @@ const NavBar = () => {
                     className="rounded-md py-0.5 px-1 lg:hidden"
                     ringClassNames="focus-visible:ring-blue-600 ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 dark:focus-visible:ring-blue-500 outline-none"
                 />
+                {/* <Image
+                    src={Logo}
+                    alt="logo"
+                    width={100}
+                    height={100}
+                /> */}
             </div>
             <div className="relative w-full max-w-5xl">
                 <div className="flex items-center justify-between p-4">
