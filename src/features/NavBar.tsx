@@ -155,7 +155,7 @@ const NavBar = () => {
                                 outline-none focus-visible:ring-2 focus-visible:ring-blue-600
                                  dark:focus-visible:ring-blue-500"
                                 target="_blank"
-                                href="https://drive.google.com/file/d/1PYFjf4laUxbGcbQV27XUwT6Rqoizl2Pw/view?usp=sharing"
+                                href="https://drive.google.com/drive/folders/16HdE8BlYTILldOzSaxZqFcAp_deXKfVm?usp=sharing"
                                 rel="noreferrer"
                             >
                                 <DocumentTextIcon className="h-5 w-5" />
@@ -358,7 +358,7 @@ const NavBar = () => {
                                 outline-none focus-visible:ring-2 focus-visible:ring-blue-600
                                  dark:focus-visible:ring-blue-500"
                                             target="_blank"
-                                            href="https://drive.google.com/file/d/1PYFjf4laUxbGcbQV27XUwT6Rqoizl2Pw/view?usp=sharing"
+                                            href="https://drive.google.com/drive/folders/16HdE8BlYTILldOzSaxZqFcAp_deXKfVm?usp=sharing"
                                             rel="noreferrer"
                                         >
                                             <DocumentTextIcon className="h-5 w-5" />

@@ -83,14 +83,14 @@ const Home: NextPage = () => {
     return (
         <>
             <Head>
-                <title>Portfolio</title>
+                <title>{"Athul George's Portfolio"}</title>
                 <meta
                     name="description"
                     content="Athul George's Portfolio"
                 />
                 <link
                     rel="icon"
-                    href="/favicon.ico"
+                    href="/logo.png"
                 />
             </Head>
             <main
