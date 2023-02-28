@@ -12,13 +12,13 @@ const useLocalStorage = <T,>(key: string, initialValue: T) => {
         const value = getItemLocalStorage(key) as T | undefined;
 
         setStoredValue(value ?? initialValue);
-    }, []);
+    }, [initialValue, key]);
 
     useEffect(() => {
         if (storedValue) {
             setItemLocalStorage(key, storedValue);
         }
-    }, [storedValue]);
+    }, [key, storedValue]);
 
     return [storedValue as T, setStoredValue] as const;
 };

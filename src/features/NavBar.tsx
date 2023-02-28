@@ -12,6 +12,7 @@ import {
     DocumentTextIcon,
     PresentationChartLineIcon,
     //     BriefcaseIcon,
+    HomeIcon,
     PaperAirplaneIcon,
     XMarkIcon,
 } from "@heroicons/react/24/solid";
@@ -55,8 +56,10 @@ const NavBar = () => {
                             behavior: "smooth",
                         });
                     }}
-                    text="AG"
-                    size="none"
+                    //text="AG"
+                    IconLeft={HomeIcon}
+                    // size="none"
+                    size="mdSquare"
                     className="rounded-md py-0.5 px-1 lg:hidden"
                     ringClassNames="focus-visible:ring-blue-600 ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 dark:focus-visible:ring-blue-500 outline-none"
                 />
@@ -70,7 +73,7 @@ const NavBar = () => {
             <div className="relative w-full max-w-5xl">
                 <div className="flex items-center justify-between p-4">
                     <div>
-                        <Button
+                        {/* <Button
                             ariaLabel="logo"
                             id="logo"
                             onClick={() => {
@@ -79,10 +82,29 @@ const NavBar = () => {
                                     behavior: "smooth",
                                 });
                             }}
-                            text="AG"
+                            // text="AG"
+                            // size="none"
+                            IconLeft={HomeIcon}
                             size="none"
+                            text="Home"
                             className="hidden rounded-md px-1 lg:block"
                             ringClassNames="focus-visible:ring-blue-600 ring-offset-0 dark:focus-visible:ring-blue-500 outline-none ring-offset-slate-400 dark:ring-offset-slate-700"
+                        /> */}
+                        <Button
+                            ariaLabel="home"
+                            className="hidden w-fit gap-2 rounded-md px-1 hover:text-blue-600 dark:hover:text-blue-500 lg:flex"
+                            id="home"
+                            onClick={() => {
+                                window.scrollTo({
+                                    top: 0,
+                                    behavior: "smooth",
+                                });
+                            }}
+                            ringClassNames="ring-offset-0 ring-2 ring-blue-600 dark:ring-blue-500 ring-offset-slate-400 dark:ring-offset-slate-700"
+                            text="Home"
+                            size="none"
+                            IconLeft={HomeIcon}
+                            IconLeftClassName="h-5 w-5"
                         />
                     </div>
                     <ul className="hidden gap-5 font-semibold sm:items-center lg:flex">
@@ -267,6 +289,28 @@ const NavBar = () => {
                                 </div>
 
                                 <ul className="flex flex-col gap-5 font-semibold">
+                                    <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
+                                        <Button
+                                            ariaLabel="home"
+                                            className="gap-2 rounded-sm px-0.5"
+                                            id="home"
+                                            onClick={() => {
+                                                setNavbarIsOpen(false);
+                                                setTimeout(() => {
+                                                    window.scrollTo({
+                                                        top: 0,
+                                                        behavior: "smooth",
+                                                    });
+                                                }, 500);
+                                            }}
+                                            ringClassNames="ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 ring-blue-600 ring-2
+                                             dark:ring-blue-500"
+                                            text="Home"
+                                            size="none"
+                                            IconLeft={HomeIcon}
+                                            IconLeftClassName="h-5 w-5"
+                                        />
+                                    </li>
                                     <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                                         <Button
                                             ariaLabel="projects"

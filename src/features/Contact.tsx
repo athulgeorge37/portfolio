@@ -165,6 +165,12 @@ const Contact = () => {
             className="flex w-full max-w-lg flex-col justify-between gap-10 
             lg:max-w-5xl lg:flex-row lg:gap-20"
         >
+            {/* <div className="fixed z-50">
+                <div className="relative right-0 w-fit">
+                    Message Succesfully Sent
+                </div>
+            </div> */}
+
             <div className="lg flex flex-col  gap-10">
                 <div className="flex flex-col gap-3">
                     <span className="text-lg font-bold">
@@ -234,7 +240,7 @@ const Contact = () => {
                     register={register("name")}
                     id="name"
                     ariaLabel="name input"
-                    placeholder="Master Chief"
+                    placeholder="your name"
                     IconLeft={UserIcon}
                     IconRight={IconRightToUse("name")}
                     IconRightClassNames={`mr-3 h-5 w-5 
@@ -284,7 +290,7 @@ const Contact = () => {
                     IconRight={IconRightToUse("message")}
                     IconRightClassNames={`mr-3 mt-3 h-5 w-5 
                     ${IconRightClassNamesToUse("message")}`}
-                    placeholder="I want to hire you"
+                    placeholder="your message"
                     className={`w-full rounded-md bg-slate-200 pl-3 
                     pr-11 pt-2 font-semibold shadow-sm ring-2 
                     ring-slate-200 placeholder:text-slate-400
