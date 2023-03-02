@@ -145,7 +145,7 @@ const AllProjectCards = () => {
                 codeLink="https://github.com/athulgeorge37/Breaddit"
                 demoLink="https://breaddit-theta.vercel.app/"
                 extraInformation={
-                    <div className="flex flex-col justify-between gap-2 sm:flex-row">
+                    <div className="flex flex-col justify-between items-center gap-2 sm:flex-row">
                         <span className="text-slate-600 dark:text-slate-400">
                             {"Don't want to create an account?"}
                         </span>
