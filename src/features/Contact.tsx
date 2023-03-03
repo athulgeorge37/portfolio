@@ -65,7 +65,7 @@ const Contact = () => {
         register,
         watch,
         handleSubmit,
-        formState: { errors, isSubmitting },
+        formState: { errors, isSubmitting, isSubmitSuccessful },
         reset,
     } = useForm<ContactFormSchemaType>({
         resolver: zodResolver(ZodContactFormSchema),
@@ -181,7 +181,7 @@ const Contact = () => {
                     </p>
 
                     <div className="flex w-fit items-center gap-3">
-                        <div className="flex items-center rounded-md bg-slate-300 px-3 dark:bg-slate-500">
+                        <div className="flex items-center rounded-md bg-slate-200 px-3 dark:bg-slate-500">
                             <div className="mr-3 border-r border-slate-400 py-1.5 pr-2">
                                 <EnvelopeIcon className="h-5 w-5" />
                             </div>
@@ -191,7 +191,7 @@ const Contact = () => {
                             </span>
                         </div>
                         <button
-                            className="rounded-md bg-slate-300 p-2 outline-none 
+                            className="rounded-md bg-slate-200 p-2 outline-none 
                             focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
                             focus-visible:ring-offset-slate-400 dark:bg-slate-500 
                             dark:focus-visible:ring-offset-slate-700 "
@@ -302,31 +302,46 @@ const Contact = () => {
                     dark:disabled:ring-slate-600`}
                 />
 
-                <div className="flex justify-end gap-2">
-                    <Button
-                        id="clear-contact"
-                        ariaLabel="clear contact form"
-                        onClick={() => {
-                            reset();
-                        }}
-                        text="Clear"
-                        disabled={isSubmitting}
-                        className="w-fit bg-slate-200 dark:bg-slate-500"
-                        ringClassNames="ring-blue-500 ring-offset-slate-400 dark:ring-offset-slate-700"
-                    />
+                <div className="flex items-center justify-between">
+                    <div>
+                        {isSubmitting ? (
+                            <LoadingSpinner />
+                        ) : (
+                            <>
+                                {isSubmitSuccessful && (
+                                    <p className="font-semibold text-emerald-600">
+                                        Successfully Sent Message
+                                    </p>
+                                )}
+                            </>
+                        )}
+                    </div>
+                    <div className="flex justify-end gap-2">
+                        <Button
+                            id="clear-contact"
+                            ariaLabel="clear contact form"
+                            onClick={() => {
+                                reset();
+                            }}
+                            text="Clear"
+                            disabled={isSubmitting}
+                            className="w-fit bg-slate-200 dark:bg-slate-500"
+                            ringClassNames="ring-blue-500 ring-offset-slate-400 dark:ring-offset-slate-700"
+                        />
 
-                    <Button
-                        id="submit-contact"
-                        ariaLabel="submit contact form"
-                        onClick={() => null}
-                        text="Send"
-                        type="submit"
-                        disabled={isSubmitting}
-                        IconRight={PaperAirplaneIcon}
-                        className="w-fit bg-green-600 text-white dark:bg-emerald-500"
-                        ringClassNames="ring-green-600 dark:ring-emerald-500 
+                        <Button
+                            id="submit-contact"
+                            ariaLabel="submit contact form"
+                            onClick={() => null}
+                            text="Send"
+                            type="submit"
+                            disabled={isSubmitting}
+                            IconRight={PaperAirplaneIcon}
+                            className="w-fit bg-green-600 text-white dark:bg-emerald-500"
+                            ringClassNames="ring-green-600 dark:ring-emerald-500 
                         ring-offset-slate-400 dark:ring-offset-slate-700"
-                    />
+                        />
+                    </div>
                 </div>
                 {/* <pre
                 // so we can see what the form currently holds

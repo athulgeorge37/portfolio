@@ -92,7 +92,7 @@ const NavBar = () => {
                         /> */}
                         <Button
                             ariaLabel="home"
-                            className="hidden w-fit gap-2 rounded-md px-1 hover:text-blue-600 dark:hover:text-blue-500 lg:flex"
+                            className="hidden w-fit gap-2 rounded-md px-1 font-semibold hover:text-blue-600 dark:hover:text-blue-500 lg:flex"
                             id="home"
                             onClick={() => {
                                 window.scrollTo({

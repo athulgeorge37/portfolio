@@ -82,7 +82,7 @@ const ProjectCard = ({
         >
             <span
                 // animate={numberAnimation}
-                className="absolute -top-24 -right-4 text-9xl font-extrabold text-slate-400 
+                className="absolute -top-24 -right-4 text-9xl font-extrabold text-slate-600 
                 dark:text-slate-500 md:-top-20 md:-right-24"
             >
                 {cardNumber}
