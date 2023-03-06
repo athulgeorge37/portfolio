@@ -100,13 +100,8 @@ const AnimatedHeading = () => {
                             delay: 100,
                             strings: [
                                 "A Web Developer",
-                                "I do Front End",
-                                "And Back End",
-                                "Bringing your ideas",
-                                "to life.",
-                                "Shoot me an email",
-                                "and lets talk.",
-                                "😆",
+                                "More Specifically",
+                                "A Full Stack Developer",
                             ],
                         }}
                     />
