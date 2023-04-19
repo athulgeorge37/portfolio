@@ -31,6 +31,12 @@ import LinkedInIcon from "~/assets/Icons/LinkedInIcon";
 
 // interface NavBarProps {}
 
+const LINKS = {
+    linkedIn: "https://www.linkedin.com/in/athul-george/",
+    github: "https://github.com/athulgeorge37",
+    resume: "https://drive.google.com/file/d/1cZF4dnZ3qopTbneHSi0KiUjDsSagBvem/view?usp=sharing",
+};
+
 const NavBar = () => {
     const [navbarIsOpen, setNavbarIsOpen] = useState(false);
     const DarkModeController = useTheme();
@@ -149,7 +155,7 @@ const NavBar = () => {
                         </li>
                         <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                             <a
-                                href="https://www.linkedin.com/in/athul-george/"
+                                href={LINKS.linkedIn}
                                 target="_blank"
                                 className="flex items-center gap-2 rounded-md py-0.5 px-1 
                                 outline-none focus-visible:ring-2 focus-visible:ring-blue-600
@@ -161,7 +167,7 @@ const NavBar = () => {
                         </li>
                         <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                             <a
-                                href="https://github.com/athulgeorge37"
+                                href={LINKS.github}
                                 target="_blank"
                                 className="flex items-center gap-2 rounded-md 
                                 py-0.5 px-1 outline-none focus-visible:ring-2
@@ -177,7 +183,7 @@ const NavBar = () => {
                                 outline-none focus-visible:ring-2 focus-visible:ring-blue-600
                                  dark:focus-visible:ring-blue-500"
                                 target="_blank"
-                                href="https://drive.google.com/file/d/1HHuhghE7VJ-taj8WKJFOLD8l2UV_hjSD/view?usp=sharing"
+                                href={LINKS.resume}
                                 rel="noreferrer"
                             >
                                 <DocumentTextIcon className="h-5 w-5" />
