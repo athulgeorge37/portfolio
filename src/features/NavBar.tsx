@@ -9,15 +9,13 @@ import useTheme from "~/hooks/useTheme";
 // ui
 import {
     Bars3Icon,
-    DocumentTextIcon,
     PresentationChartLineIcon,
-    //     BriefcaseIcon,
     HomeIcon,
     PaperAirplaneIcon,
     XMarkIcon,
 } from "@heroicons/react/24/solid";
 
-// componets
+// components
 import DarkModeToggle from "~/features/DarkModeToggle";
 import { Dialog } from "@headlessui/react";
 
@@ -34,7 +32,7 @@ import LinkedInIcon from "~/assets/Icons/LinkedInIcon";
 const LINKS = {
     linkedIn: "https://www.linkedin.com/in/athul-george/",
     github: "https://github.com/athulgeorge37",
-    resume: "https://drive.google.com/file/d/1cZF4dnZ3qopTbneHSi0KiUjDsSagBvem/view?usp=sharing",
+    // resume: "https://drive.google.com/file/d/1cZF4dnZ3qopTbneHSi0KiUjDsSagBvem/view?usp=sharing",
 };
 
 const NavBar = () => {
@@ -157,9 +155,7 @@ const NavBar = () => {
                             <a
                                 href={LINKS.linkedIn}
                                 target="_blank"
-                                className="flex items-center gap-2 rounded-md py-0.5 px-1 
-                                outline-none focus-visible:ring-2 focus-visible:ring-blue-600
-                                 dark:focus-visible:ring-blue-500"
+                                className="flex items-center gap-2 rounded-md py-0.5 px-1 outline-none focus-visible:ring-2 focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
                                 rel="noreferrer"
                             >
                                 <LinkedInIcon className="h-5 w-5" /> Linked In
@@ -169,17 +165,15 @@ const NavBar = () => {
                             <a
                                 href={LINKS.github}
                                 target="_blank"
-                                className="flex items-center gap-2 rounded-md 
-                                py-0.5 px-1 outline-none focus-visible:ring-2
-                                 focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
+                                className="flex items-center gap-2 rounded-md py-0.5 px-1 outline-none focus-visible:ring-2 focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
                                 rel="noreferrer"
                             >
                                 <GitHubIcon className="h-5 w-5" /> GitHub
                             </a>
                         </li>
-                        <li className="w-fit outline-none hover:text-blue-600 dark:hover:text-blue-500">
+                        {/* <li className="w-fit outline-none hover:text-blue-600 dark:hover:text-blue-500">
                             <a
-                                className="flex items-center gap-2 rounded-md py-0.5 px-1 
+                                className="flex items-center gap-2 rounded-md py-0.5 px-1
                                 outline-none focus-visible:ring-2 focus-visible:ring-blue-600
                                  dark:focus-visible:ring-blue-500"
                                 target="_blank"
@@ -189,7 +183,7 @@ const NavBar = () => {
                                 <DocumentTextIcon className="h-5 w-5" />
                                 Resume
                             </a>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
             </div>
@@ -253,10 +247,7 @@ const NavBar = () => {
                             leaveFrom="translate-x-0"
                             leaveTo="-translate-x-full"
                         >
-                            <Dialog.Panel
-                                className="flex h-full w-full max-w-[225px] transform 
-                                    flex-col gap-5 bg-slate-400 p-4 text-slate-800 shadow-xl transition-all dark:bg-slate-700 dark:text-slate-300"
-                            >
+                            <Dialog.Panel className="flex h-full w-full max-w-[225px] transform flex-col gap-5 bg-slate-400 p-4 text-slate-800 shadow-xl transition-all dark:bg-slate-700 dark:text-slate-300">
                                 <div className="flex justify-between">
                                     <Button
                                         ariaLabel="logo"
@@ -273,8 +264,7 @@ const NavBar = () => {
                                         text="AG"
                                         size="none"
                                         className="rounded-md py-0.5 px-1 outline-none"
-                                        ringClassNames="ring-blue-600 ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 
-                                        dark:ring-blue-500"
+                                        ringClassNames="ring-blue-600 ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 dark:ring-blue-500"
                                     />
 
                                     <Button
@@ -309,8 +299,7 @@ const NavBar = () => {
                                                     });
                                                 }, 500);
                                             }}
-                                            ringClassNames="ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 ring-blue-600 ring-2
-                                             dark:ring-blue-500"
+                                            ringClassNames="ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 ring-blue-600 ring-2 dark:ring-blue-500"
                                             text="Home"
                                             size="none"
                                             IconLeft={HomeIcon}
@@ -328,8 +317,7 @@ const NavBar = () => {
                                                     navigateToId("projects");
                                                 }, 500);
                                             }}
-                                            ringClassNames="ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 ring-blue-600 ring-2
-                                             dark:ring-blue-500"
+                                            ringClassNames="ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 ring-blue-600 ring-2 dark:ring-blue-500"
                                             text="Projects"
                                             size="none"
                                             IconLeft={PresentationChartLineIcon}
@@ -368,8 +356,7 @@ const NavBar = () => {
                                                 }, 500);
                                             }}
                                             className="gap-2 rounded-sm px-0.5"
-                                            ringClassNames="ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 ring-blue-600 ring-2
-                                             dark:ring-blue-500"
+                                            ringClassNames="ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 ring-blue-600 ring-2 dark:ring-blue-500"
                                             text="Contact"
                                             size="none"
                                             IconLeft={PaperAirplaneIcon}
@@ -380,9 +367,7 @@ const NavBar = () => {
                                         <a
                                             href="https://www.linkedin.com/in/athul-george/"
                                             target="_blank"
-                                            className="flex items-center gap-2 rounded-md py-0.5 px-1 
-                                            outline-none focus-visible:ring-2 focus-visible:ring-blue-600
-                                            dark:focus-visible:ring-blue-500"
+                                            className="flex items-center gap-2 rounded-md py-0.5 px-1 outline-none focus-visible:ring-2 focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
                                             rel="noreferrer"
                                         >
                                             <LinkedInIcon className="h-5 w-5" />
@@ -393,20 +378,16 @@ const NavBar = () => {
                                         <a
                                             href="https://github.com/athulgeorge37"
                                             target="_blank"
-                                            className="flex items-center gap-2 rounded-md 
-                                            py-0.5 px-1 outline-none focus-visible:ring-2
-                                            focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
+                                            className="flex items-center gap-2 rounded-md py-0.5 px-1 outline-none focus-visible:ring-2 focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
                                             rel="noreferrer"
                                         >
                                             <GitHubIcon className="h-5 w-5" />
                                             GitHub
                                         </a>
                                     </li>
-                                    <li className="w-fit outline-none hover:text-blue-600 dark:hover:text-blue-500">
+                                    {/* <li className="w-fit outline-none hover:text-blue-600 dark:hover:text-blue-500">
                                         <a
-                                            className="flex items-center gap-2 rounded-md py-0.5 px-1 
-                                outline-none focus-visible:ring-2 focus-visible:ring-blue-600
-                                 dark:focus-visible:ring-blue-500"
+                                            className="flex items-center gap-2 rounded-md py-0.5 px-1 outline-none focus-visible:ring-2 focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
                                             target="_blank"
                                             href="https://drive.google.com/file/d/1HHuhghE7VJ-taj8WKJFOLD8l2UV_hjSD/view?usp=sharing"
                                             rel="noreferrer"
@@ -414,7 +395,7 @@ const NavBar = () => {
                                             <DocumentTextIcon className="h-5 w-5" />
                                             Resume
                                         </a>
-                                    </li>
+                                    </li> */}
                                 </ul>
 
                                 <div className="mt-auto">
