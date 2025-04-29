@@ -143,27 +143,27 @@ const AllProjectCards = () => {
                     "SASS",
                 ]}
                 codeLink="https://github.com/athulgeorge37/Breaddit"
-                demoLink="https://breaddit-theta.vercel.app/"
-                extraInformation={
-                    <div className="flex flex-col justify-between items-center gap-2 sm:flex-row">
-                        <span className="text-slate-600 dark:text-slate-400">
-                            {"Don't want to create an account?"}
-                        </span>
-                        <a
-                            href="https://breaddit-theta.vercel.app/signin"
-                            target="_blank"
-                            aria-label="breaddit guest sign in"
-                            className="rounded-md px-1 py-0.5 font-semibold 
-                                            text-slate-600 underline-offset-4 outline-none hover:text-blue-600 
-                                            hover:underline focus-visible:text-blue-600 focus-visible:ring-2 
-                                            focus-visible:ring-blue-600 dark:text-slate-400 dark:hover:text-blue-500 
-                                            dark:focus-visible:text-blue-500 dark:focus-visible:ring-blue-500"
-                            rel="noreferrer"
-                        >
-                            Sign In As Guest
-                        </a>
-                    </div>
-                }
+                // demoLink="https://breaddit-theta.vercel.app/"
+                // extraInformation={
+                //     <div className="flex flex-col justify-between items-center gap-2 sm:flex-row">
+                //         <span className="text-slate-600 dark:text-slate-400">
+                //             {"Don't want to create an account?"}
+                //         </span>
+                //         <a
+                //             href="https://breaddit-theta.vercel.app/signin"
+                //             target="_blank"
+                //             aria-label="breaddit guest sign in"
+                //             className="rounded-md px-1 py-0.5 font-semibold
+                //                             text-slate-600 underline-offset-4 outline-none hover:text-blue-600
+                //                             hover:underline focus-visible:text-blue-600 focus-visible:ring-2
+                //                             focus-visible:ring-blue-600 dark:text-slate-400 dark:hover:text-blue-500
+                //                             dark:focus-visible:text-blue-500 dark:focus-visible:ring-blue-500"
+                //             rel="noreferrer"
+                //         >
+                //             Sign In As Guest
+                //         </a>
+                //     </div>
+                // }
             />
             <ProjectCard
                 data={PathFindingVisualizerData}

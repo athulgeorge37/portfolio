@@ -9,7 +9,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@emailjs/browser": "^3.10.0",
     "@headlessui/react": "^1.7.10",
     "@headlessui/tailwindcss": "^0.1.2",
     "@heroicons/react": "^2.0.15",
@@ -24,6 +23,7 @@
     "react-hook-form": "^7.43.1",
     "react-intersection-observer": "^9.4.3",
     "react-use-measure": "^2.1.1",
+    "resend": "^4.4.1",
     "typewriter-effect": "^2.19.0",
     "zod": "^3.20.2"
   },

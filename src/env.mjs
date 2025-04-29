@@ -7,6 +7,9 @@ import { z } from "zod";
  */
 const server = z.object({
     NODE_ENV: z.enum(["development", "test", "production"]),
+    RESEND_API_KEY: z.string().min(1),
+    EMAIL_DOMAIN: z.string().min(1),
+    SEND_EMAIL_TO: z.string().min(1).email(),
 });
 
 /**
@@ -16,9 +19,6 @@ const server = z.object({
  */
 const client = z.object({
     // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
-    NEXT_PUBLIC_EMAIL_JS_SERVICE_ID: z.string().min(1),
-    NEXT_PUBLIC_EMAIL_JS_TEMPLATE_ID: z.string().min(1),
-    NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY: z.string().min(1),
 });
 
 /**
@@ -29,12 +29,9 @@ const client = z.object({
 const processEnv = {
     NODE_ENV: process.env.NODE_ENV,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
-    NEXT_PUBLIC_EMAIL_JS_SERVICE_ID:
-        process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID,
-    NEXT_PUBLIC_EMAIL_JS_TEMPLATE_ID:
-        process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE_ID,
-    NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY:
-        process.env.NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY,
+    RESEND_API_KEY: process.env.RESEND_API_KEY,
+    EMAIL_DOMAIN: process.env.EMAIL_DOMAIN,
+    SEND_EMAIL_TO: process.env.SEND_EMAIL_TO,
 };
 
 // Don't touch the part below

@@ -3,12 +3,6 @@
 // hooks
 import { useState } from "react";
 
-// email sending
-import emailjs from "@emailjs/browser";
-
-// env
-import { env } from "~/env.mjs";
-
 // components
 import Image from "next/image";
 
@@ -57,6 +51,11 @@ type ContactFormSchemaType = z.infer<typeof ZodContactFormSchema>;
 // interface ContactProps {}
 
 const Contact = () => {
+    const [sendEmailResponse, setSendEmailResponse] = useState<{
+        success: boolean;
+        message: string;
+    } | null>(null);
+
     const [loadingState, setLoadingState] = useState<
         "idle" | "loading" | "complete"
     >("idle");
@@ -84,29 +83,35 @@ const Contact = () => {
             return;
         }
 
-        // ensuring data to send matches the the names using in the emailJS template
-        const DATA_TO_SEND = {
-            contact_name: data.name,
-            contact_email: data.email,
-            contact_message: data.message,
-        };
+        const response = await fetch("/api/sendEmail", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                name: data.name,
+                email: data.email,
+                message: data.message,
+            }),
+        });
 
-        // sending email using the environment variables
-        const response = await emailjs.send(
-            env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID,
-            env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE_ID,
-            DATA_TO_SEND,
-            env.NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY
-        );
+        const responseData = z
+            .object({
+                success: z.boolean(),
+                message: z.string(),
+                cause: z.undefined().or(z.unknown()),
+            })
+            .safeParse(await response.json());
 
-        // ensuring message is sent
-        if (response.text === "OK") {
-            console.log("message has been sent");
-            reset();
-            // add notification when email is sent
-        } else {
-            console.log("An Error occured", response);
-            // add notication when email cannot be send
+        if (responseData.success === true) {
+            setSendEmailResponse({
+                success: responseData.data.success,
+                message: responseData.data.message,
+            });
+
+            if (responseData.data.success === true) {
+                reset();
+            } else {
+                console.error(responseData.data);
+            }
         }
     };
 
@@ -162,8 +167,7 @@ const Contact = () => {
     return (
         <div
             id="Contact"
-            className="flex w-full max-w-lg flex-col justify-between gap-10 
-            lg:max-w-5xl lg:flex-row lg:gap-20"
+            className="flex w-full max-w-lg flex-col justify-between gap-10 lg:max-w-5xl lg:flex-row lg:gap-20"
         >
             {/* <div className="fixed z-50">
                 <div className="relative right-0 w-fit">
@@ -191,10 +195,7 @@ const Contact = () => {
                             </span>
                         </div>
                         <button
-                            className="rounded-md bg-slate-200 p-2 outline-none 
-                            focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
-                            focus-visible:ring-offset-slate-400 dark:bg-slate-500 
-                            dark:focus-visible:ring-offset-slate-700 "
+                            className="rounded-md bg-slate-200 p-2 outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-400 dark:bg-slate-500 dark:focus-visible:ring-offset-slate-700 "
                             aria-label="copy email"
                             id="copy-email"
                             onClick={() => {
@@ -243,17 +244,14 @@ const Contact = () => {
                     placeholder="your name"
                     IconLeft={UserIcon}
                     IconRight={IconRightToUse("name")}
-                    IconRightClassNames={`mr-3 h-5 w-5 
+                    IconRightClassNames={`mr-3 h-5 w-5
                     ${IconRightClassNamesToUse("name")}`}
                     disabled={isSubmitting}
                     label="name"
                     error={errors.name?.message}
-                    className={`w-full rounded-md bg-slate-200 py-2 px-11 font-semibold shadow-sm ring-2 
-                    ring-slate-200 placeholder:text-slate-400 focus:ring-blue-600 
-                    disabled:bg-slate-300 disabled:text-slate-500 disabled:ring-slate-300 dark:bg-slate-500 
-                    ${FocusRingClassNamesToUse("name")}  
-                    dark:ring-slate-500 dark:placeholder:text-slate-400 dark:focus:ring-blue-500 
-                    dark:disabled:bg-slate-600 dark:disabled:text-slate-300 dark:disabled:ring-slate-600`}
+                    className={`w-full rounded-md bg-slate-200 py-2 px-11 font-semibold shadow-sm ring-2 ring-slate-200 placeholder:text-slate-400 focus:ring-blue-600 disabled:bg-slate-300 disabled:text-slate-500 disabled:ring-slate-300 dark:bg-slate-500 ${FocusRingClassNamesToUse(
+                        "name"
+                    )} dark:ring-slate-500 dark:placeholder:text-slate-400 dark:focus:ring-blue-500 dark:disabled:bg-slate-600 dark:disabled:text-slate-300 dark:disabled:ring-slate-600`}
                 />
 
                 <Input
@@ -266,16 +264,11 @@ const Contact = () => {
                     placeholder="your email"
                     IconLeft={EnvelopeIcon}
                     IconRight={IconRightToUse("email")}
-                    IconRightClassNames={`mr-3 h-5 w-5 
+                    IconRightClassNames={`mr-3 h-5 w-5
                     ${IconRightClassNamesToUse("email")}`}
-                    className={`w-full rounded-md 
-                    bg-slate-200 py-2 px-11 font-semibold shadow-sm ring-2 
-                    ring-slate-200 placeholder:text-slate-400 
-                    disabled:bg-slate-300 disabled:text-slate-500 disabled:ring-slate-300
-                    dark:bg-slate-500 dark:ring-slate-500 dark:placeholder:text-slate-400 
-                    ${FocusRingClassNamesToUse("email")}
-                    dark:disabled:bg-slate-600 dark:disabled:text-slate-300 
-                    dark:disabled:ring-slate-600`}
+                    className={`w-full rounded-md bg-slate-200 py-2 px-11 font-semibold shadow-sm ring-2 ring-slate-200 placeholder:text-slate-400 disabled:bg-slate-300 disabled:text-slate-500 disabled:ring-slate-300 dark:bg-slate-500 dark:ring-slate-500 dark:placeholder:text-slate-400 ${FocusRingClassNamesToUse(
+                        "email"
+                    )} dark:disabled:bg-slate-600 dark:disabled:text-slate-300 dark:disabled:ring-slate-600`}
                 />
 
                 <TextArea
@@ -288,18 +281,12 @@ const Contact = () => {
                     maxHeight={285}
                     minHeight={285}
                     IconRight={IconRightToUse("message")}
-                    IconRightClassNames={`mr-3 mt-3 h-5 w-5 
+                    IconRightClassNames={`mr-3 mt-3 h-5 w-5
                     ${IconRightClassNamesToUse("message")}`}
                     placeholder="your message"
-                    className={`w-full rounded-md bg-slate-200 pl-3 
-                    pr-11 pt-2 font-semibold shadow-sm ring-2 
-                    ring-slate-200 placeholder:text-slate-400
-                    disabled:bg-slate-300 disabled:text-slate-500 
-                    disabled:ring-slate-300 dark:bg-slate-500 dark:ring-slate-500
-                    ${FocusRingClassNamesToUse("message")}
-                    dark:placeholder:text-slate-400 dark:disabled:bg-slate-600 
-                    dark:disabled:text-slate-300 
-                    dark:disabled:ring-slate-600`}
+                    className={`w-full rounded-md bg-slate-200 pl-3 pr-11 pt-2 font-semibold shadow-sm ring-2 ring-slate-200 placeholder:text-slate-400 disabled:bg-slate-300 disabled:text-slate-500 disabled:ring-slate-300 dark:bg-slate-500 dark:ring-slate-500 ${FocusRingClassNamesToUse(
+                        "message"
+                    )} dark:placeholder:text-slate-400 dark:disabled:bg-slate-600 dark:disabled:text-slate-300 dark:disabled:ring-slate-600`}
                 />
 
                 <div className="flex items-center justify-between">
@@ -308,11 +295,16 @@ const Contact = () => {
                             <LoadingSpinner />
                         ) : (
                             <>
-                                {isSubmitSuccessful && (
-                                    <p className="font-semibold text-emerald-600">
-                                        Successfully Sent Message
-                                    </p>
-                                )}
+                                {isSubmitSuccessful &&
+                                    (sendEmailResponse?.success ? (
+                                        <p className="font-semibold text-emerald-600">
+                                            {sendEmailResponse.message}
+                                        </p>
+                                    ) : (
+                                        <p className="font-semibold text-rose-600">
+                                            {sendEmailResponse?.message}
+                                        </p>
+                                    ))}
                             </>
                         )}
                     </div>
@@ -338,11 +330,11 @@ const Contact = () => {
                             disabled={isSubmitting}
                             IconRight={PaperAirplaneIcon}
                             className="w-fit bg-green-600 text-white dark:bg-emerald-500"
-                            ringClassNames="ring-green-600 dark:ring-emerald-500 
-                        ring-offset-slate-400 dark:ring-offset-slate-700"
+                            ringClassNames="ring-green-600 dark:ring-emerald-500 ring-offset-slate-400 dark:ring-offset-slate-700"
                         />
                     </div>
                 </div>
+
                 {/* <pre
                 // so we can see what the form currently holds
                 >
@@ -354,3 +346,4 @@ const Contact = () => {
 };
 
 export default Contact;
+export { ZodContactFormSchema };
