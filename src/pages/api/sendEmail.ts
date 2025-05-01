@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 import { env } from "~/env.mjs";
-import { ZodContactFormSchema } from "~/features/Contact";
+import { ZodContactFormSchema } from "~/features/ContactMeForm";
 import { ContactMeEmailRequestEmailTemplate } from "~/server/ContactMeEmailRequestEmailTemplate";
 import { sendEmail } from "~/server/email.send";
 

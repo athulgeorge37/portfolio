@@ -42,7 +42,7 @@ const ZodContactFormSchema = z.object(ContactFormSchema);
 
 type ContactFormSchemaType = z.infer<typeof ZodContactFormSchema>;
 
-const Contact = () => {
+const ContactMeForm = () => {
     const [sendEmailResponse, setSendEmailResponse] = useState<{
         success: boolean;
         message: string;
@@ -325,5 +325,5 @@ const Contact = () => {
     );
 };
 
-export default Contact;
+export default ContactMeForm;
 export { ZodContactFormSchema };

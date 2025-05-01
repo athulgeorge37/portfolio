@@ -2,11 +2,12 @@ import { type NextPage } from "next";
 import Head from "next/head";
 
 // components
-import Navbar from "~/features/Navbar";
+import NavBar from "~/features/Navbar";
 import AnimatedTitleScreen from "~/features/AnimatedTitleScreen";
 import AllProjectCards from "~/features/AllProjectCards";
-import Contact from "~/features/Contact";
+import ContactMeForm from "~/features/ContactMeForm";
 
+// helper functions
 import ResponsiveHelper from "~/helper/ResponsiveHelper";
 
 const Home: NextPage = () => {
@@ -35,7 +36,7 @@ const Home: NextPage = () => {
             <main className="flex h-full min-h-screen flex-col overflow-hidden bg-slate-100 font-sans text-slate-700 antialiased dark:bg-slate-700 dark:text-slate-300">
                 {process.env.NODE_ENV === "development" && <ResponsiveHelper />}
 
-                <Navbar />
+                <NavBar />
 
                 <section
                     id="title"
@@ -70,7 +71,7 @@ const Home: NextPage = () => {
                             Contact Me
                         </h2>
 
-                        <Contact />
+                        <ContactMeForm />
                     </div>
                 </section>
             </main>

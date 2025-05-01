@@ -28,7 +28,7 @@ const LINKS = {
     github: "https://github.com/athulgeorge37",
 } as const;
 
-const Navbar = () => {
+const NavBar = () => {
     const [navbarIsOpen, setNavbarIsOpen] = useState(false);
     const darkModeController = useTheme();
 
@@ -40,8 +40,8 @@ const Navbar = () => {
 
     return (
         <nav
-            id="Navbar"
-            className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between border-b border-slate-300 bg-slate-100/50  backdrop-blur dark:border-slate-700 dark:bg-slate-700/40"
+            id="NavBar"
+            className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between border-b border-slate-300 bg-slate-100/50  backdrop-blur dark:border-slate-600 dark:bg-slate-700/40"
         >
             <div className="w-40 p-4">
                 <Button
@@ -321,4 +321,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default NavBar;

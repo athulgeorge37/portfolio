@@ -1,5 +1,5 @@
 import type { z } from "zod";
-import type { ZodContactFormSchema } from "~/features/Contact";
+import type { ZodContactFormSchema } from "~/features/ContactMeForm";
 
 type ContactMeEmailRequestEmailTemplateProps = z.infer<
     typeof ZodContactFormSchema
