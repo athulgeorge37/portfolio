@@ -1,4 +1,4 @@
-// helper functions for localStorage
+// NOTE: helper functions for localStorage
 
 const setItemLocalStorage = (key: string, value: any) => {
     localStorage.setItem(key, JSON.stringify(value));

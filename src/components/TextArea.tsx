@@ -1,11 +1,5 @@
-// "use client";
 import React from "react";
 import type { UseFormRegisterReturn } from "react-hook-form";
-// article for expandanle input from:
-// https://medium.com/@oherterich/creating-a-textarea-with-dynamic-height-using-react-and-typescript-5ed2d78d9848
-
-// code for expandable input from:
-// https://codesandbox.io/s/autosize-textarea-forked-044vh2?file=/src/useAutosizeTextArea.ts:196-668
 
 interface TextAreaProps<TRegister extends string> {
     register: UseFormRegisterReturn<TRegister>;
@@ -38,20 +32,6 @@ const TextArea = <TRegister extends string>({
     IconRight,
     IconRightClassNames,
 }: TextAreaProps<TRegister>) => {
-    // const textAreaRef = useRef<HTMLTextAreaElement>(null);
-
-    // useEffect(() => {
-    //     if (textAreaRef.current) {
-    //         // We need to reset the height momentarily to get the correct scrollHeight for the textarea
-    //         textAreaRef.current.style.height = "0px";
-    //         const scrollHeight = textAreaRef.current.scrollHeight;
-
-    //         // We then set the height directly, outside of the render loop
-    //         // Trying to set this with state or a ref will product an incorrect value.
-    //         textAreaRef.current.style.height = scrollHeight + "px";
-    //     }
-    // }, [textAreaRef.current]);
-
     return (
         <div
             id="TextArea"
@@ -60,7 +40,7 @@ const TextArea = <TRegister extends string>({
             {label && (
                 <label
                     htmlFor={`${id}-textarea`}
-                    className="mb-2 font-semibold uppercase"
+                    className="mb-2 font-semibold"
                 >
                     {label}
                 </label>
@@ -68,7 +48,6 @@ const TextArea = <TRegister extends string>({
 
             <div className="relative flex">
                 <textarea
-                    // ref={textAreaRef}
                     id={`${id}-textarea`}
                     aria-label={ariaLabel}
                     aria-invalid={error === undefined ? false : true}
@@ -77,13 +56,13 @@ const TextArea = <TRegister extends string>({
                     autoFocus={autoFocus}
                     rows={1}
                     style={{
-                        // make maxHeight and minHeight the same for scrollable textarea
+                        // NOTE: make maxHeight and minHeight the same for scrollable textarea
                         // without it resizing on new line
                         maxHeight: maxHeight,
                         minHeight: minHeight ?? "none",
                     }}
                     className={
-                        // ensure padding bottom is 0, for best scrolling exeperience
+                        // ensure padding bottom is 0, for best scrolling experience
                         className
                             ? `resize-none border-none focus:outline-none ${className}`
                             : ""

@@ -1,12 +1,6 @@
 import React from "react";
 
-const SHOW_RESPONSIVE_HELPER = true;
-
 const ResponsiveHelper = () => {
-    if (!SHOW_RESPONSIVE_HELPER) {
-        return null;
-    }
-
     return (
         <div
             id="ResponsiveHelper"

@@ -10,6 +10,8 @@
 	"editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit"
     },
+
+	// Tailwind:
     "tailwindCSS.experimental.classRegex": [
         ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
     ],

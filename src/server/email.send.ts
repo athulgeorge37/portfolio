@@ -27,15 +27,7 @@ const sendEmail = async ({
             react: reactEmailTemplate,
         });
 
-        // console.log({
-        // 	emailResponseData: emailResponse.data,
-        // });
-
         if (emailResponse.error !== null) {
-            // console.log({
-            // 	sendEmailError: emailResponse.error,
-            // });
-
             return {
                 success: false as const,
                 message: "Could not send email." as const,
@@ -48,8 +40,6 @@ const sendEmail = async ({
             message: "Email successfully sent." as const,
         };
     } catch (error) {
-        // console.log({ sendEmailError: error });
-
         return {
             success: false as const,
             message: "Could not send email." as const,

@@ -1,11 +1,10 @@
-"use client";
 import { useEffect } from "react";
 import useLocalStorage from "./useLocalStorage";
 
 export type THEMES = "light" | "dark";
 
 const useTheme = () => {
-    // useLocalStorage is instantiaing the inital theme, if there is none in localstorage
+    // useLocalStorage is instantiating the initial theme, if there is none in localstorage
     const [theme, setTheme] = useLocalStorage<THEMES>("theme", "dark");
 
     const toggleTheme = () => {

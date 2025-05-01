@@ -1,5 +1,3 @@
-"use client";
-
 // hooks
 import React, { useState, Fragment } from "react";
 
@@ -24,20 +22,15 @@ import { Transition } from "@headlessui/react";
 import Button from "~/components/Button";
 import GitHubIcon from "~/assets/Icons/GitHubIcon";
 import LinkedInIcon from "~/assets/Icons/LinkedInIcon";
-// import Logo from "~/assets/images/logo.png";
-// import Image from "next/image";
-
-// interface NavBarProps {}
 
 const LINKS = {
     linkedIn: "https://www.linkedin.com/in/athul-george/",
     github: "https://github.com/athulgeorge37",
-    // resume: "https://drive.google.com/file/d/1cZF4dnZ3qopTbneHSi0KiUjDsSagBvem/view?usp=sharing",
-};
+} as const;
 
-const NavBar = () => {
+const Navbar = () => {
     const [navbarIsOpen, setNavbarIsOpen] = useState(false);
-    const DarkModeController = useTheme();
+    const darkModeController = useTheme();
 
     const navigateToId = (id: string) => {
         document.getElementById(id)?.scrollIntoView({
@@ -47,53 +40,29 @@ const NavBar = () => {
 
     return (
         <nav
-            id="NavBar"
-            className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between border-b border-slate-600 bg-slate-400/50 backdrop-blur dark:bg-slate-700/40"
+            id="Navbar"
+            className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between border-b border-slate-300 bg-slate-100/50  backdrop-blur dark:border-slate-700 dark:bg-slate-700/40"
         >
             <div className="w-40 p-4">
                 <Button
-                    ariaLabel="logo"
                     id="logo"
+                    ariaLabel="logo"
                     onClick={() => {
                         window.scrollTo({
                             top: 0,
                             behavior: "smooth",
                         });
                     }}
-                    //text="AG"
                     IconLeft={HomeIcon}
-                    // size="none"
                     size="mdSquare"
                     className="rounded-md py-0.5 px-1 lg:hidden"
                     ringClassNames="focus-visible:ring-blue-600 ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 dark:focus-visible:ring-blue-500 outline-none"
                 />
-                {/* <Image
-                    src={Logo}
-                    alt="logo"
-                    width={100}
-                    height={100}
-                /> */}
             </div>
+
             <div className="relative w-full max-w-5xl">
                 <div className="flex items-center justify-between p-4">
                     <div>
-                        {/* <Button
-                            ariaLabel="logo"
-                            id="logo"
-                            onClick={() => {
-                                window.scrollTo({
-                                    top: 0,
-                                    behavior: "smooth",
-                                });
-                            }}
-                            // text="AG"
-                            // size="none"
-                            IconLeft={HomeIcon}
-                            size="none"
-                            text="Home"
-                            className="hidden rounded-md px-1 lg:block"
-                            ringClassNames="focus-visible:ring-blue-600 ring-offset-0 dark:focus-visible:ring-blue-500 outline-none ring-offset-slate-400 dark:ring-offset-slate-700"
-                        /> */}
                         <Button
                             ariaLabel="home"
                             className="hidden w-fit gap-2 rounded-md px-1 font-semibold hover:text-blue-600 dark:hover:text-blue-500 lg:flex"
@@ -111,6 +80,7 @@ const NavBar = () => {
                             IconLeftClassName="h-5 w-5"
                         />
                     </div>
+
                     <ul className="hidden gap-5 font-semibold sm:items-center lg:flex">
                         <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                             <Button
@@ -125,19 +95,7 @@ const NavBar = () => {
                                 IconLeftClassName="h-5 w-5"
                             />
                         </li>
-                        {/* <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
-                            <Button
-                                ariaLabel="work"
-                                className="gap-2 rounded-md px-1"
-                                id="work"
-                                onClick={() => navigateToId("work-experience")}
-                                ringClassNames="ring-offset-0 ring-2 ring-blue-600 dark:ring-blue-500 ring-offset-slate-400 dark:ring-offset-slate-700"
-                                text="Work"
-                                size="none"
-                                IconLeft={BriefcaseIcon}
-                                IconLeftClassName="h-5 w-5"
-                            />
-                        </li> */}
+
                         <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                             <Button
                                 ariaLabel="contact"
@@ -151,6 +109,7 @@ const NavBar = () => {
                                 IconLeftClassName="h-5 w-5"
                             />
                         </li>
+
                         <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                             <a
                                 href={LINKS.linkedIn}
@@ -161,6 +120,7 @@ const NavBar = () => {
                                 <LinkedInIcon className="h-5 w-5" /> Linked In
                             </a>
                         </li>
+
                         <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                             <a
                                 href={LINKS.github}
@@ -171,45 +131,27 @@ const NavBar = () => {
                                 <GitHubIcon className="h-5 w-5" /> GitHub
                             </a>
                         </li>
-                        {/* <li className="w-fit outline-none hover:text-blue-600 dark:hover:text-blue-500">
-                            <a
-                                className="flex items-center gap-2 rounded-md py-0.5 px-1
-                                outline-none focus-visible:ring-2 focus-visible:ring-blue-600
-                                 dark:focus-visible:ring-blue-500"
-                                target="_blank"
-                                href={LINKS.resume}
-                                rel="noreferrer"
-                            >
-                                <DocumentTextIcon className="h-5 w-5" />
-                                Resume
-                            </a>
-                        </li> */}
                     </ul>
                 </div>
             </div>
 
             <div className="flex justify-between p-4">
                 <Button
-                    ariaLabel="navbar menu"
                     id="navbar-menu"
-                    IconLeft={Bars3Icon}
+                    ariaLabel="navbar menu"
                     onClick={() => setNavbarIsOpen(true)}
-                    className={(isPressed) =>
-                        `bg-slate-400 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 lg:hidden ${
-                            isPressed
-                                ? "bg-slate-500 hover:bg-slate-500 dark:bg-slate-800 dark:hover:bg-slate-800"
-                                : "bg-slate-400 dark:bg-slate-700"
-                        } ${navbarIsOpen ? "invisible" : ""}`
-                    }
-                    ringClassNames="ring-blue-500 ring-offset-slate-400 dark:ring-offset-slate-700"
                     size="mdSquare"
+                    IconLeft={Bars3Icon}
+                    className={`lg:hidden ${navbarIsOpen ? "invisible" : ""}`}
+                    ringClassNames="ring-blue-500 ring-offset-slate-400 dark:ring-offset-slate-700"
                 />
 
                 <div className="hidden lg:block">
-                    <DarkModeToggle DarkModeController={DarkModeController} />
+                    <DarkModeToggle darkModeController={darkModeController} />
                 </div>
             </div>
 
+            {/* Sidebar for mobile */}
             <Transition
                 appear
                 show={navbarIsOpen}
@@ -247,7 +189,7 @@ const NavBar = () => {
                             leaveFrom="translate-x-0"
                             leaveTo="-translate-x-full"
                         >
-                            <Dialog.Panel className="flex h-full w-full max-w-[225px] transform flex-col gap-5 bg-slate-400 p-4 text-slate-800 shadow-xl transition-all dark:bg-slate-700 dark:text-slate-300">
+                            <Dialog.Panel className="flex h-full w-full max-w-[225px] transform flex-col gap-5 bg-slate-100 p-4 text-slate-800 shadow-xl transition-all dark:bg-slate-700 dark:text-slate-300">
                                 <div className="flex justify-between">
                                     <Button
                                         ariaLabel="logo"
@@ -261,7 +203,7 @@ const NavBar = () => {
                                                 });
                                             }, 500);
                                         }}
-                                        text="AG"
+                                        text="Athul George"
                                         size="none"
                                         className="rounded-md py-0.5 px-1 outline-none"
                                         ringClassNames="ring-blue-600 ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 dark:ring-blue-500"
@@ -272,12 +214,8 @@ const NavBar = () => {
                                         id="navbar-menu"
                                         IconLeft={XMarkIcon}
                                         onClick={() => setNavbarIsOpen(false)}
-                                        className={(isPressed) =>
-                                            `bg-slate-400 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 lg:hidden ${
-                                                isPressed
-                                                    ? "bg-slate-500 hover:bg-slate-500 dark:bg-slate-800 dark:hover:bg-slate-800"
-                                                    : "bg-slate-400 dark:bg-slate-700"
-                                            }`
+                                        className={
+                                            "hover:bg-slate-200 dark:hover:bg-slate-600 lg:hidden"
                                         }
                                         ringClassNames="ring-blue-500 ring-offset-slate-400 dark:ring-offset-slate-700"
                                         size="mdSquare"
@@ -287,9 +225,9 @@ const NavBar = () => {
                                 <ul className="flex flex-col gap-5 font-semibold">
                                     <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                                         <Button
+                                            id="home"
                                             ariaLabel="home"
                                             className="gap-2 rounded-sm px-0.5"
-                                            id="home"
                                             onClick={() => {
                                                 setNavbarIsOpen(false);
                                                 setTimeout(() => {
@@ -306,11 +244,12 @@ const NavBar = () => {
                                             IconLeftClassName="h-5 w-5"
                                         />
                                     </li>
+
                                     <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                                         <Button
+                                            id="projects"
                                             ariaLabel="projects"
                                             className="gap-2 rounded-sm px-0.5"
-                                            id="projects"
                                             onClick={() => {
                                                 setNavbarIsOpen(false);
                                                 setTimeout(() => {
@@ -324,31 +263,11 @@ const NavBar = () => {
                                             IconLeftClassName="h-5 w-5"
                                         />
                                     </li>
-                                    {/* <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
-                                        <Button
-                                            ariaLabel="work"
-                                            id="work"
-                                            onClick={() => {
-                                                setNavbarIsOpen(false);
-                                                setTimeout(() => {
-                                                    navigateToId(
-                                                        "work-experience"
-                                                    );
-                                                }, 500);
-                                            }}
-                                            className="gap-2 rounded-sm px-0.5"
-                                            ringClassNames="ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 ring-blue-600 ring-2
-                                            dark:ring-blue-500"
-                                            text="Work"
-                                            size="none"
-                                            IconLeft={BriefcaseIcon}
-                                            IconLeftClassName="h-5 w-5"
-                                        />
-                                    </li> */}
+
                                     <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                                         <Button
-                                            ariaLabel="contact"
                                             id="contact"
+                                            ariaLabel="contact"
                                             onClick={() => {
                                                 setNavbarIsOpen(false);
                                                 setTimeout(() => {
@@ -363,9 +282,10 @@ const NavBar = () => {
                                             IconLeftClassName="h-5 w-5"
                                         />
                                     </li>
+
                                     <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                                         <a
-                                            href="https://www.linkedin.com/in/athul-george/"
+                                            href={LINKS.linkedIn}
                                             target="_blank"
                                             className="flex items-center gap-2 rounded-md py-0.5 px-1 outline-none focus-visible:ring-2 focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
                                             rel="noreferrer"
@@ -376,7 +296,7 @@ const NavBar = () => {
                                     </li>
                                     <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                                         <a
-                                            href="https://github.com/athulgeorge37"
+                                            href={LINKS.github}
                                             target="_blank"
                                             className="flex items-center gap-2 rounded-md py-0.5 px-1 outline-none focus-visible:ring-2 focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
                                             rel="noreferrer"
@@ -385,22 +305,11 @@ const NavBar = () => {
                                             GitHub
                                         </a>
                                     </li>
-                                    {/* <li className="w-fit outline-none hover:text-blue-600 dark:hover:text-blue-500">
-                                        <a
-                                            className="flex items-center gap-2 rounded-md py-0.5 px-1 outline-none focus-visible:ring-2 focus-visible:ring-blue-600 dark:focus-visible:ring-blue-500"
-                                            target="_blank"
-                                            href="https://drive.google.com/file/d/1HHuhghE7VJ-taj8WKJFOLD8l2UV_hjSD/view?usp=sharing"
-                                            rel="noreferrer"
-                                        >
-                                            <DocumentTextIcon className="h-5 w-5" />
-                                            Resume
-                                        </a>
-                                    </li> */}
                                 </ul>
 
                                 <div className="mt-auto">
                                     <DarkModeToggle
-                                        DarkModeController={DarkModeController}
+                                        darkModeController={darkModeController}
                                     />
                                 </div>
                             </Dialog.Panel>
@@ -412,4 +321,4 @@ const NavBar = () => {
     );
 };
 
-export default NavBar;
+export default Navbar;

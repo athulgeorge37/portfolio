@@ -1,5 +1,3 @@
-// interface LoadingSpinnerProps {}
-
 const LoadingSpinner = () => {
     return (
         <div
@@ -9,7 +7,7 @@ const LoadingSpinner = () => {
             <div role="status">
                 <svg
                     aria-hidden="true"
-                    className="h-5 w-5 animate-spin fill-blue-600 text-slate-200 dark:fill-blue-500 dark:text-slate-300"
+                    className="h-5 w-5 animate-spin fill-blue-600 text-slate-400 dark:fill-blue-500 dark:text-slate-300"
                     viewBox="0 0 100 101"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"

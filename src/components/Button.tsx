@@ -1,6 +1,3 @@
-"use client";
-// context
-
 // hooks
 import React, { useRef } from "react";
 import { useButton } from "@react-aria/button";
@@ -52,14 +49,6 @@ const buttonIconStyles = cva([], {
     },
 });
 
-// blue: (isPressed: boolean) => {
-//     return {
-//         ringClassNames: "ring-blue-500 ring-offset-slate-100",
-//         classNames: `text-slate-100 hover:bg-blue-600 border-2 border-blue-500
-//         ${isPressed ? "bg-blue-700 hover:bg-blue-700" : "bg-blue-500"}`,
-//     };
-// },
-
 interface ChildElementProps {
     text: string;
     IconLeft: React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -68,7 +57,6 @@ interface ChildElementProps {
     IconRightClassName?: string;
 }
 
-// ButtonProps includes all
 type ButtonProps = {
     onClick(event: React.MouseEvent<HTMLButtonElement>): void;
     id: string;
@@ -76,7 +64,7 @@ type ButtonProps = {
     type?: "button" | "submit" | "reset";
     disabled?: boolean;
     className: ((isPressed: boolean) => string) | string;
-    ringClassNames: string; // eg: ring-blue-500 ring-offset-slate-100
+    ringClassNames: string;
 } & MakeAtLeastOneTypeRequired<ChildElementProps> &
     ButtonIconProps &
     ButtonStylesProps;

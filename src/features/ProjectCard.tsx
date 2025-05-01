@@ -1,7 +1,5 @@
-"use client";
-
 // hooks
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Button from "~/components/Button";
 import type { StaticImageData } from "next/image";
 
@@ -17,12 +15,14 @@ import {
     CodeBracketIcon,
 } from "@heroicons/react/24/solid";
 
+type ProjectCardData = {
+    id: number;
+    image: StaticImageData;
+    bulletPoints: string[];
+}[];
+
 interface ProjectCardProps {
-    data: {
-        id: number;
-        image: StaticImageData;
-        bulletPoints: string[];
-    }[];
+    data: ProjectCardData;
     cardNumber: string;
     title: string;
     description: string;
@@ -47,8 +47,15 @@ const ProjectCard = ({
     extraInformation,
 }: ProjectCardProps) => {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-    const updateSlideNumber = (newSlideNumber: number) => {
+    const resetTimeout = () => {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
+    };
+
+    const gotToSlide = (newSlideNumber: number) => {
         if (newSlideNumber < 0) {
             setCurrentSlide(data.length - 1);
             return;
@@ -61,39 +68,37 @@ const ProjectCard = ({
         setCurrentSlide(newSlideNumber);
     };
 
-    useEffect(() => {
-        // starting automatic carousel sliding
-        const slideOverInterval = setInterval(() => {
-            setCurrentSlide((current) =>
-                current === data.length - 1 ? 0 : current + 1
-            );
-            // goes to next slide every 10 seconds
-        }, 10000);
+    const updateSlideNumber = (newSlideNumber: number) => {
+        gotToSlide(newSlideNumber);
+        resetTimeout();
+        startAutoSlide();
+    };
 
-        // removing interval on unmount
-        return () => clearInterval(slideOverInterval);
+    const startAutoSlide = useCallback(() => {
+        resetTimeout();
+        timeoutRef.current = setTimeout(() => {
+            // go to next slide
+            setCurrentSlide((prevIndex) =>
+                prevIndex === data.length - 1 ? 0 : prevIndex + 1
+            );
+        }, 1000 * 10); // 10 seconds
     }, [data.length]);
+
+    useEffect(() => {
+        startAutoSlide();
+        return () => resetTimeout();
+    }, [currentSlide, startAutoSlide]);
 
     return (
         <div
-            // ref={ref}
             id={`${id}-project-card`}
             className="relative mx-auto w-fit"
         >
-            <span
-                // animate={numberAnimation}
-                className="absolute -top-24 -right-4 text-9xl font-extrabold text-slate-600 
-                dark:text-slate-500 md:-top-20 md:-right-24"
-            >
+            <span className="absolute -top-24 -right-4 text-9xl font-extrabold text-slate-400 dark:text-slate-500 md:-top-20 md:-right-24">
                 {cardNumber}
             </span>
 
-            {/* left col */}
-            <div
-                //     animate={cardAnimation}
-                className="relative mx-auto flex w-fit flex-col justify-between overflow-hidden 
-                    rounded-lg bg-slate-300 shadow-xl dark:bg-slate-600 lg:w-full lg:max-w-5xl lg:flex-row"
-            >
+            <div className="relative mx-auto flex w-fit flex-col justify-between overflow-hidden rounded-lg bg-white shadow-xl dark:bg-slate-600 lg:w-full lg:max-w-5xl lg:flex-row">
                 {/* image slideshow */}
                 <div className="h-[250px] overflow-hidden lg:h-[400px] lg:w-[550px]">
                     <div
@@ -107,7 +112,7 @@ const ProjectCard = ({
                                 <Image
                                     key={slide.id}
                                     src={slide.image}
-                                    alt={`path finding visualizer image ${slide.id}`}
+                                    alt={`${id} image ${slide.id}`}
                                     height={250}
                                     width={550}
                                     className="pointer-events-none w-full flex-shrink-0 object-cover object-center"
@@ -133,8 +138,8 @@ const ProjectCard = ({
                         {technologies.map((item, index) => {
                             return (
                                 <li
-                                    key={index}
-                                    className="rounded-md border border-slate-600 px-1.5 py-1 text-sm shadow-sm dark:border-slate-500"
+                                    key={`technology-index-${index}`}
+                                    className="rounded-md border border-slate-600 px-1.5 py-1 text-sm shadow-sm dark:border-slate-400"
                                 >
                                     {item}
                                 </li>
@@ -147,9 +152,8 @@ const ProjectCard = ({
                         {data.map((item) => {
                             return (
                                 <ul
-                                    key={item.id}
-                                    className="w-full flex-shrink-0 list-disc text-slate-700 
-                                    transition-transform duration-1000 ease-out dark:text-slate-300"
+                                    key={`project-bullet-points-${item.id}`}
+                                    className="w-full flex-shrink-0 list-disc text-slate-700 transition-transform duration-1000 ease-out dark:text-slate-300"
                                     style={{
                                         transform: `translateX(-${
                                             currentSlide * 100
@@ -159,7 +163,7 @@ const ProjectCard = ({
                                     {item.bulletPoints.map((bullet, index) => {
                                         return (
                                             <li
-                                                key={index}
+                                                key={`project-bullet-point-${index}`}
                                                 className="ml-5"
                                             >
                                                 {bullet}
@@ -178,12 +182,8 @@ const ProjectCard = ({
                                 <a
                                     href={codeLink}
                                     target="_blank"
-                                    aria-label="pathfinding visualizer repository"
-                                    className="flex cursor-pointer items-center justify-between gap-2 
-                                rounded-md bg-blue-600 px-2 py-1 font-semibold text-slate-300 outline-none focus-visible:ring-2 
-                                focus-visible:ring-blue-600 focus-visible:ring-offset-2 
-                                focus-visible:ring-offset-slate-300 dark:bg-blue-500 
-                                dark:focus-visible:ring-blue-500 dark:focus-visible:ring-offset-slate-600"
+                                    aria-label={`${title} repository link`}
+                                    className="flex cursor-pointer items-center justify-between gap-2 rounded-md bg-blue-600 px-2 py-1 font-semibold text-white outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-300 dark:bg-blue-500 dark:focus-visible:ring-blue-500 dark:focus-visible:ring-offset-slate-600"
                                     rel="noreferrer"
                                 >
                                     <CodeBracketIcon className="h-5 w-5" />
@@ -194,12 +194,8 @@ const ProjectCard = ({
                                 <a
                                     href={demoLink}
                                     target="_blank"
-                                    aria-label="path finding vizualizer demo"
-                                    className="flex cursor-pointer items-center justify-between gap-2 
-                                rounded-md bg-blue-600 px-2 py-1 font-semibold text-slate-300 outline-none focus-visible:ring-2 
-                                focus-visible:ring-blue-600 focus-visible:ring-offset-2 
-                                focus-visible:ring-offset-slate-300 dark:bg-blue-500 
-                                dark:focus-visible:ring-blue-500 dark:focus-visible:ring-offset-slate-600"
+                                    aria-label={`${title} demo link`}
+                                    className="flex cursor-pointer items-center justify-between gap-2 rounded-md bg-blue-600 px-2 py-1 font-semibold text-white outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-300 dark:bg-blue-500 dark:focus-visible:ring-blue-500 dark:focus-visible:ring-offset-slate-600"
                                     rel="noreferrer"
                                 >
                                     <ComputerDesktopIcon className="h-5 w-5" />
@@ -211,12 +207,8 @@ const ProjectCard = ({
                                 <a
                                     href={videoDemoLink}
                                     target="_blank"
-                                    aria-label="path finding vizualizer demo"
-                                    className="flex cursor-pointer items-center justify-between gap-2 
-                            rounded-md bg-blue-600 px-2 py-1 font-semibold text-slate-300 outline-none focus-visible:ring-2 
-                            focus-visible:ring-blue-600 focus-visible:ring-offset-2 
-                            focus-visible:ring-offset-slate-300 dark:bg-blue-500 
-                            dark:focus-visible:ring-blue-500 dark:focus-visible:ring-offset-slate-600"
+                                    aria-label={`${title} video demo link`}
+                                    className="flex cursor-pointer items-center justify-between gap-2 rounded-md bg-blue-600 px-2 py-1 font-semibold text-white outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-300 dark:bg-blue-500 dark:focus-visible:ring-blue-500 dark:focus-visible:ring-offset-slate-600"
                                     rel="noreferrer"
                                 >
                                     <ComputerDesktopIcon className="h-5 w-5" />
@@ -228,48 +220,45 @@ const ProjectCard = ({
                         {/* slide show buttons */}
                         <div className="flex w-fit items-center justify-center gap-3 rounded-full px-1.5 py-1 ">
                             <Button
-                                ariaLabel="go back one image"
-                                id="slideshow-left-arrow-pathfindingvisualizer"
+                                ariaLabel="go back one slide"
+                                id={`slideshow-left-arrow-${id}`}
                                 IconLeft={ChevronLeftIcon}
                                 size="smSquare"
                                 onClick={() =>
                                     updateSlideNumber(currentSlide - 1)
                                 }
-                                className="rounded-full text-slate-800 dark:text-slate-100"
-                                ringClassNames="ring-offset-slate-300 dark:ring-offset-slate-600 
-                                ring-blue-600 dark:ring-blue-500"
+                                className="rounded-full text-slate-400 dark:text-slate-100"
+                                ringClassNames="ring-offset-slate-300 dark:ring-offset-slate-600 ring-blue-600 dark:ring-blue-500"
                             />
 
                             {data.map((item, index) => {
                                 return (
                                     <Button
-                                        key={`${item.id}-slide-bullet-pathfindingvisualizer`}
+                                        key={`${item.id}-slide-bullet-${id}`}
                                         size="none"
-                                        ariaLabel={`go to slide ${item.id}`}
-                                        id={`skip-to-slide-${item.id}-pathfindingvisualizer`}
+                                        ariaLabel={`go to slide ${item.id} for ${title}`}
+                                        id={`skip-to-slide-${item.id}-${id}`}
                                         onClick={() => updateSlideNumber(index)}
                                         className={`h-2.5 w-2.5 rounded-full ${
                                             index === currentSlide
                                                 ? "bg-blue-600 dark:bg-blue-500"
-                                                : "bg-slate-700 dark:bg-slate-300"
+                                                : "bg-slate-400 dark:bg-slate-300"
                                         }`}
-                                        ringClassNames="ring-offset-slate-300 dark:ring-offset-slate-600 
-                                        ring-blue-600 dark:ring-blue-500"
+                                        ringClassNames="ring-offset-slate-300 dark:ring-offset-slate-600 ring-blue-600 dark:ring-blue-500"
                                     />
                                 );
                             })}
 
                             <Button
-                                ariaLabel="go back one image"
-                                id="slideshow-right-arrow-pathfindingvisualizer"
+                                ariaLabel="go forward one slide"
+                                id={`slideshow-right-arrow-${id}}`}
                                 IconLeft={ChevronRightIcon}
                                 size="smSquare"
                                 onClick={() =>
                                     updateSlideNumber(currentSlide + 1)
                                 }
-                                className="rounded-full text-slate-800  dark:text-slate-100 "
-                                ringClassNames="ring-offset-slate-300 dark:ring-offset-slate-600 
-                                ring-blue-600 dark:ring-blue-500"
+                                className="rounded-full text-slate-400 dark:text-slate-100 "
+                                ringClassNames="ring-offset-slate-300 dark:ring-offset-slate-600 ring-blue-600 dark:ring-blue-500"
                             />
                         </div>
                     </div>
@@ -282,3 +271,4 @@ const ProjectCard = ({
 };
 
 export default ProjectCard;
+export type { ProjectCardProps };

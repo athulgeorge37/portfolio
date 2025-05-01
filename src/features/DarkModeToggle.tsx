@@ -11,21 +11,15 @@ import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 import type { THEMES } from "~/hooks/useTheme";
 
 interface DarkModeToggleProps {
-    DarkModeController: {
+    darkModeController: {
         theme: THEMES;
         setTheme: React.Dispatch<React.SetStateAction<THEMES | undefined>>;
         toggleTheme: () => void;
     };
 }
 
-// normalling we would animate the toggle with these classes
-// ui-checked:translate-x-6 ui-not-checked:translate-x-1
-
-// however when using it in the modal, it did not work
-// so we are toggling it with the the current theme
-
 const DarkModeToggle = ({
-    DarkModeController: { theme, setTheme, toggleTheme },
+    darkModeController: { theme, setTheme, toggleTheme },
 }: DarkModeToggleProps) => {
     return (
         <div
@@ -40,11 +34,7 @@ const DarkModeToggle = ({
             <Switch
                 checked={theme === "dark" ? true : false}
                 onChange={toggleTheme}
-                className="relative inline-flex h-6 w-11 items-center rounded-full outline-none 
-                focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2
-                focus-visible:ring-offset-slate-400 ui-checked:bg-blue-500 
-                ui-not-checked:bg-slate-500 dark:focus-visible:ring-blue-500 
-                dark:focus-visible:ring-offset-slate-700"
+                className="relative inline-flex h-6 w-11 items-center rounded-full outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-400 ui-checked:bg-blue-500 ui-not-checked:bg-slate-400 dark:focus-visible:ring-blue-500 dark:focus-visible:ring-offset-slate-700"
             >
                 <span className="sr-only">Toggle Dark Mode</span>
                 <span
