@@ -2,7 +2,7 @@ import { type NextPage } from "next";
 import Head from "next/head";
 
 // components
-import NavBar from "~/features/Navbar";
+import NavBar from "~/features/NavBar";
 import AnimatedTitleScreen from "~/features/AnimatedTitleScreen";
 import AllProjectCards from "~/features/AllProjectCards";
 import ContactMeForm from "~/features/ContactMeForm";
