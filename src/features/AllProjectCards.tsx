@@ -215,7 +215,7 @@ const AllProjectData: ProjectCardProps[] = [
             },
         ],
     },
-] as const;
+];
 
 const AllProjectCards = () => {
     return (
