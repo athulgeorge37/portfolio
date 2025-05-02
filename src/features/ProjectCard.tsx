@@ -100,7 +100,7 @@ const ProjectCard = ({
 
             <div className="relative mx-auto flex w-fit flex-col justify-between overflow-hidden rounded-lg bg-white shadow-xl dark:bg-slate-600 lg:w-full lg:max-w-5xl lg:flex-row">
                 {/* image slideshow */}
-                <div className="h-[250px] overflow-hidden lg:h-[400px] lg:w-[550px]">
+                <div className="h-[250px] w-full overflow-hidden lg:h-[400px]">
                     <div
                         className=" flex h-full w-full transition-transform duration-1000 ease-out "
                         style={{
@@ -123,7 +123,7 @@ const ProjectCard = ({
                 </div>
 
                 {/* right col */}
-                <div className="flex flex-col justify-center gap-5 px-5 py-5 sm:px-10">
+                <div className="flex w-full flex-col justify-center gap-5 px-5 py-5 sm:px-10">
                     {/* title and description */}
                     <div className="flex flex-col  gap-2">
                         <h3 className="text-4xl font-semibold">{title}</h3>

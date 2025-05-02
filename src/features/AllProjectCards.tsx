@@ -5,26 +5,86 @@ import React from "react";
 import type { ProjectCardProps } from "~/features/ProjectCard";
 import ProjectCard from "~/features/ProjectCard";
 
-// assets
-import BreadditImg1 from "~/assets/images/Breaddit-Image-1.png";
-import BreadditImg2 from "~/assets/images/Breaddit-Image-2.png";
-import BreadditImg3 from "~/assets/images/Breaddit-Image-3.png";
-
-import PathFindingVisualizerImg1 from "~/assets/images/PathFindingVisualizer-Image-1.png";
-import PathFindingVisualizerImg2 from "~/assets/images/PathFindingVisualizer-Image-2.png";
-import PathFindingVisualizerImg3 from "~/assets/images/PathFindingVisualizer-Image-3.png";
-
-import MinecraftImg1 from "~/assets/images/Minecraft-Villiage-Generator-Image-1.png";
-import MinecraftImg2 from "~/assets/images/Minecraft-Villiage-Generator-Image-2.png";
-import MinecraftImg3 from "~/assets/images/Minecraft-Villiage-Generator-Image-3.png";
+// icons
 import { FaceFrownIcon } from "@heroicons/react/24/solid";
+
+// assets
+import WyndhamHomeVetImg1 from "@public/images/wyndham-home-vet-homepage.jpg";
+import WyndhamHomeVetImg2 from "@public/images/wyndham-home-vet-book-appointment-datetime.jpg";
+import WyndhamHomeVetImg3 from "@public/images/wyndham-home-vet-book-admin-view.jpg";
+
+import BreadditImg1 from "@public/images/Breaddit-Image-1.png";
+import BreadditImg2 from "@public/images/Breaddit-Image-2.png";
+import BreadditImg3 from "@public/images/Breaddit-Image-3.png";
+
+import PathFindingVisualizerImg1 from "@public/images/PathFindingVisualizer-Image-1.png";
+import PathFindingVisualizerImg2 from "@public/images/PathFindingVisualizer-Image-2.png";
+import PathFindingVisualizerImg3 from "@public/images/PathFindingVisualizer-Image-3.png";
+
+import MinecraftImg1 from "@public/images/Minecraft-Villiage-Generator-Image-1.png";
+import MinecraftImg2 from "@public/images/Minecraft-Villiage-Generator-Image-2.png";
+import MinecraftImg3 from "@public/images/Minecraft-Villiage-Generator-Image-3.png";
+
+// NOTE: before adding new project images,
+// optimize its file size using this tutorial:
+// https://www.youtube.com/watch?v=LM8bXzHy1Kw
 
 const AllProjectData: ProjectCardProps[] = [
     {
+        id: "wyndham-home-vet",
+        title: "Wyndham Home Vet",
+        cardNumber: "01",
+        description: "Pet appointment booking system & Admin dashboard",
+        technologies: [
+            "NextJS",
+            "Typescript",
+            "tRPC",
+            "Tanstack Query",
+            "OAuth",
+            "Tailwind CSS",
+            "Radix UI",
+            "Drizzle ORM",
+            "PostgresSQL",
+        ],
+        demoLink: "https://www.wyndhamhomevet.com.au/",
+        data: [
+            {
+                id: 1,
+                image: WyndhamHomeVetImg1,
+                bulletPoints: [
+                    "Built for a local business",
+                    "Currently in production",
+                    "Allows clients to book appointments",
+                    "According to the owner's timetable",
+                ],
+            },
+            {
+                id: 2,
+                image: WyndhamHomeVetImg2,
+                bulletPoints: [
+                    "View the weekly availability",
+                    "Add required pet & client details",
+                    "Instructions on next steps",
+                    "Receive email confirmation",
+                ],
+            },
+            {
+                id: 4,
+                image: WyndhamHomeVetImg3,
+                bulletPoints: [
+                    "Owner can login quickly with google OAuth",
+                    "Set their weekly timetable",
+                    "Add any availability exceptions",
+                    "View booked appointment details",
+                ],
+            },
+        ],
+    },
+    {
         id: "breaddit",
         title: "Breaddit",
-        cardNumber: "01",
-        description: "Full Stack Reddit Clone",
+        cardNumber: "02",
+        description: "Fullstack Reddit inspired clone",
         technologies: [
             "React",
             "Node",
@@ -76,7 +136,7 @@ const AllProjectData: ProjectCardProps[] = [
     {
         id: "path-finding-visualizer",
         title: "Path Finding Visualizer",
-        cardNumber: "02",
+        cardNumber: "03",
         description:
             "Interactive tool for graph traversal & maze generation algorithms",
         technologies: ["React", "Javascript", "CSS"],
@@ -118,8 +178,8 @@ const AllProjectData: ProjectCardProps[] = [
     {
         id: "minecraft-village-generator",
         title: "Minecraft Village Generator",
-        cardNumber: "03",
-        description: "Procedurally Generates a Random Minecraft Village",
+        cardNumber: "04",
+        description: "Procedurally generates a random Minecraft village",
         technologies: ["Python", "mcpi"],
         videoDemoLink: "https://www.youtube.com/watch?v=Eu465Jue3ns",
         data: [
@@ -155,7 +215,7 @@ const AllProjectData: ProjectCardProps[] = [
             },
         ],
     },
-];
+] as const;
 
 const AllProjectCards = () => {
     return (
@@ -174,8 +234,8 @@ const AllProjectCards = () => {
                     codeLink={project.codeLink}
                     demoLink={project.demoLink}
                     videoDemoLink={project.videoDemoLink}
-                    extraInformation={project.extraInformation}
                     data={project.data}
+                    extraInformation={project.extraInformation}
                 />
             ))}
         </div>

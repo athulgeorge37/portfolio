@@ -13,7 +13,9 @@ import {
     UserIcon,
     PaperAirplaneIcon,
 } from "@heroicons/react/24/solid";
-import GuySkiing from "~/assets/images/guySkiing.png";
+
+// images
+import GuySkiing from "@public/images/guySkiing.png";
 
 // ui
 import LoadingSpinner from "~/components/LoadingSpinner";

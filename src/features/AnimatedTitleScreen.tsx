@@ -8,7 +8,7 @@ import TypewriterComponent from "typewriter-effect";
 import Button from "~/components/Button";
 
 // assets
-import StudyRoomImg from "~/assets/images/studyRoom.png";
+import StudyRoomImg from "@public/images/studyRoom.png";
 
 // ui
 import { ArrowDownIcon } from "@heroicons/react/24/solid";
