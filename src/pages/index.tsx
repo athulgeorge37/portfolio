@@ -40,39 +40,31 @@ const Home: NextPage = () => {
 
                 <section
                     id="title"
-                    className="mx-auto flex w-full max-w-5xl flex-col items-center
-                    sm:items-center lg:mt-40 lg:mb-16 lg:flex-row lg:justify-between"
+                    className="mx-auto flex w-full max-w-5xl flex-col items-center sm:items-center lg:mt-40 lg:mb-16 lg:flex-row lg:justify-between"
                 >
                     <AnimatedTitleScreen />
                 </section>
 
                 <section
                     id="projects"
-                    className="mx-auto my-20 flex w-full max-w-5xl flex-col gap-20 pt-20 sm:px-4 md:px-8"
+                    className="mx-auto my-20 flex w-full max-w-5xl flex-col gap-20 pt-20"
                 >
-                    <div className="mx-auto flex w-fit flex-col gap-20">
-                        <div className="overflow-hidden pb-4">
-                            <h2 className="text-6xl font-bold tracking-wide">
-                                Projects
-                            </h2>
-                        </div>
-                        <div className="flex flex-col gap-32">
-                            <AllProjectCards />
-                        </div>
-                    </div>
+                    <h2 className="px-2 text-6xl font-bold tracking-wide lg:px-0">
+                        Projects
+                    </h2>
+
+                    <AllProjectCards />
                 </section>
 
                 <section
                     id="contact"
-                    className="mx-auto mb-32 flex w-full max-w-5xl flex-col gap-10 px-2 pt-20"
+                    className="mx-auto mb-32 flex w-full max-w-5xl flex-col items-center gap-10 pt-20"
                 >
-                    <div className="flex flex-col items-center gap-10">
-                        <h2 className="w-full max-w-lg text-6xl font-bold tracking-wide lg:max-w-none">
-                            Contact Me
-                        </h2>
+                    <h2 className="w-full max-w-lg px-2 text-6xl font-bold tracking-wide sm:px-0 lg:max-w-none">
+                        Contact Me
+                    </h2>
 
-                        <ContactMeForm />
-                    </div>
+                    <ContactMeForm />
                 </section>
             </main>
         </>

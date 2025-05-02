@@ -183,7 +183,7 @@ const ProjectCard = ({
                                     href={codeLink}
                                     target="_blank"
                                     aria-label={`${title} repository link`}
-                                    className="flex cursor-pointer items-center justify-between gap-2 rounded-md bg-blue-600 px-2 py-1 font-semibold text-white outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-300 dark:bg-blue-500 dark:focus-visible:ring-blue-500 dark:focus-visible:ring-offset-slate-600"
+                                    className="flex cursor-pointer items-center justify-between gap-2 rounded-md bg-blue-600 px-2 py-1 font-semibold text-white outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:bg-blue-500 dark:focus-visible:ring-blue-500 dark:focus-visible:ring-offset-slate-600"
                                     rel="noreferrer"
                                 >
                                     <CodeBracketIcon className="h-5 w-5" />
@@ -195,7 +195,7 @@ const ProjectCard = ({
                                     href={demoLink}
                                     target="_blank"
                                     aria-label={`${title} demo link`}
-                                    className="flex cursor-pointer items-center justify-between gap-2 rounded-md bg-blue-600 px-2 py-1 font-semibold text-white outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-300 dark:bg-blue-500 dark:focus-visible:ring-blue-500 dark:focus-visible:ring-offset-slate-600"
+                                    className="flex cursor-pointer items-center justify-between gap-2 rounded-md bg-blue-600 px-2 py-1 font-semibold text-white outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:bg-blue-500 dark:focus-visible:ring-blue-500 dark:focus-visible:ring-offset-slate-600"
                                     rel="noreferrer"
                                 >
                                     <ComputerDesktopIcon className="h-5 w-5" />
@@ -208,7 +208,7 @@ const ProjectCard = ({
                                     href={videoDemoLink}
                                     target="_blank"
                                     aria-label={`${title} video demo link`}
-                                    className="flex cursor-pointer items-center justify-between gap-2 rounded-md bg-blue-600 px-2 py-1 font-semibold text-white outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-300 dark:bg-blue-500 dark:focus-visible:ring-blue-500 dark:focus-visible:ring-offset-slate-600"
+                                    className="flex cursor-pointer items-center justify-between gap-2 rounded-md bg-blue-600 px-2 py-1 font-semibold text-white outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:bg-blue-500 dark:focus-visible:ring-blue-500 dark:focus-visible:ring-offset-slate-600"
                                     rel="noreferrer"
                                 >
                                     <ComputerDesktopIcon className="h-5 w-5" />
@@ -228,7 +228,7 @@ const ProjectCard = ({
                                     updateSlideNumber(currentSlide - 1)
                                 }
                                 className="rounded-full text-slate-400 dark:text-slate-100"
-                                ringClassNames="ring-offset-slate-300 dark:ring-offset-slate-600 ring-blue-600 dark:ring-blue-500"
+                                ringClassNames="ring-offset-white dark:ring-offset-slate-600 ring-blue-600 dark:ring-blue-500"
                             />
 
                             {data.map((item, index) => {
@@ -244,7 +244,7 @@ const ProjectCard = ({
                                                 ? "bg-blue-600 dark:bg-blue-500"
                                                 : "bg-slate-400 dark:bg-slate-300"
                                         }`}
-                                        ringClassNames="ring-offset-slate-300 dark:ring-offset-slate-600 ring-blue-600 dark:ring-blue-500"
+                                        ringClassNames="ring-offset-white dark:ring-offset-slate-600 ring-blue-600 dark:ring-blue-500"
                                     />
                                 );
                             })}
@@ -258,7 +258,7 @@ const ProjectCard = ({
                                     updateSlideNumber(currentSlide + 1)
                                 }
                                 className="rounded-full text-slate-400 dark:text-slate-100 "
-                                ringClassNames="ring-offset-slate-300 dark:ring-offset-slate-600 ring-blue-600 dark:ring-blue-500"
+                                ringClassNames="ring-offset-white dark:ring-offset-slate-600 ring-blue-600 dark:ring-blue-500"
                             />
                         </div>
                     </div>

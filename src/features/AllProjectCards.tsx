@@ -69,7 +69,7 @@ const AllProjectData: ProjectCardProps[] = [
         extraInformation: (
             <div className="flex items-center gap-2 ">
                 <p>PlanetScale removed their free tier, so no more demo </p>
-                <FaceFrownIcon className="h-6 w-6" />
+                <FaceFrownIcon className="h-6 w-6 fill-slate-500 dark:fill-slate-300" />
             </div>
         ),
     },

@@ -34,7 +34,7 @@ const DarkModeToggle = ({
             <Switch
                 checked={theme === "dark" ? true : false}
                 onChange={toggleTheme}
-                className="relative inline-flex h-6 w-11 items-center rounded-full outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-400 ui-checked:bg-blue-500 ui-not-checked:bg-slate-400 dark:focus-visible:ring-blue-500 dark:focus-visible:ring-offset-slate-700"
+                className="relative inline-flex h-6 w-11 items-center rounded-full outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-100 ui-checked:bg-blue-500 ui-not-checked:bg-slate-400 dark:focus-visible:ring-blue-500 dark:focus-visible:ring-offset-slate-700"
             >
                 <span className="sr-only">Toggle Dark Mode</span>
                 <span

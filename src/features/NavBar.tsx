@@ -56,12 +56,12 @@ const NavBar = () => {
                     IconLeft={HomeIcon}
                     size="mdSquare"
                     className="rounded-md py-0.5 px-1 lg:hidden"
-                    ringClassNames="focus-visible:ring-blue-600 ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 dark:focus-visible:ring-blue-500 outline-none"
+                    ringClassNames="focus-visible:ring-blue-600 ring-offset-0 ring-offset-slate-100 dark:ring-offset-slate-700 dark:focus-visible:ring-blue-500 outline-none"
                 />
             </div>
 
             <div className="relative w-full max-w-5xl">
-                <div className="flex items-center justify-between p-4">
+                <div className="flex items-center justify-between py-4 px-4 lg:px-0">
                     <div>
                         <Button
                             ariaLabel="home"
@@ -73,7 +73,7 @@ const NavBar = () => {
                                     behavior: "smooth",
                                 });
                             }}
-                            ringClassNames="ring-offset-0 ring-2 ring-blue-600 dark:ring-blue-500 ring-offset-slate-400 dark:ring-offset-slate-700"
+                            ringClassNames="ring-offset-0 ring-2 ring-blue-600 dark:ring-blue-500 ring-offset-slate-100 dark:ring-offset-slate-700"
                             text="Home"
                             size="none"
                             IconLeft={HomeIcon}
@@ -88,7 +88,7 @@ const NavBar = () => {
                                 className="gap-2 rounded-md px-1"
                                 id="projects"
                                 onClick={() => navigateToId("projects")}
-                                ringClassNames="ring-offset-0 ring-2 ring-blue-600 dark:ring-blue-500 ring-offset-slate-400 dark:ring-offset-slate-700"
+                                ringClassNames="ring-offset-0 ring-2 ring-blue-600 dark:ring-blue-500 ring-offset-slate-100 dark:ring-offset-slate-700"
                                 text="Projects"
                                 size="none"
                                 IconLeft={PresentationChartLineIcon}
@@ -102,7 +102,7 @@ const NavBar = () => {
                                 className="gap-2 rounded-md px-1"
                                 id="contact"
                                 onClick={() => navigateToId("contact")}
-                                ringClassNames="ring-offset-0 ring-2 ring-blue-600 dark:ring-blue-500 ring-offset-slate-400 dark:ring-offset-slate-700"
+                                ringClassNames="ring-offset-0 ring-2 ring-blue-600 dark:ring-blue-500 ring-offset-slate-100 dark:ring-offset-slate-700"
                                 text="Contact"
                                 size="none"
                                 IconLeft={PaperAirplaneIcon}
@@ -143,7 +143,7 @@ const NavBar = () => {
                     size="mdSquare"
                     IconLeft={Bars3Icon}
                     className={`lg:hidden ${navbarIsOpen ? "invisible" : ""}`}
-                    ringClassNames="ring-blue-500 ring-offset-slate-400 dark:ring-offset-slate-700"
+                    ringClassNames="ring-blue-500 ring-offset-slate-100 dark:ring-offset-slate-700"
                 />
 
                 <div className="hidden lg:block">
@@ -189,8 +189,8 @@ const NavBar = () => {
                             leaveFrom="translate-x-0"
                             leaveTo="-translate-x-full"
                         >
-                            <Dialog.Panel className="flex h-full w-full max-w-[225px] transform flex-col gap-5 bg-slate-100 p-4 text-slate-800 shadow-xl transition-all dark:bg-slate-700 dark:text-slate-300">
-                                <div className="flex justify-between">
+                            <Dialog.Panel className="flex h-full w-full max-w-[225px] transform flex-col gap-5 bg-slate-100 text-slate-800 shadow-xl transition-all dark:bg-slate-700 dark:text-slate-300">
+                                <div className="flex justify-between border-b border-slate-300 p-4 dark:border-slate-600 ">
                                     <Button
                                         ariaLabel="logo"
                                         id="logo"
@@ -205,8 +205,8 @@ const NavBar = () => {
                                         }}
                                         text="Athul George"
                                         size="none"
-                                        className="rounded-md py-0.5 px-1 outline-none"
-                                        ringClassNames="ring-blue-600 ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 dark:ring-blue-500"
+                                        className="rounded-md py-0.5 px-1 font-bold outline-none"
+                                        ringClassNames="ring-blue-600 ring-offset-0 ring-offset-slate-100 dark:ring-offset-slate-700 dark:ring-blue-500"
                                     />
 
                                     <Button
@@ -217,12 +217,12 @@ const NavBar = () => {
                                         className={
                                             "hover:bg-slate-200 dark:hover:bg-slate-600 lg:hidden"
                                         }
-                                        ringClassNames="ring-blue-500 ring-offset-slate-400 dark:ring-offset-slate-700"
+                                        ringClassNames="ring-blue-500 ring-offset-slate-100 dark:ring-offset-slate-700"
                                         size="mdSquare"
                                     />
                                 </div>
 
-                                <ul className="flex flex-col gap-5 font-semibold">
+                                <ul className="flex flex-col gap-5 px-4 pt-0 font-semibold">
                                     <li className="w-fit hover:text-blue-600 dark:hover:text-blue-500">
                                         <Button
                                             id="home"
@@ -237,7 +237,7 @@ const NavBar = () => {
                                                     });
                                                 }, 500);
                                             }}
-                                            ringClassNames="ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 ring-blue-600 ring-2 dark:ring-blue-500"
+                                            ringClassNames="ring-offset-0 ring-offset-slate-100 dark:ring-offset-slate-700 ring-blue-600 ring-2 dark:ring-blue-500"
                                             text="Home"
                                             size="none"
                                             IconLeft={HomeIcon}
@@ -256,7 +256,7 @@ const NavBar = () => {
                                                     navigateToId("projects");
                                                 }, 500);
                                             }}
-                                            ringClassNames="ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 ring-blue-600 ring-2 dark:ring-blue-500"
+                                            ringClassNames="ring-offset-0 ring-offset-slate-100 dark:ring-offset-slate-700 ring-blue-600 ring-2 dark:ring-blue-500"
                                             text="Projects"
                                             size="none"
                                             IconLeft={PresentationChartLineIcon}
@@ -275,7 +275,7 @@ const NavBar = () => {
                                                 }, 500);
                                             }}
                                             className="gap-2 rounded-sm px-0.5"
-                                            ringClassNames="ring-offset-0 ring-offset-slate-400 dark:ring-offset-slate-700 ring-blue-600 ring-2 dark:ring-blue-500"
+                                            ringClassNames="ring-offset-0 ring-offset-slate-100 dark:ring-offset-slate-700 ring-blue-600 ring-2 dark:ring-blue-500"
                                             text="Contact"
                                             size="none"
                                             IconLeft={PaperAirplaneIcon}
@@ -307,7 +307,7 @@ const NavBar = () => {
                                     </li>
                                 </ul>
 
-                                <div className="mt-auto">
+                                <div className="mt-auto p-4">
                                     <DarkModeToggle
                                         darkModeController={darkModeController}
                                     />

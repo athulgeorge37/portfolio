@@ -159,7 +159,7 @@ const ContactMeForm = () => {
     return (
         <div
             id="Contact"
-            className="flex w-full max-w-lg flex-col justify-between gap-10 lg:max-w-5xl lg:flex-row lg:gap-20"
+            className="flex w-full max-w-lg flex-col justify-between gap-10 px-4 sm:px-0 lg:max-w-5xl lg:flex-row lg:gap-20"
         >
             <div className="lg flex flex-col  gap-10">
                 <div className="flex flex-col gap-3">
@@ -167,12 +167,12 @@ const ContactMeForm = () => {
                         Got a problem that needs solving?
                     </span>
                     <p className="text-slate-600 dark:text-slate-400">
-                        Shoot me an email & lets talk
+                        Shoot me an email.
                     </p>
 
                     <div className="flex w-fit items-center gap-3">
-                        <div className="flex items-center rounded-md bg-slate-300 px-3 dark:bg-slate-500">
-                            <div className="mr-3 border-r border-slate-400 py-1.5 pr-2">
+                        <div className="flex items-center rounded-md border border-slate-700 bg-white px-3 dark:bg-slate-500">
+                            <div className="mr-3 border-r border-slate-700 py-1.5 pr-3 dark:border-slate-400">
                                 <EnvelopeIcon className="h-5 w-5" />
                             </div>
 
@@ -181,7 +181,7 @@ const ContactMeForm = () => {
                             </span>
                         </div>
                         <button
-                            className="rounded-md bg-slate-300 p-2 outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-400 dark:bg-slate-500 dark:focus-visible:ring-offset-slate-700 "
+                            className="rounded-md border border-slate-700 bg-white p-2 outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-100 dark:bg-slate-500 dark:focus-visible:ring-offset-slate-700 "
                             aria-label="copy email"
                             id="copy-email"
                             onClick={() => {
@@ -201,7 +201,7 @@ const ContactMeForm = () => {
                             {loadingState === "loading" ? (
                                 <LoadingSpinner />
                             ) : loadingState === "complete" ? (
-                                <CheckCircleIcon className="h-5 w-5" />
+                                <CheckCircleIcon className="h-5 w-5 fill-emerald-600 dark:fill-emerald-500" />
                             ) : (
                                 <DocumentDuplicateIcon className="h-5 w-5" />
                             )}
@@ -214,7 +214,7 @@ const ContactMeForm = () => {
                     alt="guy skiing"
                     width={500}
                     height={500}
-                    className="rounded-md"
+                    className="rounded-md shadow-xl dark:shadow-none"
                 />
             </div>
 
@@ -235,7 +235,7 @@ const ContactMeForm = () => {
                     ${IconRightClassNamesToUse("name")}`}
                     disabled={isSubmitting}
                     error={errors.name?.message}
-                    className={`w-full rounded-md bg-slate-300 py-2 px-11 font-semibold shadow-sm ring-2 ring-slate-300 placeholder:text-slate-500 focus:ring-blue-600 disabled:bg-slate-300 disabled:text-slate-500 disabled:ring-slate-300 dark:bg-slate-500 ${FocusRingClassNamesToUse(
+                    className={`w-full rounded-md bg-white py-2 px-11 font-semibold shadow-sm ring-2 ring-slate-700 placeholder:text-slate-500 focus:ring-blue-600 disabled:bg-slate-300 disabled:text-slate-500 disabled:ring-slate-300 dark:bg-slate-500 ${FocusRingClassNamesToUse(
                         "name"
                     )} dark:ring-slate-500 dark:placeholder:text-slate-400 dark:focus:ring-blue-500 dark:disabled:bg-slate-600 dark:disabled:text-slate-300 dark:disabled:ring-slate-600`}
                 />
@@ -252,7 +252,7 @@ const ContactMeForm = () => {
                     IconRight={IconRightToUse("email")}
                     IconRightClassNames={`mr-3 h-5 w-5
                     ${IconRightClassNamesToUse("email")}`}
-                    className={`w-full rounded-md bg-slate-300 py-2 px-11 font-semibold shadow-sm ring-2 ring-slate-300 placeholder:text-slate-500 disabled:bg-slate-300 disabled:text-slate-500 disabled:ring-slate-300 dark:bg-slate-500 dark:ring-slate-500 dark:placeholder:text-slate-400 ${FocusRingClassNamesToUse(
+                    className={`w-full rounded-md bg-white py-2 px-11 font-semibold shadow-sm ring-2 ring-slate-700 placeholder:text-slate-500 disabled:bg-slate-300 disabled:text-slate-500 disabled:ring-slate-300 dark:bg-slate-500 dark:ring-slate-500 dark:placeholder:text-slate-400 ${FocusRingClassNamesToUse(
                         "email"
                     )} dark:disabled:bg-slate-600 dark:disabled:text-slate-300 dark:disabled:ring-slate-600`}
                 />
@@ -270,7 +270,7 @@ const ContactMeForm = () => {
                     IconRightClassNames={`mr-3 mt-3 h-5 w-5
                     ${IconRightClassNamesToUse("message")}`}
                     placeholder="your message"
-                    className={`w-full rounded-md bg-slate-300 pl-3 pr-11 pt-2 font-semibold shadow-sm ring-2 ring-slate-300 placeholder:text-slate-500 disabled:bg-slate-300 disabled:text-slate-500 disabled:ring-slate-300 dark:bg-slate-500 dark:ring-slate-500 ${FocusRingClassNamesToUse(
+                    className={`w-full rounded-md bg-white pl-3 pr-11 pt-2 font-semibold shadow-sm ring-2 ring-slate-700 placeholder:text-slate-500 disabled:bg-slate-300 disabled:text-slate-500 disabled:ring-slate-300 dark:bg-slate-500 dark:ring-slate-500 ${FocusRingClassNamesToUse(
                         "message"
                     )} dark:placeholder:text-slate-400 dark:disabled:bg-slate-600 dark:disabled:text-slate-300 dark:disabled:ring-slate-600`}
                 />
@@ -303,8 +303,8 @@ const ContactMeForm = () => {
                             }}
                             text="Clear"
                             disabled={isSubmitting}
-                            className="w-fit bg-slate-300 font-medium dark:bg-slate-500"
-                            ringClassNames="ring-blue-500 ring-offset-slate-400 dark:ring-offset-slate-700"
+                            className="w-fit border border-slate-700 bg-white font-medium dark:border-slate-500 dark:bg-slate-500"
+                            ringClassNames="ring-blue-500 ring-offset-slate-100 dark:ring-offset-slate-700"
                         />
 
                         <Button
@@ -316,7 +316,7 @@ const ContactMeForm = () => {
                             disabled={isSubmitting}
                             IconRight={PaperAirplaneIcon}
                             className="w-fit bg-green-600 font-medium text-white dark:bg-emerald-500"
-                            ringClassNames="ring-green-600 dark:ring-emerald-500 ring-offset-slate-400 dark:ring-offset-slate-700"
+                            ringClassNames="ring-green-600 dark:ring-emerald-500 ring-offset-slate-100 dark:ring-offset-slate-700"
                         />
                     </div>
                 </div>

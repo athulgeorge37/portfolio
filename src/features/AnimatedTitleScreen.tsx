@@ -130,7 +130,7 @@ const AnimatedTitleScreen = () => {
                                         : "bg-emerald-500"
                                 }`
                             }
-                            ringClassNames="ring-emerald-500 ring-offset-slate-400 dark:ring-offset-slate-700"
+                            ringClassNames="ring-emerald-500 ring-offset-slate-100 dark:ring-offset-slate-700"
                             onClick={() => {
                                 document
                                     .getElementById("projects")
@@ -140,6 +140,7 @@ const AnimatedTitleScreen = () => {
                     </motion.div>
                 </div>
             </h1>
+
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 100 }}
